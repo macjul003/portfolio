@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julian — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=STIX+Two+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #f5f0eb;
+      --red: #8B1A1A;
+      --text: #2c2c2c;
+      --gray: #8a8580;
+      --light-gray: #d4cfc9;
+      --link: #6b6560;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text);
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---- Fade-in animation ---- */
+    .entry {
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+      animation-delay: 0.15s;
+      max-width: 620px;
+      width: 100%;
+      padding: 40px 24px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- Dictionary heading ---- */
+    .word {
+      font-family: 'STIX Two Text', 'Times New Roman', serif;
+      font-size: 4.5rem;
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .word .interpunct {
+      color: var(--gray);
+      font-weight: 400;
+    }
+
+    /* ---- Phonetic ---- */
+    .phonetic {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+
+    /* ---- Part of speech ---- */
+    .pos {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+
+    /* ---- Definitions ---- */
+    .definitions {
+      list-style: none;
+      counter-reset: def;
+      margin-bottom: 40px;
+    }
+
+    .definitions li {
+      counter-increment: def;
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .definitions li::before {
+      content: counter(def) ".";
+      position: absolute;
+      left: 0;
+      font-weight: 400;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    /* ---- See also ---- */
+    .see-also {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    .see-also-label {
+      font-style: italic;
+      margin-right: 4px;
+    }
+
+    .see-also a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1.5px dotted var(--light-gray);
+      transition: color 0.3s ease, border-color 0.3s ease;
+      padding-bottom: 1px;
+    }
+
+    .see-also a:hover {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    .see-also .sep {
+      margin: 0 6px;
+      color: var(--light-gray);
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 480px) {
+      .word {
+        font-size: 2.8rem;
+      }
+
+      .definitions li {
+        font-size: 1rem;
+      }
+
+      .entry {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="entry">
+    <h1 class="word">ju<span class="interpunct">&middot;</span>li<span class="interpunct">&middot;</span>an</h1>
+    <p class="phonetic">/&#712;d&#658;u&#720;.li.&#601;n/</p>
+    <p class="pos">noun</p>
+    <ol class="definitions">
+      <li>product designer obsessed with clarity; turns complex systems into things that feel effortless.</li>
+      <li>designs for AI, Fintech, and Travel; based in India; chasing trust and good design that just works.</li>
+    </ol>
+    <div class="see-also">
+      <span class="see-also-label">See also:</span>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+      <span class="sep">/</span>
+      <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep">/</span>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</body>
+</html>
