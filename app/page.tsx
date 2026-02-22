@@ -39,6 +39,8 @@ export default function Home() {
         </a>
         <span className={styles.sep}>/</span>
         <a href="/journal">Journal</a>
+        <span className={styles.sep}>/</span>
+        <a href="/photos">Photos</a>
       </div>
     </div>
     </div>

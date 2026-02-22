@@ -4,23 +4,30 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "generate:photos": "tsx scripts/generate-photos.ts",
+    "prebuild": "tsx scripts/generate-photos.ts",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
     "agentation": "^2.2.1",
+    "exifreader": "^4.36.2",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
+    "mapbox-gl": "^3.18.1",
     "marked": "^17.0.3",
     "marked-highlight": "^2.2.3",
     "next": "^15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
+    "@types/mapbox-gl": "^3.4.1",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.0"
   }
 }
