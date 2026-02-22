@@ -1,0 +1,117 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.entry {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 0.15s;
+  max-width: 620px;
+  width: 100%;
+  padding: 40px 24px;
+}
+
+.word {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: 4.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.interpunct {
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.phonetic {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+
+.pos {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--gray);
+  margin-bottom: 32px;
+}
+
+.definitions {
+  list-style: none;
+  counter-reset: def;
+  margin-bottom: 40px;
+}
+
+.definitions li {
+  counter-increment: def;
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 18px;
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.definitions li::before {
+  content: counter(def) ".";
+  position: absolute;
+  left: 0;
+  font-weight: 400;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.seeAlso {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gray);
+}
+
+.seeAlsoLabel {
+  font-style: italic;
+  margin-right: 4px;
+}
+
+.seeAlso a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1.5px dotted var(--light-gray);
+  transition: color 0.3s ease, border-color 0.3s ease;
+  padding-bottom: 1px;
+}
+
+.seeAlso a:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+.sep {
+  margin: 0 6px;
+  color: var(--light-gray);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .word {
+    font-size: 2.8rem;
+  }
+
+  .definitions li {
+    font-size: 1rem;
+  }
+
+  .entry {
+    padding: 32px 20px;
+  }
+}
