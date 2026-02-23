@@ -13,18 +13,10 @@ export default function PhotosPage() {
 
   return (
     <div className={styles.page}>
-      <div className={styles.header}>
-        <h1 className={styles.heading}>Photos</h1>
-        <p className={styles.subtitle}>
-          Places I&rsquo;ve been, through the lens.
-        </p>
-      </div>
-      <div className={styles.mapWrap}>
-        <PhotoMap photos={photos} />
-      </div>
       <a href="/" className={styles.back}>
         &larr; Home
       </a>
+      <PhotoMap photos={photos} />
     </div>
   );
 }

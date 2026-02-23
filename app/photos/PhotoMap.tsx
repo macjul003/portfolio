@@ -16,6 +16,10 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
 
+  // Keep a ref so event listeners always see the latest setter
+  const setLightboxRef = useRef(setLightboxPhoto);
+  setLightboxRef.current = setLightboxPhoto;
+
   useEffect(() => {
     if (!containerRef.current || photos.length === 0) return;
 
@@ -31,7 +35,6 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
     mapRef.current = map;
 
     map.on("load", () => {
-      // Add source with clustering
       map.addSource("photos", {
         type: "geojson",
         data: {
@@ -57,127 +60,141 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
         clusterRadius: 50,
       });
 
-      // Cluster circles
+      // Invisible layer to force Mapbox to load source tiles
       map.addLayer({
-        id: "clusters",
+        id: "photos-hidden",
         type: "circle",
         source: "photos",
-        filter: ["has", "point_count"],
-        paint: {
-          "circle-color": "#8B1A1A",
-          "circle-radius": [
-            "step",
-            ["get", "point_count"],
-            18, 5,
-            24, 10,
-            30,
-          ],
-          "circle-stroke-width": 2,
-          "circle-stroke-color": "#f5f0eb",
-        },
+        paint: { "circle-radius": 0, "circle-opacity": 0 },
       });
 
-      // Cluster count labels
-      map.addLayer({
-        id: "cluster-count",
-        type: "symbol",
-        source: "photos",
-        filter: ["has", "point_count"],
-        layout: {
-          "text-field": "{point_count_abbreviated}",
-          "text-font": ["DIN Pro Medium", "Arial Unicode MS Bold"],
-          "text-size": 13,
-        },
-        paint: {
-          "text-color": "#f5f0eb",
-        },
-      });
+      // ---- Custom HTML markers ----
+      const tracked: Record<
+        string,
+        { marker: mapboxgl.Marker; element: HTMLDivElement }
+      > = {};
+      let onScreen: Record<string, boolean> = {};
 
-      // Individual photo pins
-      map.addLayer({
-        id: "unclustered-point",
-        type: "circle",
-        source: "photos",
-        filter: ["!", ["has", "point_count"]],
-        paint: {
-          "circle-color": "#8B1A1A",
-          "circle-radius": 8,
-          "circle-stroke-width": 2,
-          "circle-stroke-color": "#f5f0eb",
-        },
-      });
+      function createEl(
+        isCluster: boolean,
+        props: Record<string, any>,
+      ): HTMLDivElement {
+        const el = document.createElement("div");
+        el.className = isCluster ? styles.clusterMarker : styles.photoMarker;
 
-      // Click on cluster → zoom in
-      map.on("click", "clusters", (e) => {
-        const features = map.queryRenderedFeatures(e.point, {
-          layers: ["clusters"],
-        });
-        if (!features.length) return;
-        const clusterId = features[0].properties?.cluster_id;
-        const source = map.getSource("photos") as mapboxgl.GeoJSONSource;
-        source.getClusterExpansionZoom(clusterId, (err, zoom) => {
-          if (err) return;
-          const geometry = features[0].geometry;
-          if (geometry.type === "Point") {
-            map.easeTo({
-              center: geometry.coordinates as [number, number],
-              zoom: zoom ?? 10,
-            });
-          }
-        });
-      });
+        const card = document.createElement("div");
+        card.className = styles.markerCard;
 
-      // Click on pin → show popup
-      map.on("click", "unclustered-point", (e) => {
-        const feature = e.features?.[0];
-        if (!feature) return;
-        const props = feature.properties!;
-        const geometry = feature.geometry;
-        if (geometry.type !== "Point") return;
-        const coordinates = geometry.coordinates.slice() as [number, number];
+        const img = document.createElement("img");
+        img.className = styles.markerImage;
+        if (!isCluster) {
+          img.src = props.thumb;
+          img.alt = props.caption || "";
+        }
+        card.appendChild(img);
 
-        // Wrap longitude for maps that span the date line
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        if (isCluster) {
+          const count = document.createElement("span");
+          count.className = styles.markerCount;
+          count.textContent =
+            props.point_count_abbreviated ?? String(props.point_count);
+          card.appendChild(count);
         }
 
-        const popup = new mapboxgl.Popup({ offset: 12, maxWidth: "240px" })
-          .setLngLat(coordinates)
-          .setHTML(
-            `<div class="${styles.popup}" data-photo-id="${props.id}">
-              <img src="${props.thumb}" alt="${props.caption}" class="${styles.popupImage}" />
-              <p class="${styles.popupCaption}">${props.caption}</p>
-            </div>`
-          )
-          .addTo(map);
+        el.appendChild(card);
 
-        // Click on popup card → open lightbox
-        const el = popup.getElement();
-        if (!el) return;
-        const card = el.querySelector(`.${styles.popup}`) as HTMLElement | null;
-        if (card) {
-          card.addEventListener("click", () => {
-            const photo = photos.find((p) => p.id === props.id);
-            if (photo) {
-              popup.remove();
-              setLightboxPhoto(photo);
+        const pointer = document.createElement("div");
+        pointer.className = styles.markerPointer;
+        el.appendChild(pointer);
+
+        return el;
+      }
+
+      function updateMarkers() {
+        const features = map.querySourceFeatures("photos");
+        const next: Record<string, boolean> = {};
+
+        for (const feature of features) {
+          if (feature.geometry.type !== "Point") continue;
+          const coords = feature.geometry.coordinates as [number, number];
+          const props = feature.properties!;
+          const isCluster = !!props.cluster;
+          const id = isCluster
+            ? `cluster-${props.cluster_id}`
+            : `photo-${props.id}`;
+
+          if (next[id]) continue; // deduplicate
+          next[id] = true;
+
+          if (!tracked[id]) {
+            const element = createEl(isCluster, props);
+            const marker = new mapboxgl.Marker({
+              element,
+              anchor: "bottom",
+            }).setLngLat(coords);
+
+            // Load a representative thumbnail for clusters
+            if (isCluster) {
+              const source = map.getSource("photos") as mapboxgl.GeoJSONSource;
+              source.getClusterLeaves(
+                props.cluster_id,
+                1,
+                0,
+                (err, leaves) => {
+                  if (!err && leaves?.length) {
+                    const thumb = leaves[0].properties?.thumb;
+                    if (thumb) {
+                      const img = element.querySelector("img");
+                      if (img) img.src = thumb;
+                    }
+                  }
+                },
+              );
             }
-          });
-        }
-      });
 
-      // Cursor style changes
-      map.on("mouseenter", "clusters", () => {
-        map.getCanvas().style.cursor = "pointer";
-      });
-      map.on("mouseleave", "clusters", () => {
-        map.getCanvas().style.cursor = "";
-      });
-      map.on("mouseenter", "unclustered-point", () => {
-        map.getCanvas().style.cursor = "pointer";
-      });
-      map.on("mouseleave", "unclustered-point", () => {
-        map.getCanvas().style.cursor = "";
+            // Click handlers
+            element.addEventListener("click", (e) => {
+              e.stopPropagation();
+              if (isCluster) {
+                const source = map.getSource(
+                  "photos",
+                ) as mapboxgl.GeoJSONSource;
+                source.getClusterExpansionZoom(
+                  props.cluster_id,
+                  (err, zoom) => {
+                    if (err) return;
+                    map.easeTo({ center: coords, zoom: zoom ?? 10 });
+                  },
+                );
+              } else {
+                const photo = photos.find((p) => p.id === props.id);
+                if (photo) setLightboxRef.current(photo);
+              }
+            });
+
+            tracked[id] = { marker, element };
+          }
+
+          if (!onScreen[id]) {
+            tracked[id].marker.addTo(map);
+          }
+          tracked[id].marker.setLngLat(coords);
+        }
+
+        // Remove markers no longer visible
+        for (const id in onScreen) {
+          if (!next[id]) {
+            tracked[id].marker.remove();
+            delete tracked[id];
+          }
+        }
+
+        onScreen = next;
+      }
+
+      map.on("render", () => {
+        if (!map.isSourceLoaded("photos")) return;
+        updateMarkers();
       });
 
       // Fit map to show all photos
@@ -194,7 +211,10 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
   if (photos.length === 0) {
     return (
       <div className={styles.empty}>
-        <p>No geotagged photos yet. Add photos with GPS data to <code>public/photos/originals/</code> and run the generate script.</p>
+        <p>
+          No geotagged photos yet. Add photos with GPS data to{" "}
+          <code>public/photos/originals/</code> and run the generate script.
+        </p>
       </div>
     );
   }
