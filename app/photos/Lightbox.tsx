@@ -68,37 +68,39 @@ export default function Lightbox({
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.close} onClick={onClose} aria-label="Close">
-          &times;
-        </button>
+        <div className={styles.imageWrap}>
+          {isAlbum && index > 0 && (
+            <button
+              className={styles.navPrev}
+              onClick={goPrev}
+              aria-label="Previous photo"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+          )}
 
-        {isAlbum && index > 0 && (
-          <button
-            className={styles.navPrev}
-            onClick={goPrev}
-            aria-label="Previous photo"
-          >
-            &#8249;
-          </button>
-        )}
+          <img
+            className={styles.image}
+            src={photo.src}
+            alt={photo.caption}
+            loading="eager"
+            style={{ imageOrientation: "from-image" }}
+          />
 
-        <img
-          className={styles.image}
-          src={photo.src}
-          alt={photo.caption}
-          loading="eager"
-          style={{ imageOrientation: "from-image" }}
-        />
-
-        {isAlbum && index < total - 1 && (
-          <button
-            className={styles.navNext}
-            onClick={goNext}
-            aria-label="Next photo"
-          >
-            &#8250;
-          </button>
-        )}
+          {isAlbum && index < total - 1 && (
+            <button
+              className={styles.navNext}
+              onClick={goNext}
+              aria-label="Next photo"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          )}
+        </div>
 
         <div className={styles.meta}>
           <p className={styles.caption}>{photo.caption}</p>
