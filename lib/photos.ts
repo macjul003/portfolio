@@ -12,6 +12,7 @@ export interface Photo {
   caption: string;
   date: string;
   camera: string;
+  group: number;
 }
 
 export function getAllPhotos(): Photo[] {

@@ -18,6 +18,69 @@ interface PhotoData {
   caption: string;
   date: string;
   camera: string;
+  group: number;
+}
+
+// Haversine distance in km between two lat/lng points
+function haversineKm(
+  lat1: number,
+  lng1: number,
+  lat2: number,
+  lng2: number,
+): number {
+  const R = 6371;
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Union-Find for proximity grouping
+class UnionFind {
+  parent: number[];
+  constructor(n: number) {
+    this.parent = Array.from({ length: n }, (_, i) => i);
+  }
+  find(x: number): number {
+    if (this.parent[x] !== x) this.parent[x] = this.find(this.parent[x]);
+    return this.parent[x];
+  }
+  union(a: number, b: number) {
+    this.parent[this.find(a)] = this.find(b);
+  }
+}
+
+const GROUP_THRESHOLD_KM = 100;
+
+function assignGroups(photos: Omit<PhotoData, "group">[]): PhotoData[] {
+  const uf = new UnionFind(photos.length);
+  for (let i = 0; i < photos.length; i++) {
+    for (let j = i + 1; j < photos.length; j++) {
+      const dist = haversineKm(
+        photos[i].lat,
+        photos[i].lng,
+        photos[j].lat,
+        photos[j].lng,
+      );
+      if (dist < GROUP_THRESHOLD_KM) {
+        uf.union(i, j);
+      }
+    }
+  }
+
+  // Map root indices to sequential group IDs
+  const rootToGroup = new Map<number, number>();
+  let nextGroup = 0;
+  return photos.map((p, i) => {
+    const root = uf.find(i);
+    if (!rootToGroup.has(root)) {
+      rootToGroup.set(root, nextGroup++);
+    }
+    return { ...p, group: rootToGroup.get(root)! };
+  });
 }
 
 function parseGps(tags: ExifReader.Tags): { lat: number; lng: number } | null {
@@ -68,7 +131,7 @@ async function main() {
     return;
   }
 
-  const photos: PhotoData[] = [];
+  const photos: Omit<PhotoData, "group">[] = [];
 
   for (const file of files) {
     const filePath = path.join(ORIGINALS_DIR, file);
@@ -89,6 +152,7 @@ async function main() {
       const thumbPath = path.join(THUMBS_DIR, thumbName);
 
       await sharp(filePath)
+        .rotate()
         .resize({ width: THUMB_WIDTH })
         .jpeg({ quality: 80 })
         .toFile(thumbPath);
@@ -111,8 +175,9 @@ async function main() {
   }
 
   photos.sort((a, b) => (a.date > b.date ? -1 : 1));
-  fs.writeFileSync(OUTPUT_JSON, JSON.stringify(photos, null, 2));
-  console.log(`\nWrote ${photos.length} photos to photo-data.json`);
+  const grouped = assignGroups(photos);
+  fs.writeFileSync(OUTPUT_JSON, JSON.stringify(grouped, null, 2));
+  console.log(`\nWrote ${grouped.length} photos to photo-data.json`);
 }
 
 main();

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import type { Photo } from "@/lib/photos";
@@ -14,11 +14,35 @@ interface PhotoMapProps {
 export default function PhotoMap({ photos }: PhotoMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
-  const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
+  const [lightboxAlbum, setLightboxAlbum] = useState<{
+    photos: Photo[];
+    index: number;
+  } | null>(null);
 
-  // Keep a ref so event listeners always see the latest setter
-  const setLightboxRef = useRef(setLightboxPhoto);
-  setLightboxRef.current = setLightboxPhoto;
+  // Pre-compute group map: group number -> photos in that group
+  const groupMap = useMemo(() => {
+    const map = new Map<number, Photo[]>();
+    for (const p of photos) {
+      const arr = map.get(p.group) ?? [];
+      arr.push(p);
+      map.set(p.group, arr);
+    }
+    return map;
+  }, [photos]);
+
+  // Keep a ref so Mapbox event listeners always see the latest opener
+  const openAlbumRef = useRef(
+    (photo: Photo) => {
+      const albumPhotos = groupMap.get(photo.group) ?? [photo];
+      const idx = albumPhotos.findIndex((p) => p.id === photo.id);
+      setLightboxAlbum({ photos: albumPhotos, index: Math.max(idx, 0) });
+    },
+  );
+  openAlbumRef.current = (photo: Photo) => {
+    const albumPhotos = groupMap.get(photo.group) ?? [photo];
+    const idx = albumPhotos.findIndex((p) => p.id === photo.id);
+    setLightboxAlbum({ photos: albumPhotos, index: Math.max(idx, 0) });
+  };
 
   useEffect(() => {
     if (!containerRef.current || photos.length === 0) return;
@@ -52,6 +76,7 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
               caption: p.caption,
               date: p.date,
               camera: p.camera,
+              group: p.group,
             },
           })),
         },
@@ -168,7 +193,7 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
                 );
               } else {
                 const photo = photos.find((p) => p.id === props.id);
-                if (photo) setLightboxRef.current(photo);
+                if (photo) openAlbumRef.current(photo);
               }
             });
 
@@ -222,10 +247,11 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
   return (
     <>
       <div ref={containerRef} className={styles.map} />
-      {lightboxPhoto && (
+      {lightboxAlbum && (
         <Lightbox
-          photo={lightboxPhoto}
-          onClose={() => setLightboxPhoto(null)}
+          photos={lightboxAlbum.photos}
+          initialIndex={lightboxAlbum.index}
+          onClose={() => setLightboxAlbum(null)}
         />
       )}
     </>

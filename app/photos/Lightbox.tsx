@@ -1,20 +1,40 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import type { Photo } from "@/lib/photos";
 import styles from "./Lightbox.module.css";
 
 interface LightboxProps {
-  photo: Photo;
+  photos: Photo[];
+  initialIndex: number;
   onClose: () => void;
 }
 
-export default function Lightbox({ photo, onClose }: LightboxProps) {
+export default function Lightbox({
+  photos,
+  initialIndex,
+  onClose,
+}: LightboxProps) {
+  const [index, setIndex] = useState(initialIndex);
+  const photo = photos[index];
+  const total = photos.length;
+  const isAlbum = total > 1;
+
+  const goPrev = useCallback(() => {
+    setIndex((i) => (i > 0 ? i - 1 : i));
+  }, []);
+
+  const goNext = useCallback(() => {
+    setIndex((i) => (i < total - 1 ? i + 1 : i));
+  }, [total]);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
     },
-    [onClose]
+    [onClose, goPrev, goNext],
   );
 
   useEffect(() => {
@@ -25,6 +45,17 @@ export default function Lightbox({ photo, onClose }: LightboxProps) {
       document.body.style.overflow = "";
     };
   }, [handleKeyDown]);
+
+  // Preload adjacent images
+  useEffect(() => {
+    const toPreload: string[] = [];
+    if (index > 0) toPreload.push(photos[index - 1].src);
+    if (index < total - 1) toPreload.push(photos[index + 1].src);
+    toPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [index, photos, total]);
 
   const formattedDate = photo.date
     ? new Date(photo.date).toLocaleDateString("en-US", {
@@ -40,12 +71,35 @@ export default function Lightbox({ photo, onClose }: LightboxProps) {
         <button className={styles.close} onClick={onClose} aria-label="Close">
           &times;
         </button>
+
+        {isAlbum && index > 0 && (
+          <button
+            className={styles.navPrev}
+            onClick={goPrev}
+            aria-label="Previous photo"
+          >
+            &#8249;
+          </button>
+        )}
+
         <img
           className={styles.image}
           src={photo.src}
           alt={photo.caption}
           loading="eager"
+          style={{ imageOrientation: "from-image" }}
         />
+
+        {isAlbum && index < total - 1 && (
+          <button
+            className={styles.navNext}
+            onClick={goNext}
+            aria-label="Next photo"
+          >
+            &#8250;
+          </button>
+        )}
+
         <div className={styles.meta}>
           <p className={styles.caption}>{photo.caption}</p>
           {(formattedDate || photo.camera) && (
@@ -53,6 +107,11 @@ export default function Lightbox({ photo, onClose }: LightboxProps) {
               {formattedDate}
               {formattedDate && photo.camera && " · "}
               {photo.camera}
+            </p>
+          )}
+          {isAlbum && (
+            <p className={styles.counter}>
+              {index + 1} of {total}
             </p>
           )}
         </div>
