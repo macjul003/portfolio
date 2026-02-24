@@ -32,14 +32,14 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
 
   // Keep a ref so Mapbox event listeners always see the latest opener
   const openAlbumRef = useRef(
-    (photo: Photo) => {
-      const albumPhotos = groupMap.get(photo.group) ?? [photo];
+    (photo: Photo, explicit?: Photo[]) => {
+      const albumPhotos = explicit ?? groupMap.get(photo.group) ?? [photo];
       const idx = albumPhotos.findIndex((p) => p.id === photo.id);
       setLightboxAlbum({ photos: albumPhotos, index: Math.max(idx, 0) });
     },
   );
-  openAlbumRef.current = (photo: Photo) => {
-    const albumPhotos = groupMap.get(photo.group) ?? [photo];
+  openAlbumRef.current = (photo: Photo, explicit?: Photo[]) => {
+    const albumPhotos = explicit ?? groupMap.get(photo.group) ?? [photo];
     const idx = albumPhotos.findIndex((p) => p.id === photo.id);
     setLightboxAlbum({ photos: albumPhotos, index: Math.max(idx, 0) });
   };
@@ -184,11 +184,18 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
                 const source = map.getSource(
                   "photos",
                 ) as mapboxgl.GeoJSONSource;
-                source.getClusterExpansionZoom(
+                source.getClusterLeaves(
                   props.cluster_id,
-                  (err, zoom) => {
-                    if (err) return;
-                    map.easeTo({ center: coords, zoom: zoom ?? 10 });
+                  Infinity,
+                  0,
+                  (err, leaves) => {
+                    if (err || !leaves?.length) return;
+                    const clusterPhotos = leaves
+                      .map((l) => photos.find((p) => p.id === l.properties?.id))
+                      .filter((p): p is Photo => !!p);
+                    if (clusterPhotos.length > 0) {
+                      openAlbumRef.current(clusterPhotos[0], clusterPhotos);
+                    }
                   },
                 );
               } else {
