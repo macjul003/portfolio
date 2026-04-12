@@ -40,6 +40,8 @@ export default function Home() {
         <span className={styles.sep}>/</span>
         <a href="/journal">Journal</a>
         <span className={styles.sep}>/</span>
+        <a href="/case-studies">Case Studies</a>
+        <span className={styles.sep}>/</span>
         <a href="/photos">Photos</a>
       </div>
     </div>

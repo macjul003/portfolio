@@ -1,0 +1,260 @@
+.page {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 0.15s;
+  max-width: 620px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.header {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.tagRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--gray);
+  border: 1px solid var(--light-gray);
+  border-radius: 3px;
+  padding: 2px 7px;
+  letter-spacing: 0.02em;
+}
+
+.title {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.desc {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 20px;
+  font-size: 0.88rem;
+}
+
+.metaGrid dt {
+  color: var(--gray);
+  font-style: italic;
+}
+
+.metaGrid dd {
+  color: var(--text);
+  margin: 0;
+}
+
+.content {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.content p {
+  margin-bottom: 1.25em;
+}
+
+.content h2 {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.content h3 {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.content a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1.5px dotted var(--light-gray);
+  transition: color 0.3s ease, border-color 0.3s ease;
+  padding-bottom: 1px;
+}
+
+.content a:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+.content strong {
+  font-weight: 600;
+}
+
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+  border-left: 3px solid var(--light-gray);
+  padding-left: 20px;
+  margin: 1.5em 0;
+  color: var(--gray);
+  font-style: italic;
+}
+
+.content ul,
+.content ol {
+  padding-left: 24px;
+  margin-bottom: 1.25em;
+}
+
+.content li {
+  margin-bottom: 0.4em;
+  line-height: 1.65;
+}
+
+.content hr {
+  border: none;
+  border-top: 1px solid var(--light-gray);
+  margin: 2em 0;
+}
+
+/* ── Progressive disclosure sections ─────────────────────────── */
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.section {
+  border-top: 1px solid var(--light-gray);
+  padding-top: 28px;
+  padding-bottom: 32px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.sectionHeading {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.toggleBtn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--gray);
+  padding: 0;
+  font-family: inherit;
+  transition: color 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.toggleBtn:hover {
+  color: var(--red);
+}
+
+/* Image placeholder */
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #eeebe6;
+  border: 1.5px dashed var(--light-gray);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.imagePlaceholderLabel {
+  font-size: 0.78rem;
+  color: var(--light-gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Collapsed / expanded content wrapper */
+.previewWrapper {
+  position: relative;
+  max-height: 5.4em; /* ~3 lines at 1.75 line-height */
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.previewExpanded {
+  max-height: 2000px;
+}
+
+.previewFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3em;
+  background: linear-gradient(to bottom, transparent, var(--cream));
+  pointer-events: none;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 48px;
+  font-size: 0.95rem;
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1.5px dotted var(--light-gray);
+  transition: color 0.3s ease, border-color 0.3s ease;
+  padding-bottom: 1px;
+}
+
+.back:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 48px 20px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
