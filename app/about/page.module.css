@@ -2,7 +2,6 @@
   opacity: 0;
   animation: fadeIn 0.7s ease forwards;
   animation-delay: 0.08s;
-  padding: var(--sp-8) 0 var(--sp-10);
   overflow: hidden;
 }
 
@@ -14,41 +13,27 @@
   box-sizing: border-box;
 }
 
-.header {
-  margin-bottom: var(--sp-6);
-}
+/* ── Full-bleed two-column: photo left, content right ── */
 
-.heading {
-  font-family: 'STIX Two Text', 'Times New Roman', serif;
-  font-size: var(--text-2xl);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-/* Two-column layout */
 .body {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  column-gap: var(--sp-8);
+  grid-template-columns: 380px 1fr;
+  min-height: calc(100vh - 56px);
   align-items: start;
 }
 
-/* Left column: photo + lead */
+/* ── Left: photo fills the column ── */
+
 .left {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
-  min-width: 0;
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow: hidden;
 }
 
 .photoWrap {
   width: 100%;
-  max-width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--light-gray);
+  height: 100%;
 }
 
 .photo {
@@ -59,31 +44,61 @@
   display: block;
 }
 
-.lead {
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  color: var(--gray);
-}
+/* ── Right: content with padding ── */
 
-/* Right column: prose + details */
 .right {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-6);
-  padding-top: 4px;
+  gap: var(--sp-5);
+  padding: var(--sp-10) 0 var(--sp-10) var(--sp-8);
   min-width: 0;
 }
+
+/* Name + title */
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: var(--leading-tight);
+}
+
+.title {
+  font-size: var(--text-base);
+  color: var(--gray);
+}
+
+/* Lead */
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: var(--text);
+  font-family: 'STIX Two Text', serif;
+  font-weight: 400;
+}
+
+/* Prose */
 
 .prose {
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
+  padding-top: 0;
 }
 
 .prose p {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  color: var(--text);
+  color: var(--gray);
 }
 
 .prose a {
@@ -98,10 +113,12 @@
   border-bottom-color: var(--red);
 }
 
+/* Details */
+
 .details {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--sp-4) var(--sp-6);
+  gap: var(--sp-4) var(--sp-5);
   padding-top: var(--sp-5);
   border-top: 1px solid var(--light-gray);
 }
@@ -109,7 +126,7 @@
 .detailGroup {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .detailLabel {
@@ -126,56 +143,65 @@
   line-height: var(--leading-normal);
 }
 
-.detailValue a {
+.detailLink {
+  font-size: var(--text-base);
   color: var(--text);
   text-decoration: none;
   border-bottom: 1px solid var(--light-gray);
   transition: color 0.2s, border-color 0.2s;
+  width: fit-content;
 }
 
-.detailValue a:hover {
+.detailLink:hover {
   color: var(--red);
   border-bottom-color: var(--red);
 }
 
-.back {
-  display: inline-block;
-  margin-top: var(--sp-8);
-  font-size: var(--text-base);
-  color: var(--gray);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.back:hover {
-  color: var(--text);
-}
+/* ── Animation ── */
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 700px) {
-  .page {
-    padding: var(--sp-6) 0 var(--sp-8);
+/* ── Tablet ── */
+
+@media (max-width: 800px) {
+  .body {
+    grid-template-columns: 1fr;
+    min-height: unset;
   }
 
-  .heading {
+  .left {
+    position: static;
+    height: 420px;
+  }
+
+  .right {
+    padding: var(--sp-6) 0;
+  }
+
+  .name {
     font-size: 2.2rem;
   }
 
-  .body {
-    grid-template-columns: 1fr;
-    row-gap: var(--sp-5);
-  }
-
-  .photoWrap {
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
+  .lead {
+    font-size: var(--text-md);
   }
 
   .details {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 400px) {
+  .left {
+    height: 320px;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
   }
 }
