@@ -77,9 +77,6 @@ export default async function CaseStudyPage({
         ))}
       </div>
 
-      <a href="/case-studies" className={styles.back}>
-        &larr; Case Studies
-      </a>
     </div>
   );
 }

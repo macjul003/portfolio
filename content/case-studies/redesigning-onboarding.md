@@ -5,6 +5,7 @@ description: How reducing friction in the first five minutes cut drop-off by 40%
 client: Confidential — Fintech startup
 role: Lead Product Designer
 tags: [Fintech, UX Research, Mobile]
+color: "#1a1a2e"
 ---
 
 ## The problem

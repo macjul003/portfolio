@@ -1,0 +1,76 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--cream);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.inner {
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--page-x);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  text-decoration: none;
+}
+
+.logoMark {
+  width: 28px;
+  height: 28px;
+  background: var(--text);
+  color: var(--cream);
+  font-family: 'STIX Two Text', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.logoName {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.links a {
+  font-size: var(--text-base);
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--text);
+}
+
+@media (max-width: 480px) {
+  .logoName {
+    display: none;
+  }
+
+  .links {
+    gap: var(--sp-3);
+  }
+}

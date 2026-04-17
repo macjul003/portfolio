@@ -41,9 +41,6 @@ export default async function ArticlePage({
         dangerouslySetInnerHTML={{ __html: article.content }}
       />
 
-      <a href="/journal" className={styles.back}>
-        &larr; Journal
-      </a>
     </div>
   );
 }

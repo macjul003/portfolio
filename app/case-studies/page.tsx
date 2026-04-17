@@ -3,7 +3,7 @@ import { getAllCaseStudies } from "@/lib/case-studies";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Julian",
+  title: "Work — Julian Samuel",
 };
 
 export default function CaseStudiesPage() {
@@ -11,18 +11,15 @@ export default function CaseStudiesPage() {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.heading}>Case Studies</h1>
+      <h1 className={styles.heading}>Work</h1>
 
       <ul className={styles.list}>
         {caseStudies.map((cs) => (
           <li key={cs.slug} className={styles.item}>
             <a href={`/case-studies/${cs.slug}`}>
+              <div className={styles.cover} style={{ background: cs.color }} />
               <div className={styles.meta}>
-                {cs.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
-                  </span>
-                ))}
+                <span className={styles.tags}>{cs.tags.join(" · ")}</span>
                 <span className={styles.date}>{cs.date}</span>
               </div>
               <p className={styles.title}>{cs.title}</p>
@@ -33,9 +30,6 @@ export default function CaseStudiesPage() {
         ))}
       </ul>
 
-      <a href="/" className={styles.back}>
-        &larr; Home
-      </a>
     </div>
   );
 }

@@ -32,6 +32,7 @@ export interface CaseStudy {
   client: string;
   role: string;
   tags: string[];
+  color: string;
   intro: string;
   sections: CaseStudySection[];
 }
@@ -53,6 +54,7 @@ export function getAllCaseStudies(): Omit<CaseStudy, "intro" | "sections">[] {
         client: data.client ?? "",
         role: data.role ?? "",
         tags: data.tags ?? [],
+        color: data.color ?? "#d4cfc9",
       };
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1));
@@ -103,6 +105,7 @@ export function getCaseStudyBySlug(slug: string): CaseStudy {
     client: data.client ?? "",
     role: data.role ?? "",
     tags: data.tags ?? [],
+    color: data.color ?? "#d4cfc9",
     intro,
     sections,
   };

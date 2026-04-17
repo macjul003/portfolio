@@ -25,9 +25,6 @@ export default function JournalPage() {
         ))}
       </ul>
 
-      <a href="/" className={styles.back}>
-        &larr; Home
-      </a>
     </div>
   );
 }
