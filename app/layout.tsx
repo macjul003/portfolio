@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Agentation } from "agentation";
 import Nav from "./Nav";
+import Footer from "./Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body>
         <Nav />
         {children}
+        <Footer />
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>

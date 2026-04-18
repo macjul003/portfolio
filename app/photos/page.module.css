@@ -1,7 +1,7 @@
 .page {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: calc(100vh - 56px);
   overflow: hidden;
   opacity: 0;
   animation: fadeIn 1.2s ease forwards;

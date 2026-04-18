@@ -9,36 +9,24 @@ export default function AboutPage() {
   return (
     <div className={styles.page}>
       <div className={styles.inner}>
+
+        <header className={styles.header}>
+          <h1 className={styles.heading}>About</h1>
+        </header>
+
         <div className={styles.body}>
 
-          {/* Left — photo only */}
+          {/* Left — text */}
           <div className={styles.left}>
-            <div className={styles.photoWrap}>
-              <img
-                src="/julian.jpeg"
-                alt="Julian Samuel"
-                className={styles.photo}
-              />
-            </div>
-          </div>
-
-          {/* Right — everything else */}
-          <div className={styles.right}>
-            <div className={styles.intro}>
-              <h1 className={styles.name}>Julian Samuel</h1>
-              <p className={styles.title}>Senior Product Designer</p>
-            </div>
-
             <p className={styles.lead}>
               I design products that simplify complex systems. Over the past
               5+ years I&rsquo;ve worked across AI, Fintech, and Travel,
               building things that feel effortless and earn trust.
             </p>
-
             <div className={styles.prose}>
               <p>
                 My work sits at the intersection of product strategy and
-                interaction design — figuring out not just what to build, but
+                interaction design, figuring out not just what to build, but
                 why, and making sure it lands well with the people who use it.
               </p>
               <p>
@@ -52,30 +40,41 @@ export default function AboutPage() {
                 photos, or writing in my <a href="/journal">journal</a>.
               </p>
             </div>
+          </div>
 
-            <div className={styles.details}>
-              <div className={styles.detailGroup}>
-                <span className={styles.detailLabel}>Currently</span>
-                <span className={styles.detailValue}>Open to new projects</span>
-              </div>
-              <div className={styles.detailGroup}>
-                <span className={styles.detailLabel}>Based in</span>
-                <span className={styles.detailValue}>India</span>
-              </div>
-              <div className={styles.detailGroup}>
-                <span className={styles.detailLabel}>Focus</span>
-                <span className={styles.detailValue}>AI · Fintech · Travel</span>
-              </div>
-              <div className={styles.detailGroup}>
-                <span className={styles.detailLabel}>Contact</span>
-                <a href="mailto:juliansam003@gmail.com" className={styles.detailLink}>
-                  juliansam003@gmail.com
-                </a>
-              </div>
-            </div>
+          {/* Right — photo */}
+          <div className={styles.right}>
+            <img
+              src="/julian.jpeg"
+              alt="Julian Samuel"
+              className={styles.photo}
+            />
           </div>
 
         </div>
+
+        {/* Details — full width below both columns */}
+        <div className={styles.details}>
+          <div className={styles.detailGroup}>
+            <span className={styles.detailLabel}>Currently</span>
+            <span className={styles.detailValue}>Open to new projects</span>
+          </div>
+          <div className={styles.detailGroup}>
+            <span className={styles.detailLabel}>Based in</span>
+            <span className={styles.detailValue}>India</span>
+          </div>
+          <div className={styles.detailGroup}>
+            <span className={styles.detailLabel}>Focus</span>
+            <span className={styles.detailValue}>AI · Fintech · Travel</span>
+          </div>
+          <div className={styles.detailGroup}>
+            <span className={styles.detailLabel}>Contact</span>
+            <a href="mailto:juliansam003@gmail.com" className={styles.detailLink}>
+              juliansam003@gmail.com
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import { getAllArticles } from "@/lib/journal";
+import { ArrowRight } from "iconoir-react";
 
 export default function Home() {
   const caseStudies = getAllCaseStudies().slice(0, 4);
@@ -27,7 +28,7 @@ export default function Home() {
         <div className={styles.inner}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Latest Projects</h2>
-            <a href="/case-studies" className={styles.sectionLink}>All work &rarr;</a>
+            <a href="/case-studies" className={styles.sectionLink}>All work <ArrowRight width={16} height={16} strokeWidth={2} /></a>
           </div>
           <div className={styles.grid}>
             {caseStudies.map((cs) => (
@@ -52,7 +53,7 @@ export default function Home() {
         <div className={styles.inner}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Recent Writing</h2>
-            <a href="/journal" className={styles.sectionLink}>All posts &rarr;</a>
+            <a href="/journal" className={styles.sectionLink}>All posts <ArrowRight width={16} height={16} strokeWidth={2} /></a>
           </div>
           <ul className={styles.writingList}>
             {articles.map((article) => (
@@ -67,23 +68,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.inner}>
-          <div className={styles.footerLinks}>
-            <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">Twitter</a>
-            <span className={styles.sep}>/</span>
-            <a href="https://www.linkedin.com/in/juliansamuel003/" target="_blank" rel="noopener">LinkedIn</a>
-            <span className={styles.sep}>/</span>
-            <a href="https://github.com/macjul003" target="_blank" rel="noopener">GitHub</a>
-            <span className={styles.sep}>/</span>
-            <a href="/photos">Photos</a>
-          </div>
-          <a href="mailto:juliansam003@gmail.com" className={styles.contact}>
-            Get in touch &rarr;
-          </a>
-        </div>
-      </footer>
 
     </main>
   );
