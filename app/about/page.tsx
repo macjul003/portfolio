@@ -36,8 +36,8 @@ export default function AboutPage() {
                 interesting the design challenge.
               </p>
               <p>
-                When I&rsquo;m not designing, I&rsquo;m reading, taking
-                photos, or writing in my <a href="/journal">journal</a>.
+                When I&rsquo;m not designing, I&rsquo;m reading or writing
+                in my <a href="/journal">journal</a>.
               </p>
             </div>
           </div>
@@ -53,27 +53,6 @@ export default function AboutPage() {
 
         </div>
 
-        {/* Details — full width below both columns */}
-        <div className={styles.details}>
-          <div className={styles.detailGroup}>
-            <span className={styles.detailLabel}>Currently</span>
-            <span className={styles.detailValue}>Open to new projects</span>
-          </div>
-          <div className={styles.detailGroup}>
-            <span className={styles.detailLabel}>Based in</span>
-            <span className={styles.detailValue}>India</span>
-          </div>
-          <div className={styles.detailGroup}>
-            <span className={styles.detailLabel}>Focus</span>
-            <span className={styles.detailValue}>AI · Fintech · Travel</span>
-          </div>
-          <div className={styles.detailGroup}>
-            <span className={styles.detailLabel}>Contact</span>
-            <a href="mailto:juliansam003@gmail.com" className={styles.detailLink}>
-              juliansam003@gmail.com
-            </a>
-          </div>
-        </div>
 
       </div>
     </div>

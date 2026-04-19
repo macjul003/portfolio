@@ -1,6 +1,6 @@
 ---
 title: A Smarter Way to Find Flight Deals
-date: "2025-08-05"
+date: "2026-01-01"
 description: Redesigned a flight deals platform to surface the right offer to the right person, increasing click-through on deals by 58%.
 client: Zomunk
 role: Lead Product Designer

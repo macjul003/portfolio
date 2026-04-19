@@ -95,7 +95,8 @@
 }
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   border-radius: 8px;
   overflow: hidden;
@@ -116,6 +117,9 @@
 
 .cardBody {
   padding: var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .client {
@@ -130,7 +134,7 @@
 .cardTitle {
   font-size: var(--text-md);
   font-weight: 500;
-  line-height: var(--leading-tight);
+  line-height: 1.55;
   color: var(--text);
   margin-bottom: var(--sp-1);
 }
@@ -139,7 +143,16 @@
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--gray);
-  margin-bottom: var(--sp-2);
+  margin-bottom: 0;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-top: auto;
+  padding-top: var(--sp-2);
 }
 
 .cardTags {
@@ -148,6 +161,14 @@
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--gray);
+}
+
+.cardDate {
+  font-size: var(--text-xs);
+  color: var(--gray);
+  opacity: 0.65;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ── Writing list ── */

@@ -5,7 +5,7 @@
   max-width: 620px;
   width: 100%;
   margin: 0 auto;
-  padding: 80px 24px;
+  padding: var(--sp-6) var(--page-x) var(--sp-10);
 }
 
 .header {
@@ -138,6 +138,25 @@
   margin: 2em 0;
 }
 
+.content img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  margin: 1.75em 0;
+}
+
+.content figure {
+  margin: 1.75em 0;
+}
+
+.content figcaption {
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+}
+
 /* ── Progressive disclosure sections ─────────────────────────── */
 
 .sections {
@@ -251,7 +270,7 @@
 
 @media (max-width: 480px) {
   .page {
-    padding: 48px 20px;
+    padding: var(--sp-4) var(--page-x) var(--sp-8);
   }
 
   .title {

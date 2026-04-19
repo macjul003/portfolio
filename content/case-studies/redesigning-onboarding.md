@@ -1,8 +1,8 @@
 ---
 title: Redesigning Onboarding for a Fintech App
-date: "2026-03-15"
+date: "2025-12-01"
 description: How reducing friction in the first five minutes cut drop-off by 40% and increased activation.
-client: Confidential — Fintech startup
+client: Fintech startup
 role: Lead Product Designer
 tags: [Fintech, UX Research, Mobile]
 color: "#1a1a2e"

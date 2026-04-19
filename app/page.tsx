@@ -38,9 +38,12 @@ export default function Home() {
                   <p className={styles.client}>{cs.client || cs.tags[0]}</p>
                   <p className={styles.cardTitle}>{cs.title}</p>
                   <p className={styles.cardDesc}>{cs.description}</p>
-                  <p className={styles.cardTags}>
-                    {cs.tags.join(" · ")}
-                  </p>
+                  <div className={styles.cardFooter}>
+                    <p className={styles.cardTags}>{cs.tags.join(" · ")}</p>
+                    <span className={styles.cardDate}>
+                      {new Date(cs.date).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
+                    </span>
+                  </div>
                 </div>
               </a>
             ))}

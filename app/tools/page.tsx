@@ -1,40 +1,25 @@
 import type { Metadata } from "next";
+import { getAllTools } from "@/lib/tools";
+import { Book, Code, Leaf, Timer } from "iconoir-react";
+import type { SVGProps } from "react";
 import styles from "./page.module.css";
+
+type IconComponent = React.ComponentType<SVGProps<SVGSVGElement> & { strokeWidth?: number }>;
+
+const TOOL_ICONS: Record<string, IconComponent> = {
+  booklet: Book,
+  "page-editor": Code,
+  "pollution-tracker": Leaf,
+  daytracker: Timer,
+};
 
 export const metadata: Metadata = {
   title: "Tools — Julian Samuel",
 };
 
-const tools = [
-  {
-    name: "Pollution Tracker",
-    description:
-      "A real-time air quality monitor that visualises pollution levels across Indian cities. Built to make environmental data legible for everyday decisions.",
-    platform: "Web App",
-    status: "Live",
-    url: null,
-    color: "#1e3a2f",
-  },
-  {
-    name: "DayTracker",
-    description:
-      "A macOS menu bar app for daily task management. Tracks streaks, surfaces missed tasks, and shows a 16-week heatmap — designed to stay out of your way.",
-    platform: "macOS",
-    status: "Live",
-    url: null,
-    color: "#1a1a2e",
-  },
-  {
-    name: "Booklet",
-    description: "Coming soon.",
-    platform: "",
-    status: "In progress",
-    url: null,
-    color: "#2d1a4a",
-  },
-];
-
 export default function ToolsPage() {
+  const tools = getAllTools();
+
   return (
     <div className={styles.page}>
       <div className={styles.inner}>
@@ -46,30 +31,41 @@ export default function ToolsPage() {
         </header>
 
         <ul className={styles.list}>
-          {tools.map((tool) => (
-            <li key={tool.name} className={styles.item}>
-              <div className={styles.cover} style={{ background: tool.color }} />
-              <div className={styles.body}>
-                <div className={styles.top}>
-                  <div className={styles.meta}>
-                    {tool.platform && (
-                      <span className={styles.platform}>{tool.platform}</span>
-                    )}
-                    <span className={`${styles.status} ${tool.status === "In progress" ? styles.statusWip : ""}`}>
-                      {tool.status}
-                    </span>
+          {tools.map((tool) => {
+            const Icon = TOOL_ICONS[tool.slug];
+            const isLive = tool.status === "Live";
+            const isWip = tool.status === "In progress";
+            return (
+              <li key={tool.slug}>
+                <a href={`/tools/${tool.slug}`} className={styles.item}>
+                  <div
+                    className={styles.cover}
+                    style={{
+                      background: `linear-gradient(135deg, ${tool.color} 0%, ${tool.color}99 100%)`,
+                    }}
+                  >
+                    {Icon && <Icon className={styles.coverIcon} width={36} height={36} strokeWidth={1.25} />}
                   </div>
-                  {tool.url ? (
-                    <a href={tool.url} className={styles.cta} target="_blank" rel="noopener">
-                      Try it &rarr;
-                    </a>
-                  ) : null}
-                </div>
-                <h2 className={styles.name}>{tool.name}</h2>
-                <p className={styles.desc}>{tool.description}</p>
-              </div>
-            </li>
-          ))}
+                  <div className={styles.body}>
+                    <div className={styles.top}>
+                      <div className={styles.meta}>
+                        {tool.platform && (
+                          <span className={styles.platform}>{tool.platform}</span>
+                        )}
+                        <span className={`${styles.status} ${isLive ? styles.statusLive : ""} ${isWip ? styles.statusWip : ""}`}>
+                          {isLive && <span className={styles.liveDot} />}
+                          {tool.status}
+                        </span>
+                      </div>
+                      <span className={styles.cta}>View</span>
+                    </div>
+                    <h2 className={styles.name}>{tool.name}</h2>
+                    <p className={styles.desc}>{tool.description}</p>
+                  </div>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
