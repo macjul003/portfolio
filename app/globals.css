@@ -49,6 +49,11 @@ html {
   overflow-x: hidden;
 }
 
+::selection {
+  background: #8B1A1A;
+  color: #fff;
+}
+
 body {
   background-color: var(--cream);
   color: var(--text);
