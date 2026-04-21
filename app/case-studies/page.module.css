@@ -107,7 +107,7 @@
 }
 
 .back:hover {
-  color: var(--text);
+  color: var(--red);
 }
 
 @keyframes fadeIn {

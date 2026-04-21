@@ -62,7 +62,7 @@
 }
 
 .links a:hover {
-  color: var(--text);
+  color: var(--red);
 }
 
 @media (max-width: 480px) {

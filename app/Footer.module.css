@@ -29,7 +29,7 @@
 }
 
 .links a:hover {
-  color: var(--text);
+  color: var(--red);
 }
 
 .sep {
@@ -50,9 +50,9 @@
 }
 
 .contact:hover {
-  background: var(--text);
+  background: var(--red);
   color: var(--cream);
-  border-color: var(--text);
+  border-color: var(--red);
 }
 
 @media (max-width: 640px) {

@@ -79,7 +79,7 @@
 
 .sectionLink:hover {
   background: rgba(0, 0, 0, 0.09);
-  color: var(--text);
+  color: var(--red);
 }
 
 /* ── Project grid ── */
@@ -229,7 +229,7 @@
 }
 
 .footerLinks a:hover {
-  color: var(--text);
+  color: var(--red);
 }
 
 .sep {

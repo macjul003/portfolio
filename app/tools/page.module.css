@@ -155,7 +155,7 @@
 }
 
 .item:hover .cta {
-  background: var(--text);
+  background: var(--red);
   color: var(--cream);
 }
 
