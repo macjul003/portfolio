@@ -1,0 +1,360 @@
+.page {
+  opacity: 0;
+  animation: fadeIn 0.7s ease forwards;
+  animation-delay: 0.08s;
+  padding-bottom: var(--sp-10);
+}
+
+/* ── Two-column layout ── */
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: var(--sp-6) 40px 0;
+  gap: 56px;
+}
+
+/* ── Sticky side nav ── */
+
+.sideNavWrapper {
+  width: 180px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 72px;
+  align-self: flex-start;
+}
+
+.sideNav {
+  padding-top: 4px;
+}
+
+.sideNavLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0 0 16px;
+}
+
+.sideNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sideNavLink {
+  display: block;
+  padding: 6px 0 6px 14px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--gray);
+  font-weight: 500;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  margin-left: -2px;
+}
+
+.sideNavLink:hover {
+  color: var(--text);
+}
+
+.sideNavActive {
+  color: var(--text);
+  font-weight: 600;
+  border-left-color: var(--red);
+}
+
+/* ── Content column ── */
+
+.content {
+  flex: 1;
+  min-width: 0;
+  max-width: 620px;
+}
+
+/* ── Back link ── */
+
+.back {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray);
+  text-decoration: none;
+  margin-bottom: var(--sp-4);
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: var(--text);
+}
+
+/* ── Hero ── */
+
+.hero {
+  padding-bottom: var(--sp-8);
+  border-bottom: 1px solid var(--light-gray);
+  margin-bottom: var(--sp-6);
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray);
+  margin: 0 0 var(--sp-3);
+  letter-spacing: 0.01em;
+}
+
+.heroTitle {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin: 0 0 var(--sp-6);
+}
+
+.heroMeta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+}
+
+.metaKey {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+
+.metaVal {
+  font-size: 0.9375rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ── Sections ── */
+
+.section {
+  padding-bottom: var(--sp-10);
+}
+
+.intro {
+  padding-top: 0;
+}
+
+.intro p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--gray);
+  margin: 0 0 1.25em;
+}
+
+.secEyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0 0 14px;
+}
+
+.secHeading {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: clamp(1.625rem, 2.4vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  color: var(--text);
+  margin: 0 0 var(--sp-4);
+}
+
+/* ── Section prose ── */
+
+.secContent p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--gray);
+  margin: 0 0 1.25em;
+}
+
+.secContent p:last-child {
+  margin-bottom: 0;
+}
+
+.secContent p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.secContent p em {
+  color: var(--text);
+  font-style: italic;
+}
+
+.secContent h3 {
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: var(--sp-6) 0 var(--sp-2);
+}
+
+.secContent h3:first-child {
+  margin-top: 0;
+}
+
+.secContent ol,
+.secContent ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-3) 0 var(--sp-4);
+}
+
+.secContent ol li,
+.secContent ul li {
+  padding: var(--sp-2) 0;
+  border-top: 1px solid var(--light-gray);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--gray);
+}
+
+.secContent ol li:last-child,
+.secContent ul li:last-child {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.secContent ol li strong,
+.secContent ul li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.secContent ol li em,
+.secContent ul li em {
+  color: var(--text);
+  font-style: italic;
+}
+
+.secContent blockquote {
+  margin: var(--sp-3) 0;
+  padding: 0 0 0 16px;
+  border: none;
+  border-left: 2px solid var(--red);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--red);
+}
+
+.secContent blockquote p {
+  color: var(--red);
+  margin: 0;
+}
+
+.secContent a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--light-gray);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.secContent a:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+.secContent img {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  margin: 1.75em 0;
+}
+
+.secContent hr {
+  border: none;
+  border-top: 1px solid var(--light-gray);
+  margin: var(--sp-4) 0;
+}
+
+/* ── Media ── */
+
+.heroCover {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: var(--sp-8);
+}
+
+.mediaImg {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+.mediaVideo {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+}
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: var(--sp-4);
+}
+
+.mediaStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+
+/* ── Animation ── */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 960px) {
+  .sideNavWrapper {
+    display: none;
+  }
+
+  .layout {
+    padding: var(--sp-5) var(--page-x) 0;
+  }
+
+  .heroMeta {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+  }
+}
+
+@media (max-width: 600px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroMeta {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+}
