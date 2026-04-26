@@ -49,10 +49,9 @@
 }
 
 .lead {
-  font-family: 'STIX Two Text', serif;
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 400;
-  line-height: 1.65;
+  line-height: var(--leading-relaxed);
   color: var(--text);
 }
 
@@ -65,7 +64,7 @@
 .prose p {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  color: var(--gray);
+  color: var(--text);
 }
 
 .prose a {
@@ -84,12 +83,17 @@
 
 .right {
   min-width: 0;
+  overflow: hidden;
+  border-radius: 4px;
 }
 
 .photo {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  transform: scale(1.75) translateY(-8%) translateX(20%);
+  transform-origin: top right;
   border-radius: 4px;
 }
 

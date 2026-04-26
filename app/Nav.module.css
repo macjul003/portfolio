@@ -30,7 +30,7 @@
   height: 28px;
   background: var(--text);
   color: var(--cream);
-  font-family: 'STIX Two Text', serif;
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
   font-size: 1rem;
   font-weight: 400;
   display: flex;

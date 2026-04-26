@@ -14,7 +14,7 @@ Symmetry is a Chrome extension and web dashboard that turns scattered context �
 
 ## The Problem
 
-AI power users don't get the answers they need because the AI has no idea who they are, what they're working on, or what decisions they've already made. Every new chat starts from zero — and users have normalised that as "just what AI is capable of."
+AI power users don't get the answers they need because the AI has no idea who they are, what they're working on, or what decisions they've already made. Every new chat starts from zero — and users have normalised that as “just what AI is capable of.”
 
 But it's not a memory problem. It's a scatter problem.
 
@@ -45,7 +45,7 @@ The extension had one hard rule: enhance the user's existing workflow — not as
 
 No new tabs. No mandatory setup. No interruptions. Whatever Symmetry did, it had to happen *inside* the tools users were already in.
 
-Every spec, every flow, every piece of microcopy went through one filter: *"Does this enhance the existing workflow, or ask users to adopt a new one?"*
+Every spec, every flow, every piece of microcopy went through one filter: *“Does this enhance the existing workflow, or ask users to adopt a new one?”*
 
 ## Onboarding
 
@@ -64,7 +64,7 @@ The core problem was the cold start: an empty knowledge base means nothing to in
 Two deliberate decisions inside the flow:
 
 - **Transparency.** An FAQ explained exactly what was extracted and what was discarded. Users were handing over months of conversation data. They needed to understand the trade before they'd make it.
-- **Honesty about wait time.** Extraction wasn't instant. Users got a progress bar and an email when complete. No fake loading screens — that's how you lose people to "I thought it was broken."
+- **Honesty about wait time.** Extraction wasn't instant. Users got a progress bar and an email when complete. No fake loading screens — that's how you lose people to “I thought it was broken.”
 
 ## Surface 01 — The Pill
 
@@ -80,7 +80,7 @@ I tried hover triggers, click-to-expand, timed transitions. None of them felt st
 
 **The answer was to do less. Show all three buttons. Always.**
 
-Counterintuitive on paper, right in practice. Stillness read as calm. The pill felt like a tool sitting quietly in the corner — not something demanding attention. Users described it as "unobtrusive." That's a feature.
+Counterintuitive on paper, right in practice. Stillness read as calm. The pill felt like a tool sitting quietly in the corner — not something demanding attention. Users described it as “unobtrusive.” That's a feature.
 
 **Inside Inject — two modes, one button.**
 
@@ -101,7 +101,7 @@ Some moments need more than a pill. Users wanted to *talk to* their context, not
 
 The Side Panel slid in from the right of any AI chat. A persistent companion, one keystroke away. Three things it could do:
 
-1. **Chat with Symmetry.** Ask questions about your own context. *"What did I decide about the pricing page?"* The panel answered from the knowledge base.
+1. **Chat with Symmetry.** Ask questions about your own context. *“What did I decide about the pricing page?”* The panel answered from the knowledge base.
 2. **Retrieve manually.** Search or browse specific docs, pull the exact piece rather than trusting the auto-pick.
 3. **Edit and tailor.** Refine a piece of context before injecting — trim it, add framing, reshape it for the prompt you're about to write.
 

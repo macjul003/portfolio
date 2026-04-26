@@ -24,6 +24,6 @@ This journal is an experiment in working with the garage door open. I'll write a
 
 I've spent enough time consuming other people's thinking. It's time to contribute my own — even when it's half-formed, even when I might be wrong.
 
-> "The best way to learn is to teach. The best way to teach is to keep learning."
+> “The best way to learn is to teach. The best way to teach is to keep learning.”
 
 If you're reading this, welcome. Let's see where it goes.

@@ -15,7 +15,7 @@ Forget the technical definitions. Here's Git in terms you already know:
 - **Repo** — the project folder, but with full history of every change ever made
 - **Branch** — your own working copy, like duplicating a Figma file before editing it
 - **Commit** — a checkpoint, like hitting Save with a label attached
-- **PR (Pull Request)** — "hey team, I made changes, can someone review before we merge?"
+- **PR (Pull Request)** — “hey team, I made changes, can someone review before we merge?”
 - **Main** — the live, production version. Never work directly here.
 
 ---
@@ -68,7 +68,7 @@ git push
 ```
 
 **Step 6 — Open a PR on GitHub**
-Go to the repo on GitHub, click "Compare & pull request", fill in what you changed, and submit for review.
+Go to the repo on GitHub, click “Compare & pull request”, fill in what you changed, and submit for review.
 
 ---
 
@@ -139,7 +139,7 @@ A good PR gets reviewed and merged faster. Here's the formula:
 
 - **Keep it small** — one feature or fix per PR, not a week's worth of changes
 - **Add a screenshot** — show before and after, especially for visual changes
-- **Describe what changed** — one or two sentences is enough: "Updated the primary button hover state to match the new design system spec"
+- **Describe what changed** — one or two sentences is enough: “Updated the primary button hover state to match the new design system spec”
 
 Small, clear PRs are a gift to your team.
 
@@ -172,7 +172,7 @@ Ask your dev team where token files live and whether there's an automated export
 |---|---|
 | Pull before starting work | Push directly to main |
 | One feature per branch | Bundle multiple changes in one PR |
-| Write descriptive commit messages | Commit with "fix" or "updates" |
+| Write descriptive commit messages | Commit with “fix” or “updates” |
 | Ask before editing unfamiliar files | Edit config or logic files alone |
 | Add a screenshot to your PR | Open a PR without context |
 

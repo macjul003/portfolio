@@ -14,11 +14,11 @@ The promise was clear: AI agents that handle crypto options trading on your beha
 
 The gap between promise and reality was where adoption was dying. Users loved the idea. They left before the first trade.
 
-The clearest signal came from a single user quote during research: *"If I don't understand the agent, I can't trust it with my money."* That sentence became the design brief.
+The clearest signal came from a single user quote during research: *“If I don't understand the agent, I can't trust it with my money.”* That sentence became the design brief.
 
 ## The user
 
-Jason is 27, comfortable with staking and swapping, new to options. He wants to grow his money without learning options strategy from scratch. His mental model isn't "I want to execute sophisticated trades" — it's "I want a simple, safe way to earn, and I need to believe it won't blow up my portfolio."
+Jason is 27, comfortable with staking and swapping, new to options. He wants to grow his money without learning options strategy from scratch. His mental model isn't “I want to execute sophisticated trades” — it's “I want a simple, safe way to earn, and I need to believe it won't blow up my portfolio.”
 
 He's not the only user, but he's the most representative. The product's ambition was accessibility. Jason was the test of whether we'd delivered it.
 
@@ -56,6 +56,6 @@ Everything was tracked. A/B tests on drop timing, Maze tests on onboarding, cont
 
 Games aren't fluff. When done right, they become behavioral engines — systems that reward curiosity, strategy, and community in ways that pure product onboarding can't. People didn't just use the product. They played with it, talked about it, brought friends in.
 
-The deeper lesson is about trust. No amount of cleaner UI closes the gap between "I understand this" and "I'm willing to put money into this." That gap requires time and experience — or a game that compresses both into something people genuinely want to do.
+The deeper lesson is about trust. No amount of cleaner UI closes the gap between “I understand this” and “I'm willing to put money into this.” That gap requires time and experience — or a game that compresses both into something people genuinely want to do.
 
 When you design for play, you unlock something that traditional onboarding can't: not just usage, but obsession.

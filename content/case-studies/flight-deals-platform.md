@@ -18,7 +18,7 @@ Users were bouncing before they found anything useful. The deals were good; the 
 
 I ran a card-sort study with 24 users and five days of session recordings. Two things stood out:
 
-- Users didn't think in terms of destinations — they thought in terms of *budgets* and *vibes* ("I want somewhere warm for under ₹30k")
+- Users didn't think in terms of destinations — they thought in terms of *budgets* and *vibes* (“I want somewhere warm for under ₹30k”)
 - The most engaged users were those who had set a home airport — every other deal felt irrelevant to everyone else
 
 The platform was showing a catalogue when users needed a recommendation.
@@ -31,7 +31,7 @@ I replaced the blank homepage with a 3-question intent capture on first visit: h
 
 ### Deal cards redesigned around savings clarity
 
-The old card showed price, destination, and airline. I restructured it around the saving: "₹12,400 saved vs. typical price" in large type, with the destination and dates secondary. This reframing shifted the emotional hook from "is this a good price?" (requiring research) to "this is clearly a deal" (immediate).
+The old card showed price, destination, and airline. I restructured it around the saving: “₹12,400 saved vs. typical price” in large type, with the destination and dates secondary. This reframing shifted the emotional hook from “is this a good price?” (requiring research) to “this is clearly a deal” (immediate).
 
 ### Flexible departure radius
 

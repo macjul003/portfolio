@@ -22,7 +22,7 @@ I ran five usability sessions with first-time users and three interviews with us
 - **Trust deficit** — users hesitated at the bank connection step without sufficient context about security
 - **No sense of progress** — there was no indication of how far along they were or what came next
 
-> "I felt like I was filling out a loan application, not opening a savings account."
+> “I felt like I was filling out a loan application, not opening a savings account.”
 > — Usability participant, session 3
 
 ## Design decisions

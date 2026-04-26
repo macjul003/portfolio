@@ -15,61 +15,56 @@
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text);
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-6);
 }
 
 .list {
   list-style: none;
-  margin-bottom: var(--sp-8);
 }
 
-.article a {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--sp-3);
+.article {
+}
+
+.link {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: var(--sp-4);
+  row-gap: 4px;
   padding: var(--sp-2) 0;
-  border-bottom: 1px solid var(--light-gray);
   text-decoration: none;
 }
 
-.list li:first-child a {
-  border-top: 1px solid var(--light-gray);
-}
-
-.article a:hover .articleTitle {
+.link:hover .articleTitle {
   color: var(--red);
-}
-
-.articleTitle {
-  font-size: var(--text-base);
-  font-weight: 400;
-  color: var(--text);
-  line-height: var(--leading-normal);
-  transition: color 0.2s;
 }
 
 .articleDate {
+  grid-column: 1;
+  grid-row: 1;
   font-size: var(--text-sm);
   color: var(--gray);
+  padding-top: 2px;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
-.articleDesc {
-  display: none;
-}
-
-.back {
-  display: inline-block;
-  font-size: var(--text-base);
-  color: var(--gray);
-  text-decoration: none;
+.articleTitle {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-size: var(--text-lg);
+  font-weight: 400;
+  color: var(--text);
+  line-height: var(--leading-tight);
   transition: color 0.2s;
 }
 
-.back:hover {
-  color: var(--red);
+.articleDesc {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: var(--text-sm);
+  color: var(--gray);
+  line-height: var(--leading-normal);
 }
 
 @keyframes fadeIn {
@@ -80,5 +75,26 @@
 @media (max-width: 640px) {
   .heading {
     font-size: 2.2rem;
+  }
+
+  .link {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap: 4px;
+  }
+
+  .articleDate {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .articleTitle {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .articleDesc {
+    grid-column: 1;
+    grid-row: 3;
   }
 }

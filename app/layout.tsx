@@ -23,7 +23,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&family=STIX+Two+Text:ital,wght@0,400;0,700;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&display=swap"
           rel="stylesheet"
         />
       </head>
