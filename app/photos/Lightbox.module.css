@@ -86,7 +86,7 @@
 }
 
 .caption {
-  font-family: 'STIX Two Text', 'Times New Roman', serif;
+  font-family: 'Inter', -apple-system, sans-serif;
   font-size: 1.15rem;
   font-weight: 500;
   text-transform: capitalize;

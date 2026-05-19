@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Agentation } from "agentation";
+import Sidebar from "./components/Sidebar";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Julian — Product Designer",
+  title: "Julian Samuel - Product Designer",
 };
 
 export default function RootLayout({
@@ -21,14 +22,23 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&family=STIX+Two+Text:ital,wght@0,400;0,700;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap"
           rel="stylesheet"
         />
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
       </head>
       <body>
-          {children}
-          {process.env.NODE_ENV === "development" && <Agentation />}
-        </body>
+        <div className="shell">
+          <div className="layout-wrap">
+            <Sidebar />
+            <div className="main-content">
+              {children}
+            </div>
+          </div>
+        </div>
+        {process.env.NODE_ENV === "development" && <Agentation />}
+      </body>
     </html>
   );
 }

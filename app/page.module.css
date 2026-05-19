@@ -1,117 +1,287 @@
-.wrapper {
+.page {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.inner {
+  --px: 48px;
+  max-width: 680px;
+  padding: 0 var(--px);
+  margin: 0 auto;
+}
+
+/* ── Header / Signature ── */
+
+.header {
+  padding-top: 80px;
+  margin-bottom: 36px;
+}
+
+.name {
+  font-family: 'Playwrite GB S', cursive;
+  font-size: 3.75rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+/* ── Bio ── */
+
+.bio {
+  padding-bottom: 52px;
+}
+
+.bio p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text);
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+
+.bio p:last-child {
+  margin-bottom: 0;
+}
+
+.bio a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.25);
+  transition: text-decoration-color 0.15s;
+}
+
+.bio a:hover {
+  text-decoration-color: var(--text);
+}
+
+/* ── Marquee ── */
+
+.marqueeWrap {
+  display: none;
+}
+
+.marqueeTrack {
+  display: inline-flex;
+  animation: marquee 50s linear infinite;
+}
+
+.marqueeTrack span {
+  font-size: 0.8125rem;
+  color: var(--gray);
+  padding-right: 4rem;
+  letter-spacing: 0.01em;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack { animation: none; }
+}
+
+/* ── Sections ── */
+
+.section {
+  margin-bottom: 64px;
+}
+
+.sectionHead {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.entry {
-  opacity: 0;
-  animation: fadeIn 1.2s ease forwards;
-  animation-delay: 0.15s;
-  max-width: 620px;
-  width: 100%;
-  padding: 40px 24px;
-}
-
-.word {
-  font-family: 'STIX Two Text', 'Times New Roman', serif;
-  font-size: 4.5rem;
-  font-weight: 500;
-  line-height: 1.1;
-  color: var(--text);
-  margin-bottom: 12px;
-  letter-spacing: -0.01em;
-}
-
-.interpunct {
-  color: var(--gray);
-  font-weight: 400;
-}
-
-.phonetic {
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--gray);
-  margin-bottom: 6px;
-}
-
-.pos {
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--gray);
-  margin-bottom: 32px;
-}
-
-.definitions {
-  list-style: none;
-  counter-reset: def;
-  margin-bottom: 40px;
-}
-
-.definitions li {
-  counter-increment: def;
-  position: relative;
-  padding-left: 32px;
-  margin-bottom: 18px;
-  font-size: 1rem;
-  line-height: 1.65;
-  font-weight: 400;
-}
-
-.definitions li::before {
-  content: counter(def) ".";
-  position: absolute;
-  left: 0;
+  font-size: 0.9375rem;
   font-weight: 400;
   color: var(--text);
-  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
-.seeAlso {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--gray);
-}
-
-.seeAlsoLabel {
-  font-style: italic;
+.slash {
   margin-right: 4px;
 }
 
-.seeAlso a {
-  color: var(--link);
+.headRule {
+  flex: 1;
+  height: 1px;
+  background: var(--light-gray);
+  margin-left: 14px;
+}
+
+/* ── Posts list ── */
+
+.postList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.postRow {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  margin: 0 -16px;
+  transition: background 0.15s;
+}
+
+.postRow:hover {
+  background: #181818;
+}
+
+.postRow:hover .postTitle {
+  color: var(--accent);
+}
+
+.postDate {
+  font-size: 0.8125rem;
+  color: var(--gray);
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.postTitle {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ── Work grid ── */
+
+.workGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 20px;
+}
+
+.workCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   text-decoration: none;
-  border-bottom: 1.5px dotted var(--light-gray);
-  transition: color 0.3s ease, border-color 0.3s ease;
-  padding-bottom: 1px;
+  color: inherit;
+  transition: opacity 0.15s;
 }
 
-.seeAlso a:hover {
-  color: var(--red);
-  border-bottom-color: var(--red);
+.workCard:hover {
+  opacity: 0.75;
 }
 
-.sep {
-  margin: 0 6px;
-  color: var(--light-gray);
+.workImage {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--light-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 4px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+.workClient {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin: 0;
+}
+
+.workTitle {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.workDesc {
+  font-size: 0.875rem;
+  color: var(--gray);
+  line-height: 1.6;
+  font-weight: 300;
+  margin: 0;
+}
+
+.workPlatforms {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin: 4px 0 0;
+}
+
+.builtTagline {
+  color: var(--gray);
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+/* ── Footer ── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0 80px;
+  font-size: 0.8125rem;
+  color: #444;
+  border-top: 1px solid var(--light-gray);
+}
+
+.footerLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.footerLinks a,
+.footer span {
+  color: #444;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footerLinks a:hover {
+  color: var(--text);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .inner {
+    --px: 28px;
+  }
+
+  .header {
+    padding-top: 52px;
+  }
+
+  .workGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .postRow {
+    grid-template-columns: 88px 1fr;
+    padding: 14px 12px;
+    margin: 0 -12px;
+  }
 }
 
 @media (max-width: 480px) {
-  .word {
-    font-size: 2.8rem;
+  .inner {
+    --px: 20px;
   }
 
-  .definitions li {
+  .name {
+    font-size: 3rem;
+  }
+
+  .bio p {
     font-size: 1rem;
-  }
-
-  .entry {
-    padding: 32px 20px;
   }
 }

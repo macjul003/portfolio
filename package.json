@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "agentation": "^2.2.1",
     "exifreader": "^4.36.2",
     "gray-matter": "^4.0.3",

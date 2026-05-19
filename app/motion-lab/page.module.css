@@ -1,0 +1,443 @@
+/* ── Page layout ── */
+
+.page {
+  padding: 64px 48px 80px;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--gray);
+  font-weight: 300;
+}
+
+/* ── Demo grid ── */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #1e1e1e;
+  border-radius: 14px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: #2a2a2a;
+}
+
+.cardWide {
+  grid-column: 1 / -1;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cardLabel {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+.cardDesc {
+  font-size: 0.8125rem;
+  color: var(--gray);
+  font-weight: 300;
+}
+
+.demoArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+/* ── Demo 1: Morphing Submit ── */
+
+.submitBtn {
+  position: relative;
+  width: 120px;
+  height: 42px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-radius 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.25s ease;
+}
+
+.submitLabel,
+.submitSpinner,
+.submitCheck {
+  position: absolute;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+/* idle */
+.submitBtn[data-phase='idle'] .submitLabel  { opacity: 1; transform: scale(1); }
+.submitBtn[data-phase='idle'] .submitSpinner { opacity: 0; transform: scale(0.6); }
+.submitBtn[data-phase='idle'] .submitCheck   { opacity: 0; transform: scale(0.6); }
+
+/* loading */
+.submitBtn[data-phase='loading'] {
+  width: 42px;
+  border-radius: 50%;
+  background: #1e1e1e;
+  cursor: default;
+}
+.submitBtn[data-phase='loading'] .submitLabel  { opacity: 0; transform: scale(0.6); }
+.submitBtn[data-phase='loading'] .submitSpinner { opacity: 1; transform: scale(1); }
+.submitBtn[data-phase='loading'] .submitCheck   { opacity: 0; transform: scale(0.6); }
+
+/* done */
+.submitBtn[data-phase='done'] {
+  width: 42px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+.submitBtn[data-phase='done'] .submitLabel  { opacity: 0; transform: scale(0.6); }
+.submitBtn[data-phase='done'] .submitSpinner { opacity: 0; transform: scale(0.6); }
+.submitBtn[data-phase='done'] .submitCheck   { opacity: 1; transform: scale(1); font-size: 1.1rem; }
+
+.submitSpinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Demo 2: Toggle Switch ── */
+
+.toggleGroup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toggleLabel {
+  font-size: 0.9375rem;
+  color: var(--gray);
+  min-width: 28px;
+  transition: color 0.2s;
+  font-variant-numeric: tabular-nums;
+}
+
+.toggleLabelOn {
+  color: var(--text);
+}
+
+.toggle {
+  position: relative;
+  width: 50px;
+  height: 28px;
+  border-radius: 14px;
+  border: none;
+  background: #2a2a2a;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+}
+
+.toggle.toggleOn {
+  background: var(--accent);
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toggle.toggleOn .toggleThumb {
+  transform: translateX(22px);
+}
+
+/* ── Demo 3: Heart Like ── */
+
+.heartBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  cursor: pointer;
+  color: var(--gray);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.heartBtn.heartLiked {
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+}
+
+.heartIcon {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.1s;
+}
+
+.heartBtn.heartBurst .heartIcon {
+  animation: heartPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes heartPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.6); }
+  100% { transform: scale(1); }
+}
+
+.heartCount {
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+  text-align: left;
+}
+
+/* ── Demo 4: Ripple Button ── */
+
+.rippleBtn {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 30px;
+  border-radius: 9px;
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  user-select: none;
+}
+
+.rippleBtn:hover {
+  border-color: #3a3a3a;
+}
+
+.ripple {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(79, 142, 247, 0.3);
+  pointer-events: none;
+  animation: rippleExpand 0.65s ease-out forwards;
+}
+
+@keyframes rippleExpand {
+  to {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0;
+  }
+}
+
+/* ── Demo 5: 3D Tilt Card ── */
+
+.tiltCard {
+  position: relative;
+  width: 192px;
+  height: 120px;
+  background: linear-gradient(135deg, #0f1929 0%, #12223d 60%, #0f3060 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(79, 142, 247, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  user-select: none;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.tiltGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 50% 0%, rgba(79,142,247,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.tiltLabel {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Demo 6: Magnetic Button ── */
+
+.magneticWrap {
+  width: 180px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.magneticBtn {
+  padding: 10px 26px;
+  border-radius: 9px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  will-change: transform;
+  transition: background 0.2s;
+}
+
+.magneticBtn.magneticActive {
+  background: rgba(79, 142, 247, 0.07);
+}
+
+/* ── Demo 7: Typing Indicator ── */
+
+.typingDemo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.typingBubble {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 11px 16px;
+  background: #1c1c1c;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px;
+  min-height: 40px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gray);
+  flex-shrink: 0;
+}
+
+.typingActive .dot {
+  animation: dotBounce 1.3s ease-in-out infinite;
+}
+
+@keyframes dotBounce {
+  0%, 60%, 100% { transform: translateY(0);   opacity: 0.35; }
+  30%            { transform: translateY(-7px); opacity: 1; }
+}
+
+.typingToggle {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  color: var(--gray);
+  background: none;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.typingToggle:hover {
+  color: var(--text);
+  border-color: #444;
+}
+
+/* ── Demo 8: Spotlight Card ── */
+
+.spotlightCard {
+  width: 100%;
+  min-height: 110px;
+  border-radius: 10px;
+  border: 1px solid #1e1e1e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: default;
+}
+
+.spotlightText {
+  font-size: 0.875rem;
+  color: var(--gray);
+  text-align: center;
+  pointer-events: none;
+  font-weight: 300;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 680px) {
+  .page {
+    padding: 48px 20px 64px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardWide {
+    grid-column: auto;
+  }
+}
