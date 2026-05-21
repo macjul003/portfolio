@@ -1,55 +1,123 @@
 import type { Metadata } from "next";
+import {
+  CloudFog,
+  FilmSlate,
+  Gauge,
+  ChartBar,
+  Storefront,
+  BookOpenText,
+  MapPin,
+  ArrowUpRight,
+} from "@phosphor-icons/react/dist/ssr";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Built — Julian",
+  title: "Garage — Julian",
 };
 
 const projects = [
   {
+    name: "Pollution Tracker",
+    desc: "Real-time air quality dashboard with location-based AQI alerts and historical trend charts.",
+    tags: ["React", "REST API", "Maps"],
+    Icon: CloudFog,
+    bg: "#0b1f10",
+    glow: "#2d7a3e",
+    iconColor: "#4caf6e",
+    href: "#",
+  },
+  {
+    name: "Zo Video Generator",
+    desc: "AI-powered short video generation — prompt in, polished clip out. Built for content creators.",
+    tags: ["Python", "AI/ML", "FFmpeg"],
+    Icon: FilmSlate,
+    bg: "#130b22",
+    glow: "#6d3fd4",
+    iconColor: "#9b6fea",
+    href: "#",
+  },
+  {
+    name: "Car Game",
+    desc: "Browser-based top-down racing game with procedurally generated tracks and physics engine.",
+    tags: ["JavaScript", "Canvas API", "Physics"],
+    Icon: Gauge,
+    bg: "#1f0b0b",
+    glow: "#d43f3f",
+    iconColor: "#e06060",
+    href: "#",
+  },
+  {
+    name: "Chrome Activity Monitor",
+    desc: "Chrome extension that tracks browsing habits and delivers weekly productivity focus reports.",
+    tags: ["Chrome Extension", "TypeScript", "Charts"],
+    Icon: ChartBar,
+    bg: "#091820",
+    glow: "#2a7fa8",
+    iconColor: "#4fa8d4",
+    href: "#",
+  },
+  {
     name: "DayTasks",
-    tagline: "macOS habit tracker",
-    description: "A native macOS app for building daily habits with a minimal menu-bar interface. Tracks streaks, sends gentle reminders, and stays out of your way.",
-    status: "Live",
-    year: "2026",
-    url: "#",
+    desc: "A native macOS app for building daily habits with a minimal menu-bar interface. Tracks streaks, sends gentle reminders, and stays out of your way.",
+    tags: ["macOS", "Swift", "SwiftUI"],
+    Icon: Storefront,
+    bg: "#1a1508",
+    glow: "#c98a2a",
+    iconColor: "#e0a840",
+    href: "#",
   },
   {
     name: "Booklet",
-    tagline: "Markdown-to-PDF resume builder",
-    description: "Write your resume in plain Markdown, export a pixel-perfect PDF. No drag-and-drop editors, no proprietary formats — just clean typography and full control.",
-    status: "Live",
-    year: "2026",
-    url: "#",
+    desc: "Write your resume in plain Markdown, export a pixel-perfect PDF. No drag-and-drop editors, no proprietary formats.",
+    tags: ["Node.js", "Markdown", "PDF"],
+    Icon: BookOpenText,
+    bg: "#0d0d1a",
+    glow: "#3a5fd4",
+    iconColor: "#5b7fe8",
+    href: "#",
+  },
+  {
+    name: "Photos",
+    desc: "A map of geotagged photos from my travels. Click any cluster to explore shots from that location.",
+    tags: ["Next.js", "Mapbox", "EXIF"],
+    Icon: MapPin,
+    bg: "#0a1a14",
+    glow: "#2a8a5e",
+    iconColor: "#4ec494",
+    href: "/photos",
   },
 ];
 
-export default function BuiltPage() {
+export default function GaragePage() {
   return (
     <div className={styles.page}>
-
       <header className={styles.header}>
-        <h1 className={styles.name}>Built</h1>
-        <p className={styles.subtitle}>Personal projects</p>
+        <h1 className={styles.name}>Garage</h1>
+        <p className={styles.subtitle}>Things I&apos;ve built</p>
       </header>
 
-      <ul className={styles.list}>
+      <div className={styles.grid}>
         {projects.map((p) => (
-          <li key={p.name}>
-            <a href={p.url} className={styles.card}>
-              <div className={styles.cardTop}>
-                <div>
-                  <span className={styles.cardName}>{p.name}</span>
-                  <span className={styles.cardTagline}>{p.tagline}</span>
-                </div>
-                <span className={styles.cardStatus}>{p.status}</span>
+          <a key={p.name} href={p.href} className={styles.card}>
+            <div className={styles.cardVisual} style={{ background: p.bg }}>
+              <p.Icon size={52} color={p.iconColor} weight="duotone" className={styles.cardIconSvg} />
+              <div className={styles.cardGlow} style={{ background: p.glow }} />
+            </div>
+            <div className={styles.cardBody}>
+              <div className={styles.cardRow}>
+                <h3 className={styles.cardName}>{p.name}</h3>
+                <ArrowUpRight size={18} className={styles.cardArrow} />
               </div>
-              <p className={styles.cardDesc}>{p.description}</p>
-            </a>
-          </li>
+              <p className={styles.cardDesc}>{p.desc}</p>
+              <div className={styles.cardTags}>
+                {p.tags.map((tag) => (
+                  <span key={tag} className={styles.cardTag}>{tag}</span>
+                ))}
+              </div>
+            </div>
+          </a>
         ))}
-      </ul>
-
+      </div>
     </div>
   );
 }

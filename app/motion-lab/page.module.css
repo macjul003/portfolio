@@ -1,7 +1,7 @@
 /* ── Page layout ── */
 
 .page {
-  padding: 64px 48px 80px;
+  padding: 57px 48px 80px;
 }
 
 .header {
@@ -430,7 +430,7 @@
 
 @media (max-width: 680px) {
   .page {
-    padding: 48px 20px 64px;
+    padding: 44px 20px 64px;
   }
 
   .grid {

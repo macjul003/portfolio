@@ -9,11 +9,8 @@ type NavItem =
   | { href: string; label: string; Icon: ComponentType<{ size: number; weight: 'bold' | 'fill' | 'duotone' }>; iconClass?: never };
 
 const nav: NavItem[] = [
-  { href: '/',            label: 'Home',       iconClass: 'ph-bold ph-house-simple'  },
-  { href: '/about',       label: 'About',      iconClass: 'ph-bold ph-user'           },
-  { href: '/built',       label: 'Built',      Icon: StorefrontIcon                   },
-  { href: '/motion-lab',  label: 'Motion Lab', iconClass: 'ph-bold ph-magic-wand'     },
-  { href: 'https://drive.google.com/file/d/1KHhdK-IqDZ9NO84Zkrxb40iZQtC0tata/view', label: 'Resume', iconClass: 'ph-bold ph-read-cv-logo' },
+  { href: '/',       label: 'Home',  iconClass: 'ph-bold ph-house-simple' },
+  { href: '/about',  label: 'About', iconClass: 'ph-bold ph-user'          },
 ];
 
 export default function Sidebar() {

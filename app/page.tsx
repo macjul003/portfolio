@@ -117,6 +117,7 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <a href="/journal" className={styles.viewAll}>View all</a>
         </section>
 
         <section className={styles.section}>

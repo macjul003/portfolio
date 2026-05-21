@@ -1,0 +1,50 @@
+.nav {
+  position: fixed;
+  top: 57px;
+  left: calc(50% + 364px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.link {
+  font-size: 0.75rem;
+  color: var(--gray);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: color 0.15s;
+  line-height: 1.5;
+}
+
+.link::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  margin-right: 8px;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.link:hover {
+  color: var(--text);
+}
+
+.active {
+  color: var(--text);
+}
+
+.active::before {
+  opacity: 1;
+}
+
+@media (max-width: 1060px) {
+  .nav {
+    display: none;
+  }
+}
