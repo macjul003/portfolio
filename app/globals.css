@@ -12,6 +12,8 @@
   --accent: #4f8ef7;
   --sidebar-w: 72px;
   --surface-hover: #181818;
+  --text-muted: #cccccc;
+  --surface: #111111;
 }
 
 html.light {
@@ -21,6 +23,8 @@ html.light {
   --light-gray: #ddd8d2;
   --accent: #4f8ef7;
   --surface-hover: #e5e0db;
+  --text-muted: #2c2c2c;
+  --surface: #ede8e3;
 }
 
 /* ── View transitions ── */
@@ -102,7 +106,7 @@ a {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: #555;
+  color: var(--gray);
   transition: color 0.15s, background 0.15s;
   text-decoration: none;
 }

@@ -4,18 +4,12 @@ import ActivityTerminal from "./components/ActivityTerminal";
 
 const work = [
   {
-    client: "Symmetry AI",
-    date: "Jan 2026",
-    title: "Improving AI responses by bringing user context into chat",
-    href: "/work/symmetry",
-    thumbnail: "/case-studies/symmetry/sym-overview.png",
-  },
-  {
     client: "Ithaca Protocol",
     date: "Nov 2025",
     title: "Designing trust in AI-powered options trading system",
     href: "https://www.figma.com/deck/2ZNyRIV7ZO7H1bEti41Iwh",
     thumbnail: "/case-studies/ithaca/Ithaca-Thumbnail.png",
+    external: true,
   },
   {
     client: "Claystack",
@@ -23,12 +17,22 @@ const work = [
     title: "Designing the Ethereum Liquid Staking UX",
     href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
     thumbnail: "/case-studies/claystack/app.png",
+    external: true,
+  },
+  {
+    client: "Symmetry AI",
+    date: "Jan 2026",
+    title: "Improving AI responses by bringing user context into chat",
+    href: "/work/symmetry",
+    thumbnail: "/case-studies/symmetry/sym-overview.png",
+    external: false,
   },
   {
     client: "Zomunk",
     date: "Jun 2024",
     title: "Helping users discover cheap flight deals",
     href: "/work/zomunk",
+    external: false,
   },
 ];
 
@@ -61,13 +65,12 @@ export default function Home() {
 
         <div className={styles.bio}>
           <p>
-            A product designer building AI-native products — from system logic
-            to the interfaces people actually use. Over 5+ years across AI,
-            Fintech, and Travel, drawn to high-stakes decisions and users who
-            don't have time to figure things out.
+            Product Designer building AI-native systems that turn complexity into
+            clear, actionable workflows. Over 5 years designing across AI, fintech,
+            and travel, from distributed financial systems to agent-driven products,
+            with a focus on trust, clarity, and high-stakes decision making.
           </p>
           <p>
-            Currently building <a href="#">DayTasks</a>, a macOS habit tracker.
             Find me on{" "}
             <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>,{" "}
             <a href="https://www.linkedin.com/in/juliansamuel003/" target="_blank" rel="noopener">LinkedIn</a>,
@@ -90,12 +93,19 @@ export default function Home() {
           </h2>
           <div className={styles.workGrid}>
             {work.map((item) => (
-              <a key={item.title} href={item.href} className={styles.workCard} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
-                {item.thumbnail ? (
-                  <img src={item.thumbnail} alt={item.title} className={styles.workImage} />
-                ) : (
-                  <div className={styles.workImage} />
-                )}
+              <a key={item.title} href={item.href} className={styles.workCard} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined}>
+                <div className={styles.workImageWrap}>
+                  {item.thumbnail ? (
+                    <img src={item.thumbnail} alt={item.title} className={styles.workImage} />
+                  ) : (
+                    <div className={styles.workImage} />
+                  )}
+                  {item.external && (
+                    <div className={styles.workExternalBadge}>
+                      <i className="ph-bold ph-arrow-up-right" />
+                    </div>
+                  )}
+                </div>
                 <h3 className={styles.workTitle}>{item.title}</h3>
                 <p className={styles.workClient}>{item.client} · {item.date}</p>
               </a>

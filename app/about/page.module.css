@@ -30,7 +30,7 @@
 .body p {
   font-size: 1.0625rem;
   line-height: 1.8;
-  color: #bbb;
+  color: var(--text-muted);
   font-weight: 300;
 }
 

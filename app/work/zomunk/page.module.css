@@ -33,9 +33,9 @@
 
 .personaTag {
   font-size: 0.75rem;
-  color: #aaa;
-  background: #161616;
-  border: 1px solid #222;
+  color: var(--gray);
+  background: var(--surface);
+  border: 1px solid var(--light-gray);
   border-radius: 100px;
   padding: 4px 10px;
 }
@@ -61,7 +61,7 @@
 .personaQuote {
   font-size: 0.9375rem;
   line-height: 1.65;
-  color: #ccc;
+  color: var(--text-muted);
   font-weight: 300;
   font-style: italic;
 }
@@ -76,7 +76,7 @@
 .personaPoints li {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #aaa;
+  color: var(--gray);
   font-weight: 300;
   padding-left: 14px;
   position: relative;
@@ -86,12 +86,12 @@
   content: '•';
   position: absolute;
   left: 0;
-  color: #444;
+  color: var(--gray);
 }
 
 .personaImplication {
   font-size: 0.9375rem;
   line-height: 1.65;
-  color: #ccc;
+  color: var(--text-muted);
   font-weight: 300;
 }

@@ -11,8 +11,11 @@ type NavItem =
   | { href: string; label: string; Icon: ComponentType<{ size: number; weight: 'bold' | 'fill' | 'duotone' }>; iconClass?: never };
 
 const nav: NavItem[] = [
-  { href: '/',       label: 'Home',  iconClass: 'ph-bold ph-house-simple' },
-  { href: '/about',  label: 'About', iconClass: 'ph-bold ph-user'          },
+  { href: '/',        label: 'Home',    iconClass: 'ph-bold ph-house-simple' },
+  { href: '/about',   label: 'About',   iconClass: 'ph-bold ph-user'         },
+  { href: '/work',    label: 'Work',    iconClass: 'ph-bold ph-briefcase'    },
+  { href: '/built',   label: 'Built',   iconClass: 'ph-bold ph-hammer'       },
+  { href: '/journal', label: 'Journal', iconClass: 'ph-bold ph-pencil-line'  },
 ];
 
 export default function Sidebar() {
@@ -94,16 +97,6 @@ export default function Sidebar() {
         >
           <i className="ph-fill ph-github-logo" style={{ fontSize: 20 }} />
         </a>
-        <a
-          href="https://www.linkedin.com/in/juliansamuel003/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-icon"
-          aria-label="LinkedIn"
-        >
-          <i className="ph-fill ph-linkedin-logo" style={{ fontSize: 20 }} />
-        </a>
-
         {/* Ask panel trigger */}
         <button
           className={`nav-icon ask-trigger${open ? ' ask-trigger--open' : ''}`}

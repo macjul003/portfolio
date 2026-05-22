@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import styles from "./page.module.css";
 import SymmetryNav from "./SymmetryNav";
 import OnboardingGrid from "./OnboardingGrid";
+import LightboxImage from "@/app/components/LightboxImage";
+import LightboxVideo from "@/app/components/LightboxVideo";
 
 export const metadata: Metadata = {
   title: "Symmetry — Julian",
@@ -19,7 +21,7 @@ export default function SymmetryCaseStudy() {
         <h1 className={styles.heading}>Improving AI responses by bringing user context into every chat</h1>
       </header>
 
-      <img
+      <LightboxImage
         src="/case-studies/symmetry/sym-overview.png"
         alt="Symmetry overview"
         className={styles.hero}
@@ -88,7 +90,7 @@ export default function SymmetryCaseStudy() {
           <p>Users re-explain themselves every session, pasting the same background into different AI tools, leading to inconsistent outputs. Decisions and context lived in past chats, docs, and threads, but were never reused.</p>
         </div>
         <blockquote className={styles.callout}>The context existed. It just didn't follow them.</blockquote>
-        <img src="/case-studies/symmetry/problem-section.png" alt="Problem: scattered context across tools" className={styles.mediaImg} />
+        <LightboxImage src="/case-studies/symmetry/problem-section.png" alt="Problem: scattered context across tools" className={styles.mediaImg} />
         <div className={styles.prose}>
           <p>The harder truth: most users don't even know this is happening. They get a shallow response and assume that's just what AI is capable of. They've normalised underperformance, never realising that more context would yield dramatically better results.</p>
           <p>When we fed it back into prompts, everything improved. Feeding real user context into a prompt during testing didn't just improve the answer, it delighted users. They weren't expecting the AI to know them that well. That reaction was the signal this was worth building.</p>
@@ -108,8 +110,8 @@ export default function SymmetryCaseStudy() {
           <p>Auto-connection worked too — but it only captured what came next.</p>
         </div>
         <blockquote className={styles.callout}>That's when the real problem surfaced: a cold start. On day one, we had nothing to give the user.</blockquote>
-        <img src="/case-studies/symmetry/manual-connect.png" alt="Manual connect vs auto connect approaches" className={styles.mediaImg} />
-        <img src="/case-studies/symmetry/auto-connect.png" alt="Auto connect approach" className={styles.mediaImg} />
+        <LightboxImage src="/case-studies/symmetry/manual-connect.png" alt="Manual connect vs auto connect approaches" className={styles.mediaImg} />
+        <LightboxImage src="/case-studies/symmetry/auto-connect.png" alt="Auto connect approach" className={styles.mediaImg} />
       </section>
 
       <section id="solution" className={styles.section}>
@@ -122,7 +124,7 @@ export default function SymmetryCaseStudy() {
           <p>While researching parallel products — Nessie, Mem0, Mem, Supermemory — I found that ChatGPT, Claude, and others all offer full data exports. Months of context, sitting in downloadable archives nobody thought to use.</p>
           <p>Instead of building from scratch, we let users import what they'd already built.</p>
         </div>
-        <img src="/case-studies/symmetry/breakthrough.png" alt="The breakthrough: recovering existing context via data exports" className={styles.mediaImg} />
+        <LightboxImage src="/case-studies/symmetry/breakthrough.png" alt="The breakthrough: recovering existing context via data exports" className={styles.mediaImg} />
       </section>
 
       <section id="onboarding" className={styles.section}>
@@ -145,7 +147,7 @@ export default function SymmetryCaseStudy() {
         <div className={styles.note}>
           One feature I scoped but cut for MVP: a live component showing what was being extracted in real time. Not engineeringly feasible at that stage, but the right thing to design for and revisit later.
         </div>
-        <video src="/case-studies/symmetry/screen-recording.mp4" className={styles.mediaVideo} autoPlay loop muted playsInline />
+        <LightboxVideo src="/case-studies/symmetry/screen-recording.mp4" className={styles.mediaVideo} />
       </section>
 
       <section id="challenge-02" className={styles.section}>
@@ -175,7 +177,7 @@ export default function SymmetryCaseStudy() {
           </div>
         </div>
 
-        <video src="/case-studies/symmetry/pill-decision.mp4" className={styles.mediaVideo} autoPlay loop muted playsInline />
+        <LightboxVideo src="/case-studies/symmetry/pill-decision.mp4" className={styles.mediaVideo} />
 
         <div className={styles.note}>
           I built a storybook-like interface to test out interactions just using vanilla HTML / CSS with the help of Claude.
@@ -186,11 +188,11 @@ export default function SymmetryCaseStudy() {
           <p>The inject button lit up when context was available. Clicking it offered two modes, mapped to where users sat on the trust curve.</p>
           <p><strong>Auto Inject</strong> pulled all relevant context directly into the input box. One click, no decisions. For users who'd seen enough good picks to trust the system.</p>
         </div>
-        <img src="/case-studies/symmetry/auto-inject.png" alt="Auto inject — context injection flow" className={styles.mediaImg} />
+        <LightboxImage src="/case-studies/symmetry/auto-inject.png" alt="Auto inject — context injection flow" className={styles.mediaImg} />
         <div className={styles.prose}>
           <p><strong>Review and Inject</strong> opened the Side Panel for users who wanted to see and choose before committing. Neither was the "advanced" option.</p>
         </div>
-        <video src="/case-studies/symmetry/review-and-inject.mp4" className={styles.mediaVideo} autoPlay loop muted playsInline />
+        <LightboxVideo src="/case-studies/symmetry/review-and-inject.mp4" className={styles.mediaVideo} />
       </section>
 
       <section id="outcomes" className={styles.section}>
@@ -225,14 +227,7 @@ export default function SymmetryCaseStudy() {
           <p>Same underlying system as the pill. Different affordance, broader reach.</p>
         </div>
 
-        <video
-          src="/case-studies/symmetry/composer.mp4"
-          className={styles.mediaVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
+        <LightboxVideo src="/case-studies/symmetry/composer.mp4" className={styles.mediaVideo} />
 
         <div className={styles.note}>
           ⚠️ A scoping call worth noting: late in the project, the highlight-to-edit and context injection features started bleeding into every page and input box in the browser, making the UX aggressive and intrusive. This was the exact opposite of the core design constraint.
@@ -254,7 +249,7 @@ export default function SymmetryCaseStudy() {
           <p>The dashboard also included multiple workspaces, a folder-based knowledge doc system, a timeline view, and a full Ask Symmetry chat interface — a deliberately thorough system that, in hindsight, I'd have kept much thinner for MVP.</p>
         </div>
 
-        <img src="/case-studies/symmetry/dashboard.png" alt="MVP dashboard designs" className={styles.mediaImg} />
+        <LightboxImage src="/case-studies/symmetry/dashboard.png" alt="MVP dashboard designs" className={styles.mediaImg} />
         <p className={styles.caption}>MVP dashboard designs to visualize how user data is captured and evolves over time.</p>
       </section>
 
