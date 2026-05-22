@@ -25,6 +25,7 @@ export default function SymmetryCaseStudy() {
         src="/case-studies/symmetry/sym-overview.png"
         alt="Symmetry overview"
         className={styles.hero}
+        wrapperClassName={styles.heroWrap}
       />
 
       <div className={styles.metaGrid}>
@@ -92,8 +93,8 @@ export default function SymmetryCaseStudy() {
         <blockquote className={styles.callout}>The context existed. It just didn't follow them.</blockquote>
         <LightboxImage src="/case-studies/symmetry/problem-section.png" alt="Problem: scattered context across tools" className={styles.mediaImg} />
         <div className={styles.prose}>
-          <p>The harder truth: most users don't even know this is happening. They get a shallow response and assume that's just what AI is capable of. They've normalised underperformance, never realising that more context would yield dramatically better results.</p>
-          <p>When we fed it back into prompts, everything improved. Feeding real user context into a prompt during testing didn't just improve the answer, it delighted users. They weren't expecting the AI to know them that well. That reaction was the signal this was worth building.</p>
+          <p><strong>The harder truth:</strong> most users don't even know this is happening. They get a shallow response and assume that's just what AI is capable of. They've normalised underperformance, never realising that more context would yield dramatically better results.</p>
+          <p><strong>When we fed context into a prompt, everything improved.</strong> Feeding real user context into a prompt during testing didn't just improve the answer, it delighted users. They weren't expecting the AI to know them that well. That reaction was the signal this was worth building.</p>
         </div>
       </section>
 
@@ -102,12 +103,12 @@ export default function SymmetryCaseStudy() {
           <span className={styles.slash}>/</span> challenge 01
           <span className={styles.rule} />
         </h2>
-        <p className={styles.sectionSubhead}>Bringing Context Into One Place</p>
+        <p className={styles.sectionSubhead}>Bringing Context Into Symmetry</p>
         <div className={styles.prose}>
           <p>Before we could design the injection flow, we had a more fundamental problem: How to bring the context from chats from all the tools (ChatGPT, Claude, Perplexity etc.) into Symmetry?</p>
-          <p>Two approaches. Both revealed the same gap.</p>
-          <p>Manual connection worked — but it was high-effort. Users had to connect each chat individually, and the knowledge base would take weeks before it felt useful.</p>
-          <p>Auto-connection worked too — but it only captured what came next.</p>
+          <p style={{ fontSize: '1.125rem', color: 'var(--text)', fontWeight: 500 }}>Two approaches. Both revealed the same gap.</p>
+          <p><strong>Manual connection worked</strong> — but it was high-effort. Users had to connect each chat individually, and the knowledge base would take weeks before it felt useful.</p>
+          <p><strong>Auto-connection</strong> worked too — but it only captured what came next.</p>
         </div>
         <blockquote className={styles.callout}>That's when the real problem surfaced: a cold start. On day one, we had nothing to give the user.</blockquote>
         <LightboxImage src="/case-studies/symmetry/manual-connect.png" alt="Manual connect vs auto connect approaches" className={styles.mediaImg} />
@@ -164,14 +165,14 @@ export default function SymmetryCaseStudy() {
           <div className={styles.step}>
             <span className={styles.stepNum}>01</span>
             <div>
-              <p className={styles.stepTitle}>Approach 1: Progressive disclosure</p>
+              <p className={styles.stepTitle}>Progressive disclosure</p>
               <p className={styles.stepBody}>Showing one button at a time, expanding on interaction. In testing, the pill kept opening and closing. Users found it distracting and unpredictable.</p>
             </div>
           </div>
           <div className={styles.step}>
             <span className={styles.stepNum}>02</span>
             <div>
-              <p className={styles.stepTitle}>Approach 2: Show all three buttons at once</p>
+              <p className={styles.stepTitle}>Show all three buttons at once</p>
               <p className={styles.stepBody}>Counterintuitive. But stillness read as calm. The pill felt like a tool sitting quietly in the corner — not something demanding attention.</p>
             </div>
           </div>

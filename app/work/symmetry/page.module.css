@@ -28,12 +28,15 @@
 
 /* ── Hero image ── */
 
+.heroWrap {
+  margin-bottom: 40px;
+}
+
 .hero {
   width: 100%;
   aspect-ratio: 16 / 9;
   background: var(--light-gray);
   border-radius: 10px;
-  margin-bottom: 40px;
   object-fit: cover;
   display: block;
 }
@@ -135,7 +138,7 @@
 
 .note {
   font-size: 0.875rem;
-  color: var(--gray);
+  color: var(--text-muted);
   line-height: 1.65;
   padding: 14px 16px;
   border-radius: 8px;
@@ -189,6 +192,11 @@
   font-weight: 600;
 }
 
+.prose strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .bulletList {
   list-style: disc;
   padding-left: 20px;
@@ -222,14 +230,8 @@
   display: grid;
   grid-template-columns: 36px 1fr;
   gap: 16px;
-  padding: 20px 16px;
+  padding: 20px 0 0;
   border-radius: 10px;
-  margin: 0 -16px;
-  transition: background 0.15s;
-}
-
-.step:hover {
-  background: var(--surface);
 }
 
 .stepNum {

@@ -7,9 +7,10 @@ interface Props {
   src: string;
   alt: string;
   className?: string;
+  wrapperClassName?: string;
 }
 
-export default function LightboxImage({ src, alt, className }: Props) {
+export default function LightboxImage({ src, alt, className, wrapperClassName }: Props) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function LightboxImage({ src, alt, className }: Props) {
 
   return (
     <>
-      <button className={styles.trigger} onClick={() => setOpen(true)} aria-label={`Expand image: ${alt}`}>
+      <button className={`${styles.trigger}${wrapperClassName ? ` ${wrapperClassName}` : ''}`} onClick={() => setOpen(true)} aria-label={`Expand image: ${alt}`}>
         <img src={src} alt={alt} className={className} />
       </button>
 
