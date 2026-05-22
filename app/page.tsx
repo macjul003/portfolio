@@ -28,7 +28,7 @@ const work = [
     client: "Zomunk",
     date: "Jun 2024",
     title: "Helping users discover cheap flight deals",
-    href: "#",
+    href: "/work/zomunk",
   },
 ];
 
@@ -56,6 +56,7 @@ export default function Home() {
 
         <header className={styles.header}>
           <h1 className={styles.name}>Julian</h1>
+          <p className={styles.title}>Product Designer + Builder</p>
         </header>
 
         <div className={styles.bio}>
@@ -84,7 +85,7 @@ export default function Home() {
 
         <section className={styles.section}>
           <h2 className={styles.sectionHead}>
-            <span className={styles.slash}>/</span> work
+            <span className={styles.slash}>/</span> case studies
             <span className={styles.headRule} />
           </h2>
           <div className={styles.workGrid}>
@@ -102,23 +103,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionHead}>
-            <span className={styles.slash}>/</span> posts
-            <span className={styles.headRule} />
-          </h2>
-          <ul className={styles.postList}>
-            {articles.map((article) => (
-              <li key={article.slug}>
-                <a href={`/journal/${article.slug}`} className={styles.postRow}>
-                  <time className={styles.postDate}>{formatDate(article.date)}</time>
-                  <span className={styles.postTitle}>{article.title}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a href="/journal" className={styles.viewAll}>View all</a>
-        </section>
+        {/* posts section hidden */}
 
         <section className={styles.section}>
           <h2 className={styles.sectionHead}>

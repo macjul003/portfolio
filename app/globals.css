@@ -11,6 +11,23 @@
   --light-gray: #1e1e1e;
   --accent: #4f8ef7;
   --sidebar-w: 72px;
+  --surface-hover: #181818;
+}
+
+html.light {
+  --bg: #f5f0eb;
+  --text: #1a1a1a;
+  --gray: #7a746e;
+  --light-gray: #ddd8d2;
+  --accent: #4f8ef7;
+  --surface-hover: #e5e0db;
+}
+
+/* ── View transitions ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 html {
@@ -91,7 +108,7 @@ a {
 }
 
 .nav-icon:hover {
-  background: #1c1c1c;
+  background: var(--surface-hover);
   color: var(--text);
 }
 
@@ -106,7 +123,7 @@ a {
   left: calc(100% + 12px);
   top: 50%;
   transform: translateY(-50%) translateX(-4px);
-  background: #1c1c1c;
+  background: var(--surface-hover);
   color: var(--text);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -121,6 +138,26 @@ a {
 .nav-icon:hover::after {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
+}
+
+/* ── Ask panel trigger star ── */
+
+.ask-star {
+  background: linear-gradient(135deg, #4285f4 0%, #34a853 35%, #fbbc05 65%, #ea4335 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: filter 0.15s, transform 0.15s;
+  display: inline-block;
+}
+
+.ask-trigger:hover .ask-star {
+  filter: brightness(1.15);
+  transform: scale(1.12) rotate(15deg);
+}
+
+.ask-trigger--open .ask-star {
+  filter: brightness(1.1);
 }
 
 /* ── Main content ── */

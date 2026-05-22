@@ -1,0 +1,97 @@
+/* ── Persona card ── */
+
+.personaCard {
+  border: 1px solid #222;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 28px 0;
+}
+
+.personaHeader {
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.personaName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.personaMeta {
+  font-size: 0.8125rem;
+  color: var(--gray);
+}
+
+.personaTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.personaTag {
+  font-size: 0.75rem;
+  color: #aaa;
+  background: #161616;
+  border: 1px solid #222;
+  border-radius: 100px;
+  padding: 4px 10px;
+}
+
+.personaSection {
+  padding: 20px 24px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.personaSection:last-child {
+  border-bottom: none;
+}
+
+.personaSectionTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.personaQuote {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #ccc;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.personaPoints {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.personaPoints li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #aaa;
+  font-weight: 300;
+  padding-left: 14px;
+  position: relative;
+}
+
+.personaPoints li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #444;
+}
+
+.personaImplication {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #ccc;
+  font-weight: 300;
+}
