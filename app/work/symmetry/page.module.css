@@ -329,9 +329,8 @@
 
 .mediaVideo {
   width: 100%;
-  border-radius: 10px;
   display: block;
-  margin: 28px 0;
+  transform: scale(1.08);
 }
 
 .imageWide {

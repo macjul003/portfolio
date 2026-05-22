@@ -25,7 +25,9 @@ export default function LightboxVideo({ src, className }: Props) {
   return (
     <>
       <button className={styles.trigger} onClick={() => setOpen(true)} aria-label="Expand video">
-        <video src={src} className={className} autoPlay loop muted playsInline />
+        <div className={styles.videoClip}>
+          <video src={src} className={className} autoPlay loop muted playsInline />
+        </div>
       </button>
 
       {open && (

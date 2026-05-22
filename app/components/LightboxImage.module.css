@@ -50,3 +50,10 @@
   display: block;
   cursor: default;
 }
+
+.videoClip {
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 28px 0;
+  display: block;
+}
