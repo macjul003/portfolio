@@ -1,0 +1,135 @@
+import styles from "./page.module.css";
+import { getAllArticles } from "@/lib/journal";
+import ActivityTerminal from "../components/ActivityTerminal";
+import WorkGrid from "../components/WorkGrid";
+import BuiltStrip from "../components/BuiltStrip";
+import AnimateIn from "../components/AnimateIn";
+
+const work = [
+  {
+    client: "Ithaca Protocol",
+    date: "Nov 2025",
+    title: "Designing trust in AI-powered options trading system",
+    href: "https://www.figma.com/deck/2ZNyRIV7ZO7H1bEti41Iwh",
+    thumbnail: "/case-studies/ithaca/Ithaca-Thumbnail.png",
+    external: true,
+  },
+  {
+    client: "Claystack",
+    date: "Jun 2025",
+    title: "Designing the Ethereum Liquid Staking UX",
+    href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
+    thumbnail: "/case-studies/claystack/app.png",
+    external: true,
+  },
+  {
+    client: "Symmetry AI",
+    date: "Jan 2026",
+    title: "Improving AI responses by bringing user context into chat",
+    href: "/work/symmetry",
+    thumbnail: "/case-studies/symmetry/sym-overview.png",
+    external: false,
+  },
+];
+
+
+const ticker = [
+  "Design is not just what it looks like — design is how it works.",
+  "The details are not the details. They make the design.",
+  "Every constraint is an invitation to be creative.",
+  "Good design is obvious. Great design is transparent.",
+].join("   ×   ");
+
+function formatDate(dateStr: string): string {
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const parts = dateStr.split("-");
+  const m = parseInt(parts[1], 10);
+  const d = parseInt(parts[2], 10);
+  return `${months[m - 1]} ${d}, ${parts[0]}`;
+}
+export default function Home() {
+  const articles = getAllArticles().slice(0, 5);
+
+  return (
+    <main className={styles.page}>
+      <div className={styles.inner}>
+
+        <AnimateIn delay={0}>
+          <header className={styles.header}>
+            <h1 className={styles.name}>Julian</h1>
+            <p className={styles.title}>Product Designer + Builder</p>
+          </header>
+        </AnimateIn>
+
+        <AnimateIn delay={0.08}>
+          <div className={styles.bio}>
+            <p>
+              Product Designer building AI-native systems that turn complexity into
+              clear, actionable workflows. Over 5 years designing across AI, fintech,
+              and travel, from distributed financial systems to agent-driven products,
+              with a focus on trust, clarity, and high-stakes decision making.
+            </p>
+            <p>
+              Find me on{" "}
+              <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>,{" "}
+              <a href="https://www.linkedin.com/in/juliansamuel003/" target="_blank" rel="noopener">LinkedIn</a>,
+              or reach out via{" "}
+              <a href="mailto:juliansam003@gmail.com">email</a>.
+            </p>
+          </div>
+        </AnimateIn>
+
+        <div className={styles.marqueeWrap}>
+          <div className={styles.marqueeTrack} aria-hidden="true">
+            <span>{ticker}</span>
+            <span>{ticker}</span>
+          </div>
+        </div>
+
+        <AnimateIn delay={0.16}>
+          <section className={styles.section}>
+            <h2 className={styles.sectionHead}>
+              <span className={styles.slash}>/</span> case studies
+              <span className={styles.headRule} />
+            </h2>
+            <WorkGrid items={work} />
+          </section>
+        </AnimateIn>
+
+        {/* posts section hidden */}
+
+        <AnimateIn delay={0.22}>
+          <section className={styles.section}>
+            <h2 className={styles.sectionHead}>
+              <span className={styles.slash}>/</span> built
+              <span className={styles.headRule} />
+            </h2>
+            <BuiltStrip />
+          </section>
+        </AnimateIn>
+
+        <AnimateIn delay={0.28}>
+          <section className={styles.section}>
+            <h2 className={styles.sectionHead}>
+              <span className={styles.slash}>/</span> activity
+              <span className={styles.headRule} />
+            </h2>
+            <ActivityTerminal />
+          </section>
+        </AnimateIn>
+
+        <AnimateIn delay={0.34}>
+          <footer className={styles.footer}>
+            <div className={styles.footerLinks}>
+              <a href="mailto:juliansam003@gmail.com">Email</a>
+              <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>
+              <a href="https://github.com/macjul003" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <span>© 2026</span>
+          </footer>
+        </AnimateIn>
+
+      </div>
+    </main>
+  );
+}

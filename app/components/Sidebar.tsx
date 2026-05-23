@@ -4,7 +4,9 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { Sun, Moon } from '@phosphor-icons/react';
+import { motion, useAnimation } from 'motion/react';
 import { useAskPanel } from './AskPanelContext';
+import { useFirstVisit } from './FirstVisitProvider';
 
 const nav = [
   { href: '/',      label: 'Home'  },
@@ -17,6 +19,16 @@ export default function Sidebar() {
   const { open, setOpen } = useAskPanel();
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const isFirst = useFirstVisit();
+  const navControls = useAnimation();
+
+  useEffect(() => {
+    if (isFirst) {
+      navControls.start({ opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } });
+    } else {
+      navControls.set({ opacity: 1, y: 0 });
+    }
+  }, [isFirst, navControls]);
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
@@ -53,7 +65,11 @@ export default function Sidebar() {
   }
 
   return (
-    <nav className="sidebar">
+    <motion.nav
+      className="sidebar"
+      initial={{ opacity: 0, y: -8 }}
+      animate={navControls}
+    >
       {nav.map(({ href, label }) => (
         <a
           key={href}
@@ -85,6 +101,6 @@ export default function Sidebar() {
           <i className="ph-fill ph-star-four ask-star" style={{ fontSize: 20 }} />
         </button>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '../page.module.css';
+import styles from '../(site)/page.module.css';
 
 type WorkItem = {
   client: string;

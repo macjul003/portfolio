@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+import AnimateIn from "@/app/components/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Work — Julian",
@@ -39,11 +40,14 @@ export default function WorkPage() {
   return (
     <div className={styles.page}>
 
-      <header className={styles.header}>
-        <h1 className={styles.name}>Work</h1>
-        <p className={styles.subtitle}>Selected projects, 2024–2026</p>
-      </header>
+      <AnimateIn delay={0}>
+        <header className={styles.header}>
+          <h1 className={styles.name}>Work</h1>
+          <p className={styles.subtitle}>Selected projects, 2024–2026</p>
+        </header>
+      </AnimateIn>
 
+      <AnimateIn delay={0.1}>
       <ul className={styles.list}>
         {work.map((item) => (
           <li key={item.title}>
@@ -70,6 +74,7 @@ export default function WorkPage() {
           </li>
         ))}
       </ul>
+      </AnimateIn>
 
     </div>
   );
