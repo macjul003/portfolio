@@ -138,7 +138,7 @@
 }
 
 .postRow:hover {
-  background: #181818;
+  background: var(--surface-hover);
 }
 
 .postRow:hover .postTitle {
@@ -301,7 +301,7 @@
 }
 
 .workStackedCard:hover {
-  background: #181818;
+  background: var(--surface-hover);
 }
 
 .workStackedImageWrap {

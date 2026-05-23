@@ -1,19 +1,15 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useState, useEffect, useRef, type ComponentType } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { Sun, Moon } from '@phosphor-icons/react';
 import { useAskPanel } from './AskPanelContext';
 
-type NavItem =
-  | { href: string; label: string; iconClass: string; Icon?: never }
-  | { href: string; label: string; Icon: ComponentType<{ size: number; weight: 'bold' | 'fill' | 'duotone' }>; iconClass?: never };
-
-const nav: NavItem[] = [
-  { href: '/',      label: 'Home',  iconClass: 'ph-bold ph-house-simple' },
-  { href: '/work',  label: 'Work',  iconClass: 'ph-bold ph-briefcase'    },
-  { href: '/about', label: 'About', iconClass: 'ph-bold ph-user'         },
+const nav = [
+  { href: '/',      label: 'Home'  },
+  { href: '/work',  label: 'Work'  },
+  { href: '/about', label: 'About' },
 ];
 
 export default function Sidebar() {
@@ -58,20 +54,13 @@ export default function Sidebar() {
 
   return (
     <nav className="sidebar">
-      {nav.map(({ href, label, ...item }) => (
+      {nav.map(({ href, label }) => (
         <a
           key={href}
           href={href}
-          className={`nav-icon${isActive(href) ? ' active' : ''}`}
-          aria-label={label}
-          target={href.startsWith('http') ? '_blank' : undefined}
-          rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          className={`nav-link${isActive(href) ? ' active' : ''}`}
         >
-          {'Icon' in item && item.Icon ? (
-            <item.Icon size={20} weight={isActive(href) ? 'fill' : 'duotone'} />
-          ) : (
-            <i className={(item.iconClass as string).replace('ph-bold', isActive(href) ? 'ph-fill' : 'ph-bold')} style={{ fontSize: 20 }} />
-          )}
+          {label}
         </a>
       ))}
 

@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import { getAllArticles } from "@/lib/journal";
 import ActivityTerminal from "./components/ActivityTerminal";
 import WorkGrid from "./components/WorkGrid";
+import BuiltStrip from "./components/BuiltStrip";
 
 const work = [
   {
@@ -89,6 +90,14 @@ export default function Home() {
         </section>
 
         {/* posts section hidden */}
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionHead}>
+            <span className={styles.slash}>/</span> built
+            <span className={styles.headRule} />
+          </h2>
+          <BuiltStrip />
+        </section>
 
         <section className={styles.section}>
           <h2 className={styles.sectionHead}>

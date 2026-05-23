@@ -1,0 +1,261 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--light-gray);
+  border-radius: 22px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 44px 36px 36px;
+  text-align: center;
+  scrollbar-width: none;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--light-gray);
+  border: none;
+  cursor: pointer;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.close:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+/* ── App icon ── */
+
+.iconImg {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin: 0 auto 22px;
+  display: block;
+}
+
+.iconWrap {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Text ── */
+
+.name {
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  font-size: 0.9375rem;
+  color: var(--gray);
+  margin-bottom: 14px;
+}
+
+.desc {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Buttons ── */
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.btnPrimary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  background: var(--light-gray);
+  border: 1px solid var(--light-gray);
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.btnSecondary:hover {
+  background: var(--surface-hover);
+  transform: translateY(-1px);
+}
+
+/* ── How to install link ── */
+
+.installLink {
+  margin-bottom: 16px;
+}
+
+.installTrigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--gray);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(128, 128, 128, 0.35);
+  padding: 0;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.installTrigger:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
+}
+
+/* ── Tags ── */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gray);
+  background: var(--light-gray);
+  border-radius: 6px;
+  padding: 3px 9px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Screenshot ── */
+
+.imageWrap {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid var(--light-gray);
+}
+
+.image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--light-gray);
+}
+
+/* ── Optional features ── */
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+  border-top: 1px solid var(--light-gray);
+  padding-top: 22px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.featureTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.featureDesc {
+  font-size: 0.875rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 40px 24px 28px;
+  }
+
+  .name {
+    font-size: 1.625rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    justify-content: center;
+  }
+}
