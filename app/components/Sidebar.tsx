@@ -76,7 +76,7 @@ export default function Sidebar() {
       ))}
 
       {/* Bottom group */}
-      <div className="sidebar-bottom-group" style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, marginBottom: 24 }}>
+      <div className="sidebar-bottom-group">
         <button
           ref={toggleRef}
           className="nav-icon"
