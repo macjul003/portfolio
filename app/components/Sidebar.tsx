@@ -72,11 +72,12 @@ export default function Sidebar() {
           ) : (
             <i className={(item.iconClass as string).replace('ph-bold', isActive(href) ? 'ph-fill' : 'ph-bold')} style={{ fontSize: 20 }} />
           )}
+          <span className="nav-label">{label}</span>
         </a>
       ))}
 
       {/* Bottom group */}
-      <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, marginBottom: 24 }}>
+      <div className="sidebar-bottom-group" style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, marginBottom: 24 }}>
         <button
           ref={toggleRef}
           className="nav-icon"
