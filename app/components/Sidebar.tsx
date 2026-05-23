@@ -11,11 +11,9 @@ type NavItem =
   | { href: string; label: string; Icon: ComponentType<{ size: number; weight: 'bold' | 'fill' | 'duotone' }>; iconClass?: never };
 
 const nav: NavItem[] = [
-  { href: '/',        label: 'Home',    iconClass: 'ph-bold ph-house-simple' },
-  { href: '/about',   label: 'About',   iconClass: 'ph-bold ph-user'         },
-  { href: '/work',    label: 'Work',    iconClass: 'ph-bold ph-briefcase'    },
-  { href: '/built',   label: 'Built',   iconClass: 'ph-bold ph-hammer'       },
-  { href: '/journal', label: 'Journal', iconClass: 'ph-bold ph-pencil-line'  },
+  { href: '/',      label: 'Home',  iconClass: 'ph-bold ph-house-simple' },
+  { href: '/work',  label: 'Work',  iconClass: 'ph-bold ph-briefcase'    },
+  { href: '/about', label: 'About', iconClass: 'ph-bold ph-user'         },
 ];
 
 export default function Sidebar() {

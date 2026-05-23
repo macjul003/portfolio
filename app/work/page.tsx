@@ -33,14 +33,6 @@ const work = [
     thumbnail: "/case-studies/claystack/app.png",
     href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
   },
-  {
-    title: "Rethinking How People Find Cheap Flights",
-    client: "Zomunk",
-    year: "2024",
-    description: "Replaced the search-first model with a discovery feed of curated deals, making it effortless for flexible travelers to find and book the cheapest flights.",
-    tags: ["Travel", "Product Design", "UX Research"],
-    href: "/work/zomunk",
-  },
 ];
 
 export default function WorkPage() {

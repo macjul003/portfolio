@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { getAllArticles } from "@/lib/journal";
 import ActivityTerminal from "./components/ActivityTerminal";
+import WorkGrid from "./components/WorkGrid";
 
 const work = [
   {
@@ -25,13 +26,6 @@ const work = [
     title: "Improving AI responses by bringing user context into chat",
     href: "/work/symmetry",
     thumbnail: "/case-studies/symmetry/sym-overview.png",
-    external: false,
-  },
-  {
-    client: "Zomunk",
-    date: "Jun 2024",
-    title: "Helping users discover cheap flight deals",
-    href: "/work/zomunk",
     external: false,
   },
 ];
@@ -91,26 +85,7 @@ export default function Home() {
             <span className={styles.slash}>/</span> case studies
             <span className={styles.headRule} />
           </h2>
-          <div className={styles.workGrid}>
-            {work.map((item) => (
-              <a key={item.title} href={item.href} className={styles.workCard} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined}>
-                <div className={styles.workImageWrap}>
-                  {item.thumbnail ? (
-                    <img src={item.thumbnail} alt={item.title} className={styles.workImage} />
-                  ) : (
-                    <div className={styles.workImage} />
-                  )}
-                  {item.external && (
-                    <div className={styles.workExternalBadge}>
-                      <i className="ph-bold ph-arrow-up-right" />
-                    </div>
-                  )}
-                </div>
-                <h3 className={styles.workTitle}>{item.title}</h3>
-                <p className={styles.workClient}>{item.client} · {item.date}</p>
-              </a>
-            ))}
-          </div>
+          <WorkGrid items={work} />
         </section>
 
         {/* posts section hidden */}
