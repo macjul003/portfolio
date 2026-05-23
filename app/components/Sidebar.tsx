@@ -72,7 +72,6 @@ export default function Sidebar() {
           ) : (
             <i className={(item.iconClass as string).replace('ph-bold', isActive(href) ? 'ph-fill' : 'ph-bold')} style={{ fontSize: 20 }} />
           )}
-          <span className="nav-label">{label}</span>
         </a>
       ))}
 
@@ -87,15 +86,6 @@ export default function Sidebar() {
         >
           {theme === 'dark' ? <Sun size={20} weight="bold" /> : <Moon size={20} weight="bold" />}
         </button>
-        <a
-          href="https://github.com/macjul003"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="nav-icon"
-          aria-label="GitHub"
-        >
-          <i className="ph-fill ph-github-logo" style={{ fontSize: 20 }} />
-        </a>
         {/* Ask panel trigger */}
         <button
           className={`nav-icon ask-trigger${open ? ' ask-trigger--open' : ''}`}
