@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Agentation } from "agentation";
 import Sidebar from "./components/Sidebar";
 import AskPanel from "./components/AskPanel";
@@ -44,6 +45,13 @@ export default function RootLayout({
           <AskPanel />
         </AskPanelProvider>
         {process.env.NODE_ENV === "development" && <Agentation />}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-5XHD652ETP" strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-5XHD652ETP');
+        `}</Script>
       </body>
     </html>
   );
