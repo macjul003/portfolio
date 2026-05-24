@@ -9,9 +9,10 @@ import { useAskPanel } from './AskPanelContext';
 import { useFirstVisit } from './FirstVisitProvider';
 
 const nav = [
-  { href: '/',      label: 'Home'  },
-  { href: '/work',  label: 'Work'  },
-  { href: '/about', label: 'About' },
+  { href: '/',        label: 'Home'    },
+  { href: '/work',    label: 'Work'    },
+  { href: '/writing', label: 'Writing' },
+  { href: '/about',   label: 'About'   },
 ];
 
 export default function Sidebar() {
@@ -24,6 +25,7 @@ export default function Sidebar() {
 
   useEffect(() => {
     if (isFirst) {
+      navControls.set({ opacity: 0, y: -8 });
       navControls.start({ opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } });
     } else {
       navControls.set({ opacity: 1, y: 0 });
@@ -67,7 +69,7 @@ export default function Sidebar() {
   return (
     <motion.nav
       className="sidebar"
-      initial={{ opacity: 0, y: -8 }}
+      initial={false}
       animate={navControls}
     >
       {nav.map(({ href, label }) => (

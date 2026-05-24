@@ -1,0 +1,164 @@
+"use client";
+
+import { useState } from "react";
+import styles from "./page.module.css";
+
+const FILTER_TAGS = ["Web3", "AI", "Brand Design", "Product Design"];
+
+type CardItem = {
+  title: string;
+  meta: string;
+  description: string;
+  tags: string[];
+  href: string;
+  thumbnail: string;
+  external: boolean;
+};
+
+const featured: CardItem[] = [
+  {
+    title: "AI Context Engine",
+    meta: "Symmetry AI · 2026",
+    description:
+      "Designed the core interaction model for an AI assistant that surfaces relevant context across a knowledge base — reducing lookup time and improving answer confidence.",
+    tags: ["AI", "Product Design", "Information Architecture"],
+    href: "/work/symmetry",
+    thumbnail: "/case-studies/symmetry/sym-overview.png",
+    external: false,
+  },
+  {
+    title: "Options Trading, Simplified",
+    meta: "Tria · 2025",
+    description:
+      "Redesigned the options trading flow for retail investors, simplifying complex financial decisions into a clear step-by-step interface with real-time risk visualization.",
+    tags: ["Fintech", "Interaction Design", "Data Visualization"],
+    thumbnail: "/case-studies/ithaca/Ithaca-Thumbnail.png",
+    href: "https://www.figma.com/deck/2ZNyRIV7ZO7H1bEti41Iwh",
+    external: true,
+  },
+  {
+    title: "Redesigning Onboarding",
+    meta: "Claystack · 2025",
+    description:
+      "Overhauled the user onboarding experience for a liquid staking protocol, reducing drop-off by reframing complex DeFi concepts through progressive disclosure.",
+    tags: ["Web3", "UX Research", "Onboarding"],
+    thumbnail: "/case-studies/claystack/app.png",
+    href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
+    external: true,
+  },
+];
+
+interface ArticleItem {
+  slug: string;
+  title: string;
+  date: string;
+  image: string;
+  subtitle: string;
+  link?: string;
+  tags: string[];
+}
+
+function formatDate(dateStr: string): string {
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const d = new Date(dateStr);
+  return `${months[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+function articleToCard(item: ArticleItem): CardItem {
+  const href = item.link ?? `/work/${item.slug}`;
+  return {
+    title: item.title,
+    meta: formatDate(item.date),
+    description: item.subtitle,
+    tags: item.tags,
+    href,
+    thumbnail: item.image,
+    external: !!item.link || href.startsWith("http"),
+  };
+}
+
+function WorkCard({ item }: { item: CardItem }) {
+  return (
+    <a
+      href={item.href}
+      className={styles.card}
+      target={item.external ? "_blank" : undefined}
+      rel={item.external ? "noopener noreferrer" : undefined}
+    >
+      {item.thumbnail ? (
+        <img src={item.thumbnail} alt={item.title} className={styles.image} />
+      ) : (
+        <div className={styles.image} />
+      )}
+      <div className={styles.cardBody}>
+        <div className={styles.cardTop}>
+          <span className={styles.cardTitle}>{item.title}</span>
+          <i className="ph-bold ph-arrow-up-right" style={{ fontSize: 16 }} />
+        </div>
+        <p className={styles.cardMeta}>{item.meta}</p>
+        {item.description && (
+          <p className={styles.cardDesc}>{item.description}</p>
+        )}
+        {item.tags.length > 0 && (
+          <div className={styles.tags}>
+            {item.tags.map((t) => (
+              <span key={t} className={styles.tag}>{t}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </a>
+  );
+}
+
+export default function WorkClient({ articles }: { articles: ArticleItem[] }) {
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+
+  const articleCards = articles.map(articleToCard);
+  const allCards = [...featured, ...articleCards];
+
+  const filtered =
+    activeTag === null
+      ? allCards
+      : allCards.filter((c) =>
+          c.tags.some((t) => t.toLowerCase() === activeTag.toLowerCase())
+        );
+
+  return (
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <h1 className={styles.name}>Work</h1>
+        <p className={styles.subtitle}>Selected projects, 2024–2026</p>
+      </header>
+
+      <div className={styles.filters}>
+        <button
+          className={`${styles.filterPill} ${activeTag === null ? styles.filterPillActive : ""}`}
+          onClick={() => setActiveTag(null)}
+        >
+          All
+        </button>
+        {FILTER_TAGS.map((tag) => (
+          <button
+            key={tag}
+            className={`${styles.filterPill} ${activeTag === tag ? styles.filterPillActive : ""}`}
+            onClick={() => setActiveTag(activeTag === tag ? null : tag)}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      <ul className={styles.list}>
+        {filtered.map((item) => (
+          <li key={item.href + item.title}>
+            <WorkCard item={item} />
+          </li>
+        ))}
+        {filtered.length === 0 && (
+          <li className={styles.empty}>No projects match this filter.</li>
+        )}
+      </ul>
+    </div>
+  );
+}
