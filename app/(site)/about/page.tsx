@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
-import AnimateIn from "@/app/components/AnimateIn";
 
 export const metadata: Metadata = {
   title: "About — Julian",
@@ -10,13 +9,10 @@ export default function AboutPage() {
   return (
     <div className={styles.page}>
 
-      <AnimateIn delay={0}>
-        <header className={styles.header}>
-          <h1 className={styles.name}>About me</h1>
-        </header>
-      </AnimateIn>
+      <header className={styles.header}>
+        <h1 className={styles.name}>About me</h1>
+      </header>
 
-      <AnimateIn delay={0.1}>
       <div className={styles.body}>
         <p>
           For the past 5 years, I've been designing products across AI, Fintech, and Travel,
@@ -53,13 +49,10 @@ export default function AboutPage() {
           products I admire to understand what makes them feel inevitable.
         </p>
       </div>
-      </AnimateIn>
 
-      <AnimateIn delay={0.18}>
-        <div className={styles.photo}>
-          <img src="/mac-photo.png" alt="Julian" className={styles.photoImg} />
-        </div>
-      </AnimateIn>
+      <div className={styles.photo}>
+        <img src="/mac-photo.png" alt="Julian" className={styles.photoImg} />
+      </div>
 
     </div>
   );

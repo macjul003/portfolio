@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getAllPhotos } from "@/lib/photos";
 import PhotoMap from "./PhotoMap";
 import styles from "./page.module.css";
@@ -13,9 +14,10 @@ export default function PhotosPage() {
 
   return (
     <div className={styles.page}>
-      <a href="/" className={styles.back}>
-        &larr; Home
-      </a>
+      <Link href="/" className={styles.back}>
+        <i className="ph-bold ph-arrow-left" />
+        Back
+      </Link>
       <PhotoMap photos={photos} />
     </div>
   );

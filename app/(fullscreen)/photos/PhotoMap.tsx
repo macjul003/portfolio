@@ -51,7 +51,7 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
 
     const map = new mapboxgl.Map({
       container: containerRef.current,
-      style: "mapbox://styles/mapbox/light-v11",
+      style: "mapbox://styles/mapbox/dark-v11",
       center: [photos[0].lng, photos[0].lat],
       zoom: 2,
     });
