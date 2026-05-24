@@ -3,7 +3,6 @@ import { getAllArticles } from "@/lib/journal";
 import ActivityTerminal from "../components/ActivityTerminal";
 import WorkGrid from "../components/WorkGrid";
 import BuiltStrip from "../components/BuiltStrip";
-import AnimateIn from "../components/AnimateIn";
 
 const work = [
   {
@@ -54,30 +53,26 @@ export default function Home() {
     <main className={styles.page}>
       <div className={styles.inner}>
 
-        <AnimateIn delay={0}>
-          <header className={styles.header}>
-            <h1 className={styles.name}>Julian</h1>
-            <p className={styles.title}>Product Designer + Builder</p>
-          </header>
-        </AnimateIn>
+        <header className={styles.header}>
+          <h1 className={styles.name}>Julian</h1>
+          <p className={styles.title}>Product Designer + Builder</p>
+        </header>
 
-        <AnimateIn delay={0.08}>
-          <div className={styles.bio}>
-            <p>
-              Product Designer building AI-native systems that turn complexity into
-              clear, actionable workflows. Over 5 years designing across AI, fintech,
-              and travel, from distributed financial systems to agent-driven products,
-              with a focus on trust, clarity, and high-stakes decision making.
-            </p>
-            <p>
-              Find me on{" "}
-              <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>,{" "}
-              <a href="https://www.linkedin.com/in/juliansamuel003/" target="_blank" rel="noopener">LinkedIn</a>,
-              or reach out via{" "}
-              <a href="mailto:juliansam003@gmail.com">email</a>.
-            </p>
-          </div>
-        </AnimateIn>
+        <div className={styles.bio}>
+          <p>
+            Product Designer building AI-native systems that turn complexity into
+            clear, actionable workflows. Over 5 years designing across AI, fintech,
+            and travel, from distributed financial systems to agent-driven products,
+            with a focus on trust, clarity, and high-stakes decision making.
+          </p>
+          <p>
+            Find me on{" "}
+            <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>,{" "}
+            <a href="https://www.linkedin.com/in/juliansamuel003/" target="_blank" rel="noopener">LinkedIn</a>,
+            or reach out via{" "}
+            <a href="mailto:juliansam003@gmail.com">email</a>.
+          </p>
+        </div>
 
         <div className={styles.marqueeWrap}>
           <div className={styles.marqueeTrack} aria-hidden="true">
@@ -86,48 +81,43 @@ export default function Home() {
           </div>
         </div>
 
-        <AnimateIn delay={0.16}>
-          <section className={styles.section}>
-            <h2 className={styles.sectionHead}>
-              <span className={styles.slash}>/</span> case studies
-              <span className={styles.headRule} />
-            </h2>
-            <WorkGrid items={work} />
-          </section>
-        </AnimateIn>
+        <section className={styles.section}>
+          <h2 className={styles.sectionHead}>
+            <span className={styles.slash}>/</span> case studies
+            <span className={styles.headRule} />
+          </h2>
+          <WorkGrid items={work} />
+        </section>
 
         {/* posts section hidden */}
 
-        <AnimateIn delay={0.22}>
-          <section className={styles.section}>
-            <h2 className={styles.sectionHead}>
-              <span className={styles.slash}>/</span> built
-              <span className={styles.headRule} />
-            </h2>
-            <BuiltStrip />
-          </section>
-        </AnimateIn>
+        <section className={styles.section}>
+          <h2 className={styles.sectionHead}>
+            <span className={styles.slash}>/</span> indie apps
+            <span className={styles.headRule} />
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            Design-led apps, engineered by me to solve my own problems — soon to be released on the public App Store.
+          </p>
+          <BuiltStrip />
+        </section>
 
-        <AnimateIn delay={0.28}>
-          <section className={styles.section}>
-            <h2 className={styles.sectionHead}>
-              <span className={styles.slash}>/</span> activity
-              <span className={styles.headRule} />
-            </h2>
-            <ActivityTerminal />
-          </section>
-        </AnimateIn>
+        <section className={styles.section}>
+          <h2 className={styles.sectionHead}>
+            <span className={styles.slash}>/</span> activity
+            <span className={styles.headRule} />
+          </h2>
+          <ActivityTerminal />
+        </section>
 
-        <AnimateIn delay={0.34}>
-          <footer className={styles.footer}>
-            <div className={styles.footerLinks}>
-              <a href="mailto:juliansam003@gmail.com">Email</a>
-              <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>
-              <a href="https://github.com/macjul003" target="_blank" rel="noopener">GitHub</a>
-            </div>
-            <span>© 2026</span>
-          </footer>
-        </AnimateIn>
+        <footer className={styles.footer}>
+          <div className={styles.footerLinks}>
+            <a href="mailto:juliansam003@gmail.com">Email</a>
+            <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>
+            <a href="https://github.com/macjul003" target="_blank" rel="noopener">GitHub</a>
+          </div>
+          <span>© 2026</span>
+        </footer>
 
       </div>
     </main>

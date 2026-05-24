@@ -346,6 +346,15 @@
   margin: 4px 0 0;
 }
 
+.sectionSubtitle {
+  font-size: 0.9375rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  margin-top: -6px;
+}
+
 .builtTagline {
   color: var(--gray);
   font-size: 0.875rem;

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getAllArticles } from "@/lib/journal";
 import styles from "./page.module.css";
-import AnimateIn from "@/app/components/AnimateIn";
 
 export const metadata: Metadata = {
   title: "Journal — Julian",
@@ -18,14 +17,11 @@ export default function JournalPage() {
 
   return (
     <div className={styles.page}>
-      <AnimateIn delay={0}>
-        <header className={styles.header}>
-          <h1 className={styles.heading}>Journal</h1>
-          <p className={styles.subheading}>Thinking on design, tools, and process.</p>
-        </header>
-      </AnimateIn>
+      <header className={styles.header}>
+        <h1 className={styles.heading}>Journal</h1>
+        <p className={styles.subheading}>Thinking on design, tools, and process.</p>
+      </header>
 
-      <AnimateIn delay={0.1}>
       <ul className={styles.list}>
         {articles.map((article) => (
           <li key={article.slug}>
@@ -42,7 +38,6 @@ export default function JournalPage() {
           </li>
         ))}
       </ul>
-      </AnimateIn>
     </div>
   );
 }
