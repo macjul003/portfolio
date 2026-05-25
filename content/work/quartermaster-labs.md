@@ -5,6 +5,7 @@ image: "https://framerusercontent.com/images/fa954PPFLEDz6YtrTiBNdraoXbM.png"
 subtitle: "Crafting a timeless identity for a research firm that turns market noise into clarity."
 link: "https://www.quartermasterlabs.com/"
 draft: false
+tags: ["Brand Design"]
 ---
 
 <p>I designed the complete visual identity for <strong>Quartermaster</strong>, a research firm that provides on-chain insights and market intelligence. The goal was to create a brand that feels analytical, timeless, and quietly confident.</p>

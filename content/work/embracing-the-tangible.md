@@ -4,6 +4,7 @@ date: "2024-03-20"
 image: "https://framerusercontent.com/images/NDRDK1kYsCVyvxLYfoLebflAE.png"
 subtitle: ""
 draft: false
+tags: ["Physical"]
 ---
 
 <p>Hey there, fellow design enthusiasts!</p>

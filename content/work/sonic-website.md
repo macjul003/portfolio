@@ -5,6 +5,7 @@ image: "https://framerusercontent.com/images/EZ7PoEvLswqWcLySWKByjwVk2k.png"
 subtitle: "Designing a brand that moves with purpose: fluid, fast, and unmistakably Sonic."
 link: "https://www.figma.com/proto/mNge2aLasFG7CHykwHu16v/Portfolio?page-id=0%3A1&node-id=1-172&viewport=1089%2C501%2C0.53&t=ErZ1s2HW6z7zWLu6-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A172"
 draft: false
+tags: ["Brand Design"]
 ---
 
 <h3>The Sonic Identity: Designing a Brand That Moves</h3>

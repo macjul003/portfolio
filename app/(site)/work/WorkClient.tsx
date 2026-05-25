@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, useMotionValue } from "motion/react";
 import styles from "./page.module.css";
 
-const FILTER_TAGS = ["Web3", "AI", "Brand Design", "Product Design"];
+const FILTER_TAGS = ["Web3", "AI", "Brand Design", "Product Design", "Fintech", "Indie App"];
 
 type CardItem = {
   title: string;
@@ -14,6 +14,7 @@ type CardItem = {
   href: string;
   thumbnail: string;
   external: boolean;
+  date: string;
 };
 
 const featured: CardItem[] = [
@@ -26,26 +27,29 @@ const featured: CardItem[] = [
     href: "/work/symmetry",
     thumbnail: "/case-studies/symmetry/sym-overview.png",
     external: false,
+    date: "2026-01-01",
   },
   {
     title: "Options Trading, Simplified",
     meta: "Tria · 2025",
     description:
       "Redesigned the options trading flow for retail investors, simplifying complex financial decisions into a clear step-by-step interface with real-time risk visualization.",
-    tags: ["Fintech", "Interaction Design", "Data Visualization"],
+    tags: ["Product Design", "AI", "Fintech", "Interaction Design"],
     thumbnail: "/case-studies/ithaca/Ithaca-Thumbnail.png",
     href: "https://www.figma.com/deck/2ZNyRIV7ZO7H1bEti41Iwh",
     external: true,
+    date: "2025-11-01",
   },
   {
     title: "Redesigning Onboarding",
     meta: "Claystack · 2025",
     description:
       "Overhauled the user onboarding experience for a liquid staking protocol, reducing drop-off by reframing complex DeFi concepts through progressive disclosure.",
-    tags: ["Web3", "UX Research", "Onboarding"],
+    tags: ["Product Design", "Web3", "UX Research"],
     thumbnail: "/case-studies/claystack/app.png",
     href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
     external: true,
+    date: "2025-06-01",
   },
 ];
 
@@ -75,6 +79,7 @@ function articleToCard(item: ArticleItem): CardItem {
     href,
     thumbnail: item.image,
     external: !!item.link || href.startsWith("http"),
+    date: item.date,
   };
 }
 
@@ -139,8 +144,8 @@ function WorkCard({ item, index }: { item: CardItem; index: number }) {
         </motion.div>
       </div>
       <div className={styles.cardCaption}>
-        <span className={styles.captionLeft}>{item.description || item.title}</span>
-        <span className={styles.captionRight}>{item.title} · {item.meta}</span>
+        <span className={styles.captionLeft}>{item.title}</span>
+        <span className={styles.captionRight}>{item.meta}</span>
       </div>
     </a>
   );
@@ -150,7 +155,8 @@ export default function WorkClient({ articles }: { articles: ArticleItem[] }) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   const articleCards = articles.map(articleToCard);
-  const allCards = [...featured, ...articleCards];
+  const allCards = [...featured, ...articleCards]
+    .sort((a, b) => (a.date > b.date ? -1 : 1));
 
   const filtered =
     activeTag === null

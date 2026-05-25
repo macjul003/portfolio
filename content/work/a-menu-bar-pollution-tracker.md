@@ -4,6 +4,7 @@ date: "2025-12-22"
 image: "https://framerusercontent.com/images/ugCXfNyYDeyGR76ZMteMv7wEA.png"
 subtitle: "A small macOS menu bar app to see air quality at a glance, without opening anything."
 draft: false
+tags: ["Indie App"]
 ---
 
 <p>Checking air quality today means opening a website or an app. That breaks focus. On macOS, there's no way to see AQI by default in the menu bar.</p>

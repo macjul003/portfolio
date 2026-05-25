@@ -4,6 +4,7 @@ date: "2025-08-04"
 image: "https://framerusercontent.com/images/5eNmkTckdLTkVYwZCs0Qnj1UwI.png"
 subtitle: "A clear, human website for an occupational therapy practice in Australia."
 draft: false
+tags: ["Brand Design"]
 ---
 
 <p>I designed the website for an occupational therapy practice based in Melbourne. The goal was to make something simple, approachable, and calm, a space that feels supportive from the very first scroll.</p>

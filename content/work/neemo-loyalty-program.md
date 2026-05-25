@@ -4,6 +4,7 @@ date: "2024-12-06"
 image: "https://framerusercontent.com/images/gi6I4EOHTAfAoNtvHLKNuqYL4.png"
 subtitle: "Designing for retention"
 draft: false
+tags: ["Web3", "Brand Design"]
 ---
 
 <p>We wanted to design a rewards system that didn't feel like "yet another DeFi mechanic." So we ditched the usual tables and charts and built something visual, memorable, and dead simple.</p>
