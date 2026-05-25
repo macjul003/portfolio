@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, useMotionValue } from "motion/react";
 import styles from "./page.module.css";
 
 const FILTER_TAGS = ["Web3", "AI", "Brand Design", "Product Design"];
@@ -85,8 +86,25 @@ function actionLabel(item: CardItem): string {
   return "Visit Website";
 }
 
+
 function WorkCard({ item, index }: { item: CardItem; index: number }) {
   const ratioClass = styles[RATIOS[index % RATIOS.length]];
+  const [hovered, setHovered] = useState(false);
+
+  const pillLeft = useMotionValue(0);
+  const pillTop  = useMotionValue(0);
+
+  const trackMouse = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    pillLeft.set(e.clientX - rect.left);
+    pillTop.set(e.clientY - rect.top);
+  };
+
+  const handleEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    trackMouse(e);
+    setHovered(true);
+  };
+
   return (
     <a
       href={item.href}
@@ -94,16 +112,31 @@ function WorkCard({ item, index }: { item: CardItem; index: number }) {
       target={item.external ? "_blank" : undefined}
       rel={item.external ? "noopener noreferrer" : undefined}
     >
-      <div className={`${styles.imageWrap} ${ratioClass}`}>
+      <div
+        className={`${styles.imageWrap} ${ratioClass}`}
+        style={{ cursor: hovered ? "none" : undefined }}
+        onMouseMove={trackMouse}
+        onMouseEnter={handleEnter}
+        onMouseLeave={() => setHovered(false)}
+      >
         {item.thumbnail ? (
           <img src={item.thumbnail} alt={item.title} className={styles.image} />
         ) : (
           <div className={styles.image} />
         )}
-        <div className={styles.hoverPill}>
+        <motion.div
+          className={styles.hoverPill}
+          style={{
+            left: pillLeft,
+            top: pillTop,
+            translateX: "-50%",
+            translateY: "-50%",
+            opacity: hovered ? 1 : 0,
+          }}
+        >
           <i className="ph-bold ph-eye" style={{ fontSize: 14 }} />
           {actionLabel(item)}
-        </div>
+        </motion.div>
       </div>
       <div className={styles.cardCaption}>
         <span className={styles.captionLeft}>{item.description || item.title}</span>

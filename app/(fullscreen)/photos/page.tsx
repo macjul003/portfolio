@@ -5,7 +5,7 @@ import PhotoMap from "./PhotoMap";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Photos — Julian",
+  title: "Photos",
   description: "A map of geotagged photos from my travels.",
 };
 

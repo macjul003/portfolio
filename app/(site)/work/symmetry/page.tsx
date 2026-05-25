@@ -6,7 +6,7 @@ import LightboxImage from "@/app/components/LightboxImage";
 import LightboxVideo from "@/app/components/LightboxVideo";
 
 export const metadata: Metadata = {
-  title: "Symmetry — Julian",
+  title: "Symmetry",
   description: "Improving AI responses by bringing user context into every chat.",
 };
 

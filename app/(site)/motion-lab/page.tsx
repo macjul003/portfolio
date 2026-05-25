@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import MotionDemos from "./MotionDemos";
 
 export const metadata: Metadata = {
-  title: "Motion Lab — Julian",
+  title: "Motion Lab",
 };
 
 export default function MotionLabPage() {

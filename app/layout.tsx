@@ -3,7 +3,10 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Julian Samuel - Product Designer",
+  title: {
+    default: "Julian | Product Designer",
+    template: "%s | Julian",
+  },
 };
 
 export default function RootLayout({

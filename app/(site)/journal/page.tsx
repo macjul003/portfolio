@@ -3,7 +3,7 @@ import { getAllArticles } from "@/lib/journal";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Journal — Julian",
+  title: "Journal",
 };
 
 function formatDate(dateStr: string): string {

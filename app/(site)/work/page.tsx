@@ -3,7 +3,7 @@ import { getAllWorkItems } from "@/lib/work";
 import WorkClient from "./WorkClient";
 
 export const metadata: Metadata = {
-  title: "Work — Julian",
+  title: "Work",
 };
 
 export default function WorkPage() {

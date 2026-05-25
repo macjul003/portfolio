@@ -12,7 +12,7 @@ import {
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Garage — Julian",
+  title: "Garage",
 };
 
 const projects = [

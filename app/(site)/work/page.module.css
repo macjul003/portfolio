@@ -89,15 +89,12 @@
 
 .hoverPill {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) translateY(6px);
-  opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #c0502e;
+  background: #e5572c;
   color: #fff;
   border-radius: 100px;
   padding: 10px 20px;
@@ -108,11 +105,6 @@
   white-space: nowrap;
   pointer-events: none;
   z-index: 2;
-}
-
-.card:hover .hoverPill {
-  opacity: 1;
-  transform: translate(-50%, -50%) translateY(0);
 }
 
 /* Aspect ratio variants — cycled per card */

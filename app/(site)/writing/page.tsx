@@ -3,7 +3,7 @@ import { getAllWritingItems } from "@/lib/writing";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Writing — Julian",
+  title: "Writing",
 };
 
 function formatDate(dateStr: string): string {

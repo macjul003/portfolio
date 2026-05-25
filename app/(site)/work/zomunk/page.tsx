@@ -3,7 +3,7 @@ import s from "../symmetry/page.module.css";
 import p from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Zomunk — Julian",
+  title: "Zomunk",
   description: "Rethinking how people find cheap flights.",
 };
 
