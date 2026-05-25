@@ -77,7 +77,16 @@ function articleToCard(item: ArticleItem): CardItem {
   };
 }
 
-function WorkCard({ item }: { item: CardItem }) {
+const RATIOS = ["ratio169", "ratio34", "ratio43", "ratio11"] as const;
+
+function actionLabel(item: CardItem): string {
+  if (!item.external) return "View Case Study";
+  if (item.href.includes("figma")) return "View Prototype";
+  return "Visit Website";
+}
+
+function WorkCard({ item, index }: { item: CardItem; index: number }) {
+  const ratioClass = styles[RATIOS[index % RATIOS.length]];
   return (
     <a
       href={item.href}
@@ -85,27 +94,20 @@ function WorkCard({ item }: { item: CardItem }) {
       target={item.external ? "_blank" : undefined}
       rel={item.external ? "noopener noreferrer" : undefined}
     >
-      {item.thumbnail ? (
-        <img src={item.thumbnail} alt={item.title} className={styles.image} />
-      ) : (
-        <div className={styles.image} />
-      )}
-      <div className={styles.cardBody}>
-        <div className={styles.cardTop}>
-          <span className={styles.cardTitle}>{item.title}</span>
-          <i className="ph-bold ph-arrow-up-right" style={{ fontSize: 16 }} />
+      <div className={`${styles.imageWrap} ${ratioClass}`}>
+        {item.thumbnail ? (
+          <img src={item.thumbnail} alt={item.title} className={styles.image} />
+        ) : (
+          <div className={styles.image} />
+        )}
+        <div className={styles.hoverPill}>
+          <i className="ph-bold ph-eye" style={{ fontSize: 14 }} />
+          {actionLabel(item)}
         </div>
-        <p className={styles.cardMeta}>{item.meta}</p>
-        {item.description && (
-          <p className={styles.cardDesc}>{item.description}</p>
-        )}
-        {item.tags.length > 0 && (
-          <div className={styles.tags}>
-            {item.tags.map((t) => (
-              <span key={t} className={styles.tag}>{t}</span>
-            ))}
-          </div>
-        )}
+      </div>
+      <div className={styles.cardCaption}>
+        <span className={styles.captionLeft}>{item.description || item.title}</span>
+        <span className={styles.captionRight}>{item.title} · {item.meta}</span>
       </div>
     </a>
   );
@@ -128,7 +130,6 @@ export default function WorkClient({ articles }: { articles: ArticleItem[] }) {
     <div className={styles.page}>
       <header className={styles.header}>
         <h1 className={styles.name}>Work</h1>
-        <p className={styles.subtitle}>Selected projects, 2024–2026</p>
       </header>
 
       <div className={styles.filters}>
@@ -150,9 +151,9 @@ export default function WorkClient({ articles }: { articles: ArticleItem[] }) {
       </div>
 
       <ul className={styles.list}>
-        {filtered.map((item) => (
+        {filtered.map((item, i) => (
           <li key={item.href + item.title}>
-            <WorkCard item={item} />
+            <WorkCard item={item} index={i} />
           </li>
         ))}
         {filtered.length === 0 && (

@@ -305,6 +305,7 @@
 }
 
 .workStackedImageWrap {
+  position: relative;
   flex-shrink: 0;
   width: 112px;
   border-radius: 6px;
@@ -317,6 +318,39 @@
   background: var(--light-gray);
   object-fit: cover;
   display: block;
+  transition: filter 0.25s ease;
+}
+
+.workStackedCard:hover .workStackedImage {
+  filter: brightness(0.7);
+}
+
+.workHoverPill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(4px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #c0502e;
+  color: #fff;
+  border-radius: 100px;
+  padding: 6px 12px;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.workStackedCard:hover .workHoverPill {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
 }
 
 .workStackedMeta {

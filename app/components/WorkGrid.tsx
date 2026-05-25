@@ -11,6 +11,12 @@ type WorkItem = {
   external: boolean;
 };
 
+function actionLabel(item: WorkItem): string {
+  if (!item.external) return "View Case Study";
+  if (item.href.includes("figma")) return "View Prototype";
+  return "Visit Website";
+}
+
 export default function WorkGrid({ items }: { items: WorkItem[] }) {
   return (
     <div className={styles.workStackedList}>
@@ -28,6 +34,10 @@ export default function WorkGrid({ items }: { items: WorkItem[] }) {
             ) : (
               <div className={styles.workStackedImage} />
             )}
+            <div className={styles.workHoverPill}>
+              <i className="ph-bold ph-eye" style={{ fontSize: 10 }} />
+              {actionLabel(item)}
+            </div>
           </div>
           <div className={styles.workStackedMeta}>
             <p className={styles.workClient}>{item.client} · {item.date}</p>
