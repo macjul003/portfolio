@@ -3,7 +3,7 @@ title: "A menu bar pollution tracker"
 date: "2025-12-22"
 image: "https://framerusercontent.com/images/ugCXfNyYDeyGR76ZMteMv7wEA.png"
 subtitle: "A small macOS menu bar app to see air quality at a glance, without opening anything."
-draft: false
+draft: true
 tags: ["Indie App"]
 ---
 

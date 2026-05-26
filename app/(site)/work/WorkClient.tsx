@@ -13,6 +13,9 @@ type CardItem = {
   tags: string[];
   href: string;
   thumbnail: string;
+  video?: string;
+  label?: string;
+  aspectRatio?: string;
   external: boolean;
   date: string;
 };
@@ -39,6 +42,7 @@ const featured: CardItem[] = [
     href: "https://www.figma.com/deck/2ZNyRIV7ZO7H1bEti41Iwh",
     external: true,
     date: "2025-11-01",
+    aspectRatio: "3 / 2",
   },
   {
     title: "Redesigning Onboarding",
@@ -58,8 +62,10 @@ interface ArticleItem {
   title: string;
   date: string;
   image: string;
+  video?: string;
   subtitle: string;
   link?: string;
+  label?: string;
   tags: string[];
 }
 
@@ -78,6 +84,8 @@ function articleToCard(item: ArticleItem): CardItem {
     tags: item.tags,
     href,
     thumbnail: item.image,
+    video: item.video,
+    label: item.label,
     external: !!item.link || href.startsWith("http"),
     date: item.date,
   };
@@ -86,14 +94,21 @@ function articleToCard(item: ArticleItem): CardItem {
 const RATIOS = ["ratio169", "ratio34", "ratio43", "ratio11"] as const;
 
 function actionLabel(item: CardItem): string {
+  if (item.label) return item.label;
   if (!item.external) return "View Case Study";
   if (item.href.includes("figma")) return "View Prototype";
   return "Visit Website";
 }
 
+function actionIcon(item: CardItem): string {
+  const label = actionLabel(item);
+  if (label === "View Prototype") return "ph-arrow-up-right";
+  return "ph-eye";
+}
+
 
 function WorkCard({ item, index }: { item: CardItem; index: number }) {
-  const ratioClass = styles[RATIOS[index % RATIOS.length]];
+  const ratioClass = (item.video || item.aspectRatio) ? undefined : styles[RATIOS[index % RATIOS.length]];
   const [hovered, setHovered] = useState(false);
 
   const pillLeft = useMotionValue(0);
@@ -118,13 +133,22 @@ function WorkCard({ item, index }: { item: CardItem; index: number }) {
       rel={item.external ? "noopener noreferrer" : undefined}
     >
       <div
-        className={`${styles.imageWrap} ${ratioClass}`}
-        style={{ cursor: hovered ? "none" : undefined }}
+        className={`${styles.imageWrap} ${ratioClass ?? ""}`}
+        style={{ cursor: hovered ? "none" : undefined, aspectRatio: item.aspectRatio }}
         onMouseMove={trackMouse}
         onMouseEnter={handleEnter}
         onMouseLeave={() => setHovered(false)}
       >
-        {item.thumbnail ? (
+        {item.video ? (
+          <video
+            src={item.video}
+            className={styles.videoNative}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : item.thumbnail ? (
           <img src={item.thumbnail} alt={item.title} className={styles.image} />
         ) : (
           <div className={styles.image} />
@@ -139,7 +163,7 @@ function WorkCard({ item, index }: { item: CardItem; index: number }) {
             opacity: hovered ? 1 : 0,
           }}
         >
-          <i className="ph-bold ph-eye" style={{ fontSize: 14 }} />
+          <i className={`ph-bold ${actionIcon(item)}`} style={{ fontSize: 14 }} />
           {actionLabel(item)}
         </motion.div>
       </div>

@@ -9,8 +9,10 @@ export interface WorkItem {
   title: string;
   date: string;
   image: string;
+  video?: string;
   subtitle: string;
   link?: string;
+  label?: string;
   draft: boolean;
   tags: string[];
   content: string;
@@ -32,8 +34,10 @@ export function getAllWorkItems(): Omit<WorkItem, "content">[] {
         title: data.title as string,
         date: data.date as string,
         image: (data.image as string) || "",
+        video: (data.video as string) || undefined,
         subtitle: (data.subtitle as string) || "",
         link: (data.link as string) || undefined,
+        label: (data.label as string) || undefined,
         draft: data.draft === true,
         tags: (data.tags as string[]) || [],
       };
