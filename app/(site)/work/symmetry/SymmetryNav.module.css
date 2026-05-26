@@ -1,6 +1,6 @@
 .nav {
   position: fixed;
-  top: 57px;
+  top: 109px;
   left: calc(50% + 364px);
   display: flex;
   flex-direction: column;

@@ -11,6 +11,7 @@ const projects: Project[] = [
     tagline: 'Real-time AQI in your menu bar.',
     desc: 'A native macOS menu bar app that tracks live air quality for your location using Open-Meteo. The icon color shifts with the AQI — tap it for a detailed forecast chart.',
     iconSrc: '/app-icon/pollution-tracker.png',
+    image: '/pollution tracker thumbnail.png',
     tags: ['Swift', 'SwiftUI', 'macOS'],
     githubUrl: 'https://github.com/macjul003/PollutionTracker',
     downloadUrl: 'https://github.com/macjul003/PollutionTracker/releases/download/v1.0.1/PollutionTracker.zip',
@@ -32,6 +33,7 @@ const projects: Project[] = [
     tagline: 'Edit any page, copy diffs to Claude.',
     desc: 'A browser bookmarklet that makes any webpage editable. Tracks word-level changes as you type, then copies structured before/after diffs you can paste straight back to Claude.',
     iconSrc: '/app-icon/booklet.png',
+    video: '/Page Editor.mov',
     tags: ['JavaScript', 'Bookmarklet', 'Browser'],
     features: [
       { title: 'Instant edit mode', desc: 'One click enables contentEditable on the entire page — click any text and start typing.' },
@@ -45,7 +47,7 @@ const projects: Project[] = [
     desc: 'AI-powered short video generation for content creators. Describe your video, choose a style, and get a finished clip — no timeline editing required.',
     iconSrc: '/app-icon/video-generator.png',
     tags: ['Python', 'AI/ML', 'FFmpeg'],
-    githubUrl: '#',
+    upcoming: true,
   },
 ];
 
@@ -58,18 +60,21 @@ export default function BuiltStrip() {
         {projects.map((p) => (
           <motion.button
             key={p.name}
-            className={styles.card}
-            onClick={() => setActive(p)}
-            whileTap={{ scale: 0.975 }}
+            className={`${styles.card} ${p.upcoming ? styles.cardUpcoming : ''}`}
+            onClick={() => !p.upcoming && setActive(p)}
+            whileTap={p.upcoming ? undefined : { scale: 0.975 }}
             transition={{ type: 'spring', stiffness: 420, damping: 26 }}
           >
-            {p.iconSrc ? (
-              <img src={p.iconSrc} alt={p.name} className={styles.cardIconImg} />
-            ) : p.Icon ? (
-              <div className={styles.cardIcon} style={{ background: p.bg }}>
-                <p.Icon size={26} weight="duotone" color={p.iconColor} />
-              </div>
-            ) : null}
+            <div className={styles.cardHeader}>
+              {p.iconSrc ? (
+                <img src={p.iconSrc} alt={p.name} className={styles.cardIconImg} />
+              ) : p.Icon ? (
+                <div className={styles.cardIcon} style={{ background: p.bg }}>
+                  <p.Icon size={26} weight="duotone" color={p.iconColor} />
+                </div>
+              ) : null}
+              {p.upcoming && <span className={styles.upcomingBadge}>Upcoming</span>}
+            </div>
             <p className={styles.cardName}>{p.name}</p>
             <p className={styles.cardTagline}>{p.tagline}</p>
             <div className={styles.cardTags}>

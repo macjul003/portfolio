@@ -19,6 +19,8 @@ export type Project = {
   githubUrl?: string;
   downloadUrl?: string;
   image?: string;
+  video?: string;
+  upcoming?: boolean;
   features?: Array<{ title: string; desc: string }>;
   installGuide?: InstallGuide;
 };
@@ -122,7 +124,9 @@ export default function ProjectModal({ project, onClose }: Props) {
             </div>
 
             <div className={styles.imageWrap}>
-              {project.image ? (
+              {project.video ? (
+                <video src={project.video} className={styles.image} autoPlay loop muted playsInline />
+              ) : project.image ? (
                 <img src={project.image} alt={`${project.name} screenshot`} className={styles.image} />
               ) : (
                 <div className={styles.imagePlaceholder} />

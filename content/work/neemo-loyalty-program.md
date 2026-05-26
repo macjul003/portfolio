@@ -3,7 +3,7 @@ title: "Neemo Loyalty Program"
 date: "2024-12-06"
 image: "https://framerusercontent.com/images/gi6I4EOHTAfAoNtvHLKNuqYL4.png"
 subtitle: "Designing for retention"
-draft: false
+draft: true
 tags: ["Web3", "Brand Design"]
 ---
 

@@ -4,7 +4,7 @@ date: "2025-07-01"
 image: "https://framerusercontent.com/images/fa954PPFLEDz6YtrTiBNdraoXbM.png"
 subtitle: "Crafting a timeless identity for a research firm that turns market noise into clarity."
 link: "https://www.quartermasterlabs.com/"
-draft: false
+draft: true
 tags: ["Brand Design"]
 ---
 

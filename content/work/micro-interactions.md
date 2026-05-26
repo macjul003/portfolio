@@ -7,5 +7,5 @@ subtitle: "A collection of motion details that make interfaces feel alive"
 link: "https://micro-interactions-two.vercel.app/"
 label: "View Prototype"
 draft: false
-tags: ["Interaction Design", "Motion", "Product Design"]
+tags: ["Interaction Design", "Motion"]
 ---

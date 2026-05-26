@@ -4,6 +4,7 @@ date: "2025-08-15"
 image: "https://framerusercontent.com/images/xz35uXpiVMqnUSUM9eMjneYahCU.png"
 subtitle: "Designing an investment experience that guides the lost and empowers the confident"
 link: "https://tasteful-custard-ca7.notion.site/Ajaib-Product-Design-24da9300074580aabd57d9b832f3700d"
+label: "Read Case Study"
 aspectRatio: "1 / 1"
 draft: false
 tags: ["Product Design", "Fintech"]

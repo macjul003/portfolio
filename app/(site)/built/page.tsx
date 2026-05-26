@@ -17,6 +17,17 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    name: "Page Editor",
+    desc: "A visual page editor for crafting rich layouts without touching code.",
+    tags: ["React", "TypeScript"],
+    Icon: BookOpenText,
+    bg: "#0d0d0d",
+    glow: "#444",
+    iconColor: "#888",
+    video: "/Page Editor.mov",
+    href: "#",
+  },
+  {
     name: "Pollution Tracker",
     desc: "Real-time air quality dashboard with location-based AQI alerts and historical trend charts.",
     tags: ["React", "REST API", "Maps"],
@@ -24,6 +35,7 @@ const projects = [
     bg: "#0b1f10",
     glow: "#2d7a3e",
     iconColor: "#4caf6e",
+    image: "/pollution tracker thumbnail.png",
     href: "#",
   },
   {
@@ -100,8 +112,16 @@ export default function GaragePage() {
         {projects.map((p) => (
           <a key={p.name} href={p.href} className={styles.card}>
             <div className={styles.cardVisual} style={{ background: p.bg }}>
-              <p.Icon size={52} color={p.iconColor} weight="duotone" className={styles.cardIconSvg} />
-              <div className={styles.cardGlow} style={{ background: p.glow }} />
+              {p.video ? (
+                <video src={p.video} className={styles.cardImage} autoPlay loop muted playsInline />
+              ) : p.image ? (
+                <img src={p.image} alt={p.name} className={styles.cardImage} />
+              ) : (
+                <>
+                  <p.Icon size={52} color={p.iconColor} weight="duotone" className={styles.cardIconSvg} />
+                  <div className={styles.cardGlow} style={{ background: p.glow }} />
+                </>
+              )}
             </div>
             <div className={styles.cardBody}>
               <div className={styles.cardRow}>

@@ -40,6 +40,7 @@ const featured: CardItem[] = [
     tags: ["Product Design", "AI", "Fintech", "Interaction Design"],
     thumbnail: "/case-studies/ithaca/Ithaca-Thumbnail.png",
     href: "https://www.figma.com/deck/2ZNyRIV7ZO7H1bEti41Iwh",
+    label: "Read Case Study",
     external: true,
     date: "2025-11-01",
     aspectRatio: "3 / 2",
@@ -52,6 +53,7 @@ const featured: CardItem[] = [
     tags: ["Product Design", "Web3", "UX Research"],
     thumbnail: "/case-studies/claystack/app.png",
     href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
+    label: "Read Case Study",
     external: true,
     date: "2025-06-01",
     aspectRatio: "3 / 2",
@@ -96,13 +98,14 @@ function articleToCard(item: ArticleItem): CardItem {
 
 function actionLabel(item: CardItem): string {
   if (item.label) return item.label;
-  if (!item.external) return "View Case Study";
+  if (!item.external) return "Read Case Study";
   if (item.href.includes("figma")) return "View Prototype";
   return "Visit Website";
 }
 
 function actionIcon(item: CardItem): string {
   const label = actionLabel(item);
+  if (label === "Read Case Study") return "ph-book-open";
   if (label === "View Prototype") return "ph-arrow-up-right";
   return "ph-eye";
 }
