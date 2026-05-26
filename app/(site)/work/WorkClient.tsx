@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, useMotionValue } from "motion/react";
 import styles from "./page.module.css";
 
-const FILTER_TAGS = ["Web3", "AI", "Brand Design", "Product Design", "Fintech", "Indie App"];
+const FILTER_TAGS = ["Web3", "AI", "Brand Design", "Product Design", "Fintech"];
 
 type CardItem = {
   title: string;
