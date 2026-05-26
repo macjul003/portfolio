@@ -13,6 +13,7 @@ export interface WorkItem {
   subtitle: string;
   link?: string;
   label?: string;
+  aspectRatio?: string;
   draft: boolean;
   tags: string[];
   content: string;
@@ -38,6 +39,7 @@ export function getAllWorkItems(): Omit<WorkItem, "content">[] {
         subtitle: (data.subtitle as string) || "",
         link: (data.link as string) || undefined,
         label: (data.label as string) || undefined,
+        aspectRatio: (data.aspectRatio as string) || undefined,
         draft: data.draft === true,
         tags: (data.tags as string[]) || [],
       };

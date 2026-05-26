@@ -1,5 +1,5 @@
 ---
-title: "Embracing the Tangible: My Dive into Product Design"
+title: "Embracing the Tangible: My Dive into Package Design"
 date: "2024-03-20"
 image: "https://framerusercontent.com/images/NDRDK1kYsCVyvxLYfoLebflAE.png"
 subtitle: ""

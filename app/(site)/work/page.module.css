@@ -2,7 +2,7 @@
   max-width: 1800px;
   margin: 0 auto;
   padding-top: 56px;
-  padding-bottom: 160px;
+  padding-bottom: 184px;
 }
 
 .header {
@@ -60,25 +60,26 @@
   border-color: var(--text);
 }
 
-/* ── Masonry list ── */
+/* ── Grid list ── */
 
 .list {
   list-style: none;
-  columns: 2;
-  column-gap: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
   padding: 0 40px;
 }
 
 .list > li {
-  break-inside: avoid;
-  margin-bottom: 28px;
-  display: block;
+  display: flex;
 }
 
 /* ── Card ── */
 
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   text-decoration: none;
   color: inherit;
 }
@@ -87,6 +88,8 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  flex: 1;
+  min-height: 240px;
   background: var(--light-gray);
 }
 
@@ -110,11 +113,7 @@
   z-index: 2;
 }
 
-/* Aspect ratio variants — cycled per card */
-.ratio169 { aspect-ratio: 16 / 9; }
-.ratio43  { aspect-ratio: 4 / 3; }
-.ratio34  { aspect-ratio: 3 / 4; }
-.ratio11  { aspect-ratio: 1 / 1; }
+/* Unused — aspect ratios removed in favour of flex:1 fill */
 
 .image {
   width: 100%;
@@ -124,7 +123,15 @@
   transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-.card:hover .image {
+.videoNative {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.card:hover .image,
+.card:hover .videoNative {
   transform: scale(1.025);
   filter: brightness(0.82);
 }
@@ -169,22 +176,20 @@
 /* ── Responsive ── */
 
 @media (max-width: 1024px) {
-  .list       { column-gap: 20px; }
-  .list > li  { margin-bottom: 20px; }
+  .list { gap: 20px; }
 }
 
 @media (max-width: 768px) {
-  .page       { padding-top: 56px; padding-bottom: 100px; }
-  .header     { padding: 0 24px; }
-  .filters    { padding: 0 24px; margin-bottom: 40px; }
-  .list       { column-gap: 12px; padding: 0 24px; }
-  .list > li  { margin-bottom: 12px; }
+  .page        { padding-top: 56px; padding-bottom: 100px; }
+  .header      { padding: 0 24px; }
+  .filters     { padding: 0 24px; margin-bottom: 40px; }
+  .list        { gap: 12px; padding: 0 24px; }
   .cardCaption { padding: 10px 0 16px; }
 }
 
 @media (max-width: 640px) {
-  .name         { font-size: 1.75rem; }
-  .list         { columns: 1; }
-  .ratio34      { aspect-ratio: 4 / 3; }
-  .cardCaption  { padding: 10px 0 20px; }
+  .name        { font-size: 1.75rem; }
+  .list        { grid-template-columns: 1fr; }
+  .ratio34     { aspect-ratio: 4 / 3; }
+  .cardCaption { padding: 10px 0 20px; }
 }

@@ -46,7 +46,7 @@
   font-size: 1.125rem;
   line-height: 1.8;
   color: var(--text);
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 14px;
 }
 
@@ -57,7 +57,7 @@
 .bio a {
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(255, 255, 255, 0.25);
+  text-decoration-color: color-mix(in srgb, var(--text) 25%, transparent);
   transition: text-decoration-color 0.15s;
 }
 

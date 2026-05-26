@@ -61,7 +61,8 @@ export default async function WorkItemPage({
       />
 
       <a href="/work" className={styles.back}>
-        &larr; Work
+        <i className="ph-bold ph-arrow-left" style={{ fontSize: 13 }} />
+        Work
       </a>
     </div>
   );

@@ -34,7 +34,7 @@ const featured: CardItem[] = [
   },
   {
     title: "Options Trading, Simplified",
-    meta: "Tria · 2025",
+    meta: "Ithaca · 2025",
     description:
       "Redesigned the options trading flow for retail investors, simplifying complex financial decisions into a clear step-by-step interface with real-time risk visualization.",
     tags: ["Product Design", "AI", "Fintech", "Interaction Design"],
@@ -45,8 +45,8 @@ const featured: CardItem[] = [
     aspectRatio: "3 / 2",
   },
   {
-    title: "Redesigning Onboarding",
-    meta: "Claystack · 2025",
+    title: "Designing a Better Investing Experience",
+    meta: "Claystack · 2023",
     description:
       "Overhauled the user onboarding experience for a liquid staking protocol, reducing drop-off by reframing complex DeFi concepts through progressive disclosure.",
     tags: ["Product Design", "Web3", "UX Research"],
@@ -54,6 +54,7 @@ const featured: CardItem[] = [
     href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
     external: true,
     date: "2025-06-01",
+    aspectRatio: "3 / 2",
   },
 ];
 
@@ -66,6 +67,7 @@ interface ArticleItem {
   subtitle: string;
   link?: string;
   label?: string;
+  aspectRatio?: string;
   tags: string[];
 }
 
@@ -86,12 +88,11 @@ function articleToCard(item: ArticleItem): CardItem {
     thumbnail: item.image,
     video: item.video,
     label: item.label,
+    aspectRatio: item.aspectRatio,
     external: !!item.link || href.startsWith("http"),
     date: item.date,
   };
 }
-
-const RATIOS = ["ratio169", "ratio34", "ratio43", "ratio11"] as const;
 
 function actionLabel(item: CardItem): string {
   if (item.label) return item.label;
@@ -107,8 +108,7 @@ function actionIcon(item: CardItem): string {
 }
 
 
-function WorkCard({ item, index }: { item: CardItem; index: number }) {
-  const ratioClass = (item.video || item.aspectRatio) ? undefined : styles[RATIOS[index % RATIOS.length]];
+function WorkCard({ item }: { item: CardItem; index: number }) {
   const [hovered, setHovered] = useState(false);
 
   const pillLeft = useMotionValue(0);
@@ -133,8 +133,8 @@ function WorkCard({ item, index }: { item: CardItem; index: number }) {
       rel={item.external ? "noopener noreferrer" : undefined}
     >
       <div
-        className={`${styles.imageWrap} ${ratioClass ?? ""}`}
-        style={{ cursor: hovered ? "none" : undefined, aspectRatio: item.aspectRatio }}
+        className={styles.imageWrap}
+        style={{ cursor: hovered ? "none" : undefined }}
         onMouseMove={trackMouse}
         onMouseEnter={handleEnter}
         onMouseLeave={() => setHovered(false)}

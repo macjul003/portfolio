@@ -3,6 +3,7 @@ title: "Designing Calm for Care"
 date: "2025-08-04"
 image: "https://framerusercontent.com/images/5eNmkTckdLTkVYwZCs0Qnj1UwI.png"
 subtitle: "A clear, human website for an occupational therapy practice in Australia."
+aspectRatio: "21 / 9"
 draft: false
 tags: ["Brand Design"]
 ---
