@@ -42,6 +42,19 @@ const projects: Project[] = [
     ],
   },
   {
+    name: 'Hangar',
+    tagline: 'Generate aircraft renders with real livery.',
+    desc: 'An AI image generator purpose-built for aviation. Describe an aircraft and airline livery and get photorealistic renders back — built for Zomunk.',
+    iconSrc: '/app-icon/hangar.png',
+    image: '/hangar.png',
+    tags: ['AI/ML', 'Image Gen', 'Aviation'],
+    githubUrl: 'https://github.com/macjul003/Zomunk-image-gen',
+    features: [
+      { title: 'Livery-aware generation', desc: 'Understands airline liveries and aircraft types — not just generic planes.' },
+      { title: 'Built for Zomunk', desc: 'Purpose-built tool for the Zomunk aviation community to generate and share aircraft art.' },
+    ],
+  },
+  {
     name: 'Zo Video Generator',
     tagline: 'Prompt in, polished clip out.',
     desc: 'AI-powered short video generation for content creators. Describe your video, choose a style, and get a finished clip — no timeline editing required.',

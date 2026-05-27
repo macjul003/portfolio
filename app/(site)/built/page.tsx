@@ -39,6 +39,17 @@ const projects = [
     href: "#",
   },
   {
+    name: "Hangar",
+    desc: "AI aircraft image generator with real airline livery support. Built for the Zomunk aviation community — describe a plane and livery, get a photorealistic render back.",
+    tags: ["AI/ML", "Image Gen", "Aviation"],
+    Icon: FilmSlate,
+    bg: "#0b1520",
+    glow: "#2a5fa8",
+    iconColor: "#4a8fd4",
+    image: "/hangar.png",
+    href: "#",
+  },
+  {
     name: "Zo Video Generator",
     desc: "AI-powered short video generation — prompt in, polished clip out. Built for content creators.",
     tags: ["Python", "AI/ML", "FFmpeg"],

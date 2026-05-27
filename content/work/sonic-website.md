@@ -3,7 +3,7 @@ title: "Sonic: Website Design"
 date: "2023-06-10"
 image: "https://framerusercontent.com/images/EZ7PoEvLswqWcLySWKByjwVk2k.png"
 subtitle: "Designing a brand that moves with purpose: fluid, fast, and unmistakably Sonic."
-link: "https://www.figma.com/proto/mNge2aLasFG7CHykwHu16v/Portfolio?page-id=0%3A1&node-id=1-172&viewport=1089%2C501%2C0.53&t=ErZ1s2HW6z7zWLu6-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A172"
+link: "https://www.figma.com/proto/WFhqUeq1jgAwJYXe8rDaj5/Untitled?node-id=1-663&viewport=263%2C294%2C0.17&t=ITvjlJvzB3nQDIp3-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A663&show-proto-sidebar=1&page-id=0%3A1"
 draft: false
 tags: ["Brand Design"]
 ---

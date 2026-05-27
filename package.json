@@ -10,8 +10,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.65",
+    "@ai-sdk/react": "^3.0.193",
     "@phosphor-icons/react": "^2.1.10",
+    "@upstash/redis": "^1.38.0",
     "agentation": "^2.2.1",
+    "ai": "^6.0.191",
     "exifreader": "^4.36.2",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",

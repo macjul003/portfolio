@@ -326,26 +326,6 @@
   filter: brightness(0.7);
 }
 
-.workHoverPill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #e5572c;
-  color: #fff;
-  border-radius: 100px;
-  padding: 6px 12px;
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 2;
-}
-
 .workStackedMeta {
   flex: 1;
   min-width: 0;
