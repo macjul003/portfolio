@@ -11,7 +11,6 @@ import { useFirstVisit } from './FirstVisitProvider';
 const nav = [
   { href: '/',        label: 'Home'    },
   { href: '/work',    label: 'Work'    },
-  { href: '/writing', label: 'Writing' },
   { href: '/about',   label: 'About'   },
 ];
 
@@ -34,17 +33,18 @@ export default function Sidebar() {
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
-    if (stored === 'light' || stored === 'dark') setTheme(stored);
-    else if (window.matchMedia('(prefers-color-scheme: light)').matches) setTheme('light');
+    if (stored === 'light') setTheme('light');
   }, []);
 
   function handleThemeToggle() {
     const next = theme === 'dark' ? 'light' : 'dark';
+
     const apply = () => {
       setTheme(next);
       document.documentElement.classList.toggle('light', next === 'light');
       localStorage.setItem('theme', next);
     };
+
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!document.startViewTransition || reduced) { apply(); return; }
 
@@ -93,7 +93,6 @@ export default function Sidebar() {
         >
           {theme === 'dark' ? <Sun size={20} weight="bold" /> : <Moon size={20} weight="bold" />}
         </button>
-        {/* Ask panel trigger */}
         <button
           className={`nav-icon ask-trigger${open ? ' ask-trigger--open' : ''}`}
           onClick={() => setOpen(!open)}

@@ -11,6 +11,8 @@ export type Project = {
   name: string;
   tagline: string;
   desc: string;
+  why?: string;
+  stats?: Array<{ label: string; value: string }>;
   Icon?: PhosphorIcon;
   iconSrc?: string;
   bg?: string;
@@ -133,14 +135,24 @@ export default function ProjectModal({ project, onClose }: Props) {
               )}
             </div>
 
-            {project.features && project.features.length > 0 && (
-              <div className={styles.features}>
-                {project.features.map((f) => (
-                  <div key={f.title} className={styles.feature}>
-                    <strong className={styles.featureTitle}>{f.title}</strong>
-                    <span className={styles.featureDesc}>{f.desc}</span>
+            {(project.why || project.stats) && (
+              <div className={styles.details}>
+                {project.why && (
+                  <div className={styles.why}>
+                    <span className={styles.whyLabel}>Why I built it</span>
+                    <p className={styles.whyText}>{project.why}</p>
                   </div>
-                ))}
+                )}
+                {project.stats && project.stats.length > 0 && (
+                  <div className={styles.stats}>
+                    {project.stats.map((s) => (
+                      <div key={s.label} className={styles.stat}>
+                        <span className={styles.statValue}>{s.value}</span>
+                        <span className={styles.statLabel}>{s.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </motion.div>

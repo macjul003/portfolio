@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import {
   CloudFog,
-  FilmSlate,
   Gauge,
   ChartBar,
   Storefront,
   BookOpenText,
-  MapPin,
   ArrowUpRight,
+  Airplane,
 } from "@phosphor-icons/react/dist/ssr";
 import styles from "./page.module.css";
 
@@ -18,7 +17,7 @@ export const metadata: Metadata = {
 const projects = [
   {
     name: "Page Editor",
-    desc: "A visual page editor for crafting rich layouts without touching code.",
+    desc: "A browser bookmarklet that makes any webpage editable. Tracks word-level diffs and exports structured ORIGINAL/EDITED pairs.",
     tags: ["React", "TypeScript"],
     Icon: BookOpenText,
     bg: "#0d0d0d",
@@ -29,8 +28,8 @@ const projects = [
   },
   {
     name: "Pollution Tracker",
-    desc: "Real-time air quality dashboard with location-based AQI alerts and historical trend charts.",
-    tags: ["React", "REST API", "Maps"],
+    desc: "Native macOS menu bar app showing real-time AQI via a colour-coded icon. No dashboard, no noise.",
+    tags: ["SwiftUI", "REST API", "macOS"],
     Icon: CloudFog,
     bg: "#0b1f10",
     glow: "#2d7a3e",
@@ -40,9 +39,9 @@ const projects = [
   },
   {
     name: "Hangar",
-    desc: "AI aircraft image generator with real airline livery support. Built for the Zomunk aviation community — describe a plane and livery, get a photorealistic render back.",
+    desc: "AI aircraft image generator with real airline livery support. Describe a plane and livery, get a photorealistic render back.",
     tags: ["AI/ML", "Image Gen", "Aviation"],
-    Icon: FilmSlate,
+    Icon: Airplane,
     bg: "#0b1520",
     glow: "#2a5fa8",
     iconColor: "#4a8fd4",
@@ -50,18 +49,8 @@ const projects = [
     href: "#",
   },
   {
-    name: "Zo Video Generator",
-    desc: "AI-powered short video generation — prompt in, polished clip out. Built for content creators.",
-    tags: ["Python", "AI/ML", "FFmpeg"],
-    Icon: FilmSlate,
-    bg: "#130b22",
-    glow: "#6d3fd4",
-    iconColor: "#9b6fea",
-    href: "#",
-  },
-  {
     name: "Car Game",
-    desc: "Browser-based top-down racing game with procedurally generated tracks and physics engine.",
+    desc: "Browser-based top-down racing game with procedurally generated tracks and a custom physics engine.",
     tags: ["JavaScript", "Canvas API", "Physics"],
     Icon: Gauge,
     bg: "#1f0b0b",
@@ -81,7 +70,7 @@ const projects = [
   },
   {
     name: "DayTasks",
-    desc: "A native macOS app for building daily habits with a minimal menu-bar interface. Tracks streaks, sends gentle reminders, and stays out of your way.",
+    desc: "A native macOS menu bar app for daily habits. Tracks streaks, sends gentle nudges, stays out of your way.",
     tags: ["macOS", "Swift", "SwiftUI"],
     Icon: Storefront,
     bg: "#1a1508",
@@ -91,23 +80,13 @@ const projects = [
   },
   {
     name: "Booklet",
-    desc: "Write your resume in plain Markdown, export a pixel-perfect PDF. No drag-and-drop editors, no proprietary formats.",
+    desc: "Write your resume in plain Markdown, export a pixel-perfect PDF. No proprietary formats, no lock-in.",
     tags: ["Node.js", "Markdown", "PDF"],
     Icon: BookOpenText,
     bg: "#0d0d1a",
     glow: "#3a5fd4",
     iconColor: "#5b7fe8",
     href: "#",
-  },
-  {
-    name: "Photos",
-    desc: "A map of geotagged photos from my travels. Click any cluster to explore shots from that location.",
-    tags: ["Next.js", "Mapbox", "EXIF"],
-    Icon: MapPin,
-    bg: "#0a1a14",
-    glow: "#2a8a5e",
-    iconColor: "#4ec494",
-    href: "/photos",
   },
 ];
 

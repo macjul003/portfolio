@@ -1,0 +1,128 @@
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 64px 48px 120px;
+}
+
+/* ── Page header ── */
+
+.pageHeader {
+  margin-bottom: 64px;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.subheading {
+  font-size: 0.9375rem;
+  color: var(--gray);
+  font-weight: 300;
+}
+
+/* ── Feed ── */
+
+.feed {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Entry (one day) ── */
+
+.entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 48px;
+  padding: 40px 0;
+  border-top: 1px solid var(--light-gray);
+  align-items: start;
+}
+
+.entry:last-child {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+/* ── Left: sticky date ── */
+
+.entrySidebar {
+  position: sticky;
+  top: 68px;
+  align-self: start;
+}
+
+.entryDate {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.entryAgo {
+  font-size: 0.8125rem;
+  color: var(--gray);
+  font-weight: 300;
+  margin-top: 4px;
+}
+
+/* ── Right: updates ── */
+
+.entryContent {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Individual update ── */
+
+.update {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.updateTitle {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.updateBody {
+  font-size: 0.9rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 700px) {
+  .page {
+    padding: 48px 24px 80px;
+  }
+
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 32px 0;
+  }
+
+  .entrySidebar {
+    position: static;
+  }
+
+  .entryDate {
+    font-size: 0.8125rem;
+    color: var(--gray);
+    font-weight: 400;
+  }
+
+  .entryAgo {
+    display: none;
+  }
+}

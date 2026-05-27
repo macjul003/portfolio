@@ -16,6 +16,13 @@
   --surface: #111111;
 }
 
+/* ── View transitions ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 html.light {
   --bg: #f5f0eb;
   --text: #1a1a1a;
@@ -25,13 +32,6 @@ html.light {
   --surface-hover: #e5e0db;
   --text-muted: #2c2c2c;
   --surface: #ede8e3;
-}
-
-/* ── View transitions ── */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
 }
 
 html {

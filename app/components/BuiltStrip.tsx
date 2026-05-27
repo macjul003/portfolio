@@ -7,9 +7,28 @@ import styles from './BuiltStrip.module.css';
 
 const projects: Project[] = [
   {
+    name: 'Hangar',
+    tagline: 'Generate aircraft renders with real livery.',
+    desc: 'An AI image generator purpose-built for aviation. Describe an aircraft and airline livery and get photorealistic renders back — built for Zomunk.',
+    why: 'Building the Zomunk app meant sourcing a lot of aviation assets: livery renders, aircraft shots, specific configurations. Creating one manually took 2 to 3 hours; buying stock was $12 a piece and still never quite right. I trained an AI agent to generate exactly what we needed, on demand. The longer-term scope is to have it run directly inside the app, triggered whenever an asset is required.',
+    stats: [
+      { label: 'Hours saved', value: '12,500+' },
+      { label: 'Cost saved', value: '$60K+' },
+    ],
+    iconSrc: '/app-icon/hangar.png',
+    image: '/hangar.png',
+    tags: ['AI/ML', 'Image Gen', 'Aviation'],
+    githubUrl: 'https://github.com/macjul003/Zomunk-image-gen',
+    features: [
+      { title: 'Livery-aware generation', desc: 'Understands airline liveries and aircraft types — not just generic planes.' },
+      { title: 'Built for Zomunk', desc: 'Purpose-built tool for the Zomunk aviation community to generate and share aircraft art.' },
+    ],
+  },
+  {
     name: 'Pollution Tracker',
     tagline: 'Real-time AQI in your menu bar.',
     desc: 'A native macOS menu bar app that tracks live air quality for your location using Open-Meteo. The icon color shifts with the AQI — tap it for a detailed forecast chart.',
+    why: 'I live in a city where air quality swings unpredictably. I wanted to know at a glance whether to open the windows or go for a run — not hunt through a weather app for it.',
     iconSrc: '/app-icon/pollution-tracker.png',
     image: '/pollution tracker thumbnail.png',
     tags: ['Swift', 'SwiftUI', 'macOS'],
@@ -32,6 +51,7 @@ const projects: Project[] = [
     name: 'Page Editor',
     tagline: 'Edit any page, copy diffs to Claude.',
     desc: 'A browser bookmarklet that makes any webpage editable. Tracks word-level changes as you type, then copies structured before/after diffs you can paste straight back to Claude.',
+    why: 'I was constantly copying web content into Claude for editing but kept losing the formatting context. This lets me edit in place and export a clean diff — no copy-paste gymnastics.',
     iconSrc: '/app-icon/booklet.png',
     video: '/Page Editor.mov',
     tags: ['JavaScript', 'Bookmarklet', 'Browser'],
@@ -40,27 +60,6 @@ const projects: Project[] = [
       { title: 'Word-level diffs', desc: 'Review panel highlights deleted words (strikethrough) and added words (green) before you copy.' },
       { title: 'Claude-ready output', desc: 'Copies changes as structured ORIGINAL / EDITED pairs — paste directly into Claude to apply them.' },
     ],
-  },
-  {
-    name: 'Hangar',
-    tagline: 'Generate aircraft renders with real livery.',
-    desc: 'An AI image generator purpose-built for aviation. Describe an aircraft and airline livery and get photorealistic renders back — built for Zomunk.',
-    iconSrc: '/app-icon/hangar.png',
-    image: '/hangar.png',
-    tags: ['AI/ML', 'Image Gen', 'Aviation'],
-    githubUrl: 'https://github.com/macjul003/Zomunk-image-gen',
-    features: [
-      { title: 'Livery-aware generation', desc: 'Understands airline liveries and aircraft types — not just generic planes.' },
-      { title: 'Built for Zomunk', desc: 'Purpose-built tool for the Zomunk aviation community to generate and share aircraft art.' },
-    ],
-  },
-  {
-    name: 'Zo Video Generator',
-    tagline: 'Prompt in, polished clip out.',
-    desc: 'AI-powered short video generation for content creators. Describe your video, choose a style, and get a finished clip — no timeline editing required.',
-    iconSrc: '/app-icon/video-generator.png',
-    tags: ['Python', 'AI/ML', 'FFmpeg'],
-    upcoming: true,
   },
 ];
 
