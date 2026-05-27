@@ -3,8 +3,8 @@
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
-import { Sun, Moon } from '@phosphor-icons/react';
-import { motion, useAnimation } from 'motion/react';
+import { Sun, Moon, X } from '@phosphor-icons/react';
+import { motion, useAnimation, AnimatePresence } from 'motion/react';
 import { useAskPanel } from './AskPanelContext';
 import { useFirstVisit } from './FirstVisitProvider';
 
@@ -14,10 +14,12 @@ const nav = [
   { href: '/about',   label: 'About'   },
 ];
 
+
 export default function Sidebar() {
   const pathname = usePathname();
   const { open, setOpen } = useAskPanel();
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [nudgeDismissed, setNudgeDismissed] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const isFirst = useFirstVisit();
   const navControls = useAnimation();
@@ -38,21 +40,17 @@ export default function Sidebar() {
 
   function handleThemeToggle() {
     const next = theme === 'dark' ? 'light' : 'dark';
-
     const apply = () => {
       setTheme(next);
       document.documentElement.classList.toggle('light', next === 'light');
       localStorage.setItem('theme', next);
     };
-
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!document.startViewTransition || reduced) { apply(); return; }
-
     const rect = toggleRef.current?.getBoundingClientRect();
     const x = rect ? rect.left + rect.width / 2 : window.innerWidth / 2;
     const y = rect ? rect.top + rect.height / 2 : window.innerHeight / 2;
     const maxR = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-
     document.startViewTransition(() => { flushSync(apply); }).ready.then(() => {
       document.documentElement.animate(
         { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${maxR}px at ${x}px ${y}px)`] },
@@ -65,6 +63,8 @@ export default function Sidebar() {
     if (href === '/') return pathname === '/';
     return pathname === href || pathname.startsWith(href + '/');
   }
+
+  const showNudge = isFirst && !open && !nudgeDismissed;
 
   return (
     <motion.nav
@@ -93,14 +93,45 @@ export default function Sidebar() {
         >
           {theme === 'dark' ? <Sun size={20} weight="bold" /> : <Moon size={20} weight="bold" />}
         </button>
-        <button
-          className={`nav-icon ask-trigger${open ? ' ask-trigger--open' : ''}`}
-          onClick={() => setOpen(!open)}
-          aria-label="Ask JulianLM"
-          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-        >
-          <i className="ph-fill ph-star-four ask-star" style={{ fontSize: 20 }} />
-        </button>
+
+        <div className="ask-wrap">
+          <AnimatePresence>
+            {showNudge && (
+              <motion.div
+                className="ask-nudge"
+                initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -6, scale: 0.95 }}
+                transition={{ delay: 1.2, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <button
+                  className="ask-nudge-close"
+                  onClick={() => setNudgeDismissed(true)}
+                  aria-label="Dismiss"
+                >
+                  <X size={12} weight="bold" />
+                </button>
+                <p className="ask-nudge-title">Ask JulianLM</p>
+                <p className="ask-nudge-body">Ask me anything about Julian&apos;s work, skills, or availability.</p>
+                <button
+                  className="ask-nudge-cta"
+                  onClick={() => { setOpen(true); setNudgeDismissed(true); }}
+                >
+                  Try it out
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <button
+            className={`nav-icon ask-trigger${open ? ' ask-trigger--open' : ''}`}
+            onClick={() => { setOpen(!open); setNudgeDismissed(true); }}
+            aria-label="Ask JulianLM"
+            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+          >
+            <img src="/ai-icon.svg" width={20} height={20} alt="" className="ask-star" />
+          </button>
+        </div>
       </div>
     </motion.nav>
   );

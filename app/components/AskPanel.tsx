@@ -119,7 +119,7 @@ export default function AskPanel() {
               <span className={styles.brand}>JULIANLM</span>
               <div
                 className={styles.infoWrap}
-                data-tooltip="JulianLM is an AI chatbot. May contain hallucinations."
+                data-tooltip="JulianLM is an AI chatbot. May contain hallucinations. Responses are logged for research and development purposes."
               >
                 <button className={styles.iconBtn} aria-label="Info">
                   <Info size={15} weight="regular" />

@@ -13,8 +13,8 @@ export function FirstVisitProvider({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
     const key = '__pf_v1';
-    if (!sessionStorage.getItem(key)) {
-      sessionStorage.setItem(key, '1');
+    if (!localStorage.getItem(key)) {
+      localStorage.setItem(key, '1');
       setIsFirst(true);
     }
   }, []);
