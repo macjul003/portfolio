@@ -12,6 +12,7 @@
     "@ai-sdk/react": "^3.0.193",
     "@phosphor-icons/react": "^2.1.10",
     "@upstash/redis": "^1.38.0",
+    "@vercel/analytics": "^2.0.1",
     "agentation": "^2.2.1",
     "ai": "^6.0.191",
     "gray-matter": "^4.0.3",
