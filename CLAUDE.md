@@ -8,7 +8,7 @@ Personal portfolio for Julian (macjulian.com) — dark-themed, sidebar-nav layou
 
 ## Architecture
 
-Next.js 15 App Router, TypeScript, CSS Modules. Static export (`output: 'export'`) deployed to GitHub Pages. Custom domain via `public/CNAME`.
+Next.js 15 App Router, TypeScript, CSS Modules. Deployed to Vercel (project: `dist`). Custom domain: macjulian.com.
 
 **Key files:**
 - `app/layout.tsx` — Root layout: Google Fonts, Phosphor icon CDN, sidebar + AskPanel wrappers
@@ -37,7 +37,8 @@ Next.js 15 App Router, TypeScript, CSS Modules. Static export (`output: 'export'
 ## Commands
 
 - `npm run dev` — Start dev server
-- `npm run build` — Static export to `out/` (runs generate-photos.ts first)
+- `npm run build` — Production build (runs generate-photos.ts first)
+- `npm start` — Run production build locally
 
 ## Design Tokens (CSS custom properties in `:root`)
 

@@ -60,10 +60,14 @@ export default function Home() {
 
         <div className={styles.bio}>
           <p>
-            Product Designer building AI-native systems that turn complexity into
-            clear, actionable workflows. Over 5 years designing across AI, fintech,
-            and travel, from distributed financial systems to agent-driven products,
-            with a focus on trust, clarity, and high-stakes decision making.
+            I design products that turn complex technology into experiences that just work.
+            Across AI, fintech, crypto, and travel, I build intuitive systems that bring clarity
+            to users and power to teams.
+          </p>
+          <p>
+            I ship fast with early-stage startups, align engineers and founders, and own the full
+            journey — from big-picture thinking to the smallest interaction. Good design, for me,
+            is about speed, leverage, and making hard things feel effortless.
           </p>
           <p>
             Find me on{" "}
@@ -115,6 +119,7 @@ export default function Home() {
             <a href="mailto:juliansam003@gmail.com">Email</a>
             <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>
             <a href="https://github.com/macjul003" target="_blank" rel="noopener">GitHub</a>
+            <a href="/now">Now</a>
           </div>
           <span>© 2026</span>
         </footer>
