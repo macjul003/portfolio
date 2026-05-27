@@ -1,4 +1,6 @@
-import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
 export type Commit = {
   hash: string;
@@ -17,32 +19,38 @@ function formatDate(dateStr: string): string {
   return `${months[month - 1]} ${day}, ${year}`;
 }
 
+function parseUpdates(content: string): Commit[] {
+  const sections = content.split(/^## /m).filter(Boolean);
+  return sections
+    .map((section) => {
+      const newline = section.indexOf('\n');
+      const title = section.slice(0, newline).trim();
+      const body = section.slice(newline + 1).trim();
+      return { hash: title.toLowerCase().replace(/\s+/g, '-'), title, body };
+    })
+    .filter((c) => c.title.length > 0);
+}
+
 export function getChangelog(): DayLog[] {
-  try {
-    // \x1e = record separator, \x1f = unit separator — safe delimiters for git output
-    const raw = execSync(
-      'git log --no-merges --pretty=format:"%x1e%ad%x1f%s%x1f%h%x1f%b" --date=short',
-      { cwd: process.cwd() }
-    ).toString();
+  const dir = path.join(process.cwd(), 'content/now');
 
-    const byDate: Record<string, Commit[]> = {};
+  if (!fs.existsSync(dir)) return [];
 
-    for (const record of raw.split('\x1e').filter(Boolean)) {
-      const [date, title, hash, ...rest] = record.split('\x1f');
-      const body = rest
-        .join('')
-        .replace(/Co-Authored-By:.*$/gm, '')
-        .trim();
-
-      if (!date || !title) continue;
-      if (!byDate[date]) byDate[date] = [];
-      byDate[date].push({ hash: hash.trim(), title: title.trim(), body });
-    }
-
-    return Object.entries(byDate)
-      .sort(([a], [b]) => b.localeCompare(a))
-      .map(([date, commits]) => ({ date: formatDate(date), commits }));
-  } catch {
-    return [];
-  }
+  return fs.readdirSync(dir)
+    .filter((f) => f.endsWith('.md'))
+    .sort((a, b) => b.localeCompare(a))
+    .map((file) => {
+      const raw = fs.readFileSync(path.join(dir, file), 'utf8');
+      const { data, content } = matter(raw);
+      const rawDate = data.date;
+      const dateStr = rawDate instanceof Date
+        ? rawDate.toISOString().slice(0, 10)
+        : rawDate
+          ? String(rawDate).slice(0, 10)
+          : file.replace('.md', '');
+      return {
+        date: formatDate(dateStr),
+        commits: parseUpdates(content),
+      };
+    });
 }
