@@ -1,0 +1,27 @@
+# macjulian.com
+
+Julian is a product designer and builder based in London, working at the intersection of AI, fintech, and consumer software. He designs products that turn complex technology into experiences that just work — shipping fast with early-stage startups and owning the full journey from strategy to interaction.
+
+## Pages
+
+- / — Home: bio, selected case studies, indie apps, and recent activity
+- /about — Background, design philosophy, and personal interests
+- /work — Full portfolio of case studies (AI tools, fintech, crypto, travel)
+- /built — Side projects and indie apps built and shipped independently
+- /journal — Writing on product design, AI, and building software
+- /now — A daily log of what Julian is currently working on
+- /writing — Essays and longer-form writing on design and technology
+- /motion-lab — Experiments in motion design and interactive UI
+
+## Selected Work
+
+- Ithaca Protocol — Designing trust in an AI-powered options trading system
+- Claystack — Designing the Ethereum liquid staking UX
+- Symmetry AI — Improving AI responses by bringing user context into every chat
+
+## Contact
+
+Email: juliansam003@gmail.com
+X (Twitter): https://x.com/macjuliansamuel
+LinkedIn: https://www.linkedin.com/in/juliansamuel003/
+GitHub: https://github.com/macjul003

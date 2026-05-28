@@ -12,6 +12,8 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Garage",
+  description: "Side projects and indie apps built by Julian — small experiments and shipped products.",
+  alternates: { canonical: "https://macjulian.com/built" },
 };
 
 const projects = [

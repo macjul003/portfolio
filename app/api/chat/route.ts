@@ -46,23 +46,32 @@ Direct, thoughtful, and curious. Speaks plainly without jargon. Interested in th
 - Never make up specific numbers, dates, or facts not listed above`;
 
 export async function POST(req: Request) {
+  if (!process.env.OPENAI_API_KEY) {
+    return new Response('Missing OPENAI_API_KEY', { status: 500 });
+  }
+
   const { messages } = await req.json();
 
-  const result = streamText({
-    model: openai('gpt-4o-mini'),
-    system: SYSTEM_PROMPT,
-    messages,
-    maxOutputTokens: 300,
-    async onFinish({ text }) {
-      if (!redis) return;
-      const lastUserMessage = messages[messages.length - 1]?.content ?? '';
-      await redis.lpush('conversations', JSON.stringify({
-        ts: new Date().toISOString(),
-        question: lastUserMessage,
-        answer: text,
-      }));
-    },
-  });
+  try {
+    const result = streamText({
+      model: openai('gpt-4o-mini'),
+      system: SYSTEM_PROMPT,
+      messages,
+      maxOutputTokens: 300,
+      async onFinish({ text }) {
+        if (!redis) return;
+        const lastUserMessage = messages[messages.length - 1]?.content ?? '';
+        await redis.lpush('conversations', JSON.stringify({
+          ts: new Date().toISOString(),
+          question: lastUserMessage,
+          answer: text,
+        }));
+      },
+    });
 
-  return result.toTextStreamResponse();
+    return result.toTextStreamResponse();
+  } catch (err) {
+    console.error('streamText error:', err);
+    return new Response(String(err), { status: 500 });
+  }
 }

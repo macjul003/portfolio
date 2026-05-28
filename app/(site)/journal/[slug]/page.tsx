@@ -18,6 +18,13 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.description,
+    alternates: { canonical: `https://macjulian.com/journal/${slug}` },
+    openGraph: {
+      url: `https://macjulian.com/journal/${slug}`,
+      title: article.title,
+      description: article.description,
+      images: [{ url: '/og.png', width: 1200, height: 630 }],
+    },
   };
 }
 

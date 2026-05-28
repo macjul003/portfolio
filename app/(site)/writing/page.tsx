@@ -4,6 +4,8 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Writing",
+  description: "Essays and notes on design, AI, and the practice of building products.",
+  alternates: { canonical: "https://macjulian.com/writing" },
 };
 
 function formatDate(dateStr: string): string {

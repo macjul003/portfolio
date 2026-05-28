@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import styles from "./page.module.css";
 import { getAllArticles } from "@/lib/journal";
+
+export const metadata: Metadata = {
+  description: "Julian is a product designer building AI-native products. View case studies, side projects, and writing on design and technology.",
+  alternates: { canonical: "https://macjulian.com" },
+};
 import ActivityTerminal from "../components/ActivityTerminal";
 import WorkGrid from "../components/WorkGrid";
 import BuiltStrip from "../components/BuiltStrip";

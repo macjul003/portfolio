@@ -5,6 +5,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'Now',
   description: 'A running log of what Julian is building, day by day.',
+  alternates: { canonical: 'https://macjulian.com/now' },
 };
 
 function relativeTime(dateStr: string): string {

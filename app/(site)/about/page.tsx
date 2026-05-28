@@ -3,6 +3,8 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "About",
+  description: "Product designer and builder. I work with early-stage startups on AI, fintech, and consumer products — from big-picture strategy to the smallest interaction.",
+  alternates: { canonical: "https://macjulian.com/about" },
 };
 
 export default function AboutPage() {

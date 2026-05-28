@@ -4,6 +4,8 @@ import MotionDemos from "./MotionDemos";
 
 export const metadata: Metadata = {
   title: "Motion Lab",
+  description: "A playground for motion design and interactive UI experiments.",
+  alternates: { canonical: "https://macjulian.com/motion-lab" },
 };
 
 export default function MotionLabPage() {
