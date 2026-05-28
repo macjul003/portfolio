@@ -1,0 +1,106 @@
+/* ── Container ── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 1440px;
+}
+
+/* ── Control row ── */
+
+.controlRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Toggle button ── */
+
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 99px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.55);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+  letter-spacing: 0.01em;
+}
+
+.toggleBtn:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.toggleActive {
+  background: #4f8ef7;
+  border-color: #4f8ef7;
+  color: #fff;
+}
+
+.toggleActive:hover {
+  background: #3d7de6;
+  border-color: #3d7de6;
+  color: #fff;
+}
+
+/* ── Hint text ── */
+
+.hint {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.28);
+  line-height: 1.4;
+}
+
+/* ── Dashboard wrapper ── */
+
+.dashWrap {
+  position: relative;
+  width: 100%;
+}
+
+.dashActive {
+  cursor: crosshair;
+}
+
+/* ── Hover highlight ring — position: fixed, viewport-anchored ── */
+
+.ring {
+  position: fixed;
+  pointer-events: none;
+  border: 2px solid #4f8ef7;
+  border-radius: 8px;
+  z-index: 200;
+  box-shadow: 0 0 0 4px rgba(79, 142, 247, 0.18);
+  transition: top 0.04s, left 0.04s, width 0.04s, height 0.04s;
+}
+
+/* ── Tooltip label on hover ring ── */
+
+.ringLabel {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4f8ef7;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  pointer-events: none;
+}

@@ -1,38 +1,53 @@
 'use client';
 
-import { House, MagnifyingGlass, Sparkle, PushPin, DotsThree, Users, PuzzlePiece, CaretDown } from '@phosphor-icons/react';
+import { House, MagnifyingGlass, Lightning, PushPin, Users, PuzzlePiece, CaretDown, Folder, FolderOpen, File } from '@phosphor-icons/react';
 import styles from './AppSidebar.module.css';
 
 const menuItems = [
-  { label: 'Home',            Icon: House,           active: true  },
+  { label: 'Home',            Icon: House,           active: false },
   { label: 'Search',          Icon: MagnifyingGlass, active: false },
-  { label: 'Ask Symmetry AI', Icon: Sparkle,         active: false },
+  { label: 'Ask Symmetry AI', Icon: Lightning,       active: false },
 ];
 
-const privateProjects = [
-  'Growth Strategy for Base0',
-  'Product Roadmap Q4',
-  'Investor Narrative v3',
-  'User Research Synthesis',
-  'API Architecture Notes',
-  'Hiring Playbook',
-  'Competitive Intelligence',
+const privateItems = [
+  {
+    label: 'Base0 Project',
+    type: 'folder-open' as const,
+    children: [
+      'Briefing: The AI Memory and Cognition Layer',
+      'Structured Document Creation',
+      'Inflow assistant of base0',
+      'The architecture of happines',
+    ],
+  },
+  { label: 'Archive',         type: 'folder' as const },
+  { label: 'Developer Notes', type: 'folder' as const },
+  { label: 'Vision',          type: 'folder' as const },
 ];
 
 export default function AppSidebar() {
   return (
     <aside className={styles.sidebar}>
       {/* Profile */}
-      <div className={styles.profile}>
-        <div className={styles.avatar}>J</div>
+      <div className={styles.profile} data-point-id="sidebar-profile">
+        <img
+          src="/mac-photo.png"
+          alt="Julian Samuel"
+          className={styles.avatar}
+        />
         <span className={styles.profileName}>Julian Samuel</span>
         <CaretDown size={16} weight="bold" className={styles.chevron} />
       </div>
 
       {/* Nav */}
-      <nav className={styles.nav}>
+      <nav className={styles.nav} data-point-id="sidebar-nav">
         {menuItems.map(({ label, Icon, active }) => (
-          <a key={label} href="#" className={`${styles.item} ${active ? styles.itemActive : ''}`}>
+          <a
+            key={label}
+            href="#"
+            className={`${styles.item} ${active ? styles.itemActive : ''}`}
+            data-point-id={label === 'Ask Symmetry AI' ? 'sidebar-ai' : undefined}
+          >
             <Icon size={16} weight={active ? 'fill' : 'regular'} className={styles.itemIcon} />
             <span>{label}</span>
           </a>
@@ -49,14 +64,24 @@ export default function AppSidebar() {
       </div>
 
       {/* Private */}
-      <div className={styles.group}>
+      <div className={styles.group} data-point-id="sidebar-private">
         <p className={styles.groupLabel}>Private</p>
-        {privateProjects.map((name) => (
-          <a key={name} href="#" className={`${styles.item} ${styles.projectItem}`}>
-            <span className={styles.dot} />
-            <span className={styles.projectName}>{name}</span>
-            <DotsThree size={16} weight="bold" className={styles.more} />
-          </a>
+        {privateItems.map((item) => (
+          <div key={item.label}>
+            <a href="#" className={styles.item}>
+              {item.type === 'folder-open'
+                ? <FolderOpen size={16} weight="regular" className={styles.itemIcon} />
+                : <Folder size={16} weight="regular" className={styles.itemIcon} />
+              }
+              <span className={styles.projectName}>{item.label}</span>
+            </a>
+            {item.children?.map((child) => (
+              <a key={child} href="#" className={`${styles.item} ${styles.nestedItem}`}>
+                <File size={16} weight="regular" className={styles.itemIcon} />
+                <span className={styles.projectName}>{child}</span>
+              </a>
+            ))}
+          </div>
         ))}
       </div>
 

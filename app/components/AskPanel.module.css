@@ -7,7 +7,7 @@
   height: 100vh;
   width: 400px;
   background: #0a0a0a;
-  border-left: 1px solid #1e1e1e;
+  border-left: 1px solid var(--light-gray, #1e1e1e);
   display: flex;
   flex-direction: column;
   z-index: 150;
@@ -20,8 +20,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
-  border-bottom: 1px solid #1a1a1a;
+  padding: 0 16px;
+  height: 52px;
+  border-bottom: 1px solid #1e1e1e;
   flex-shrink: 0;
 }
 
@@ -203,6 +204,30 @@
   margin-bottom: 20px;
 }
 
+/* Follow-up skeleton loading */
+.suggestionSkeleton {
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  margin: 4px 0;
+  width: 85%;
+}
+
+.suggestionSkeleton:nth-child(2) {
+  width: 70%;
+}
+
+.suggestionSkeleton:nth-child(3) {
+  width: 78%;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* ── Typing indicator ── */
 
 .typingRow {
@@ -285,4 +310,109 @@
 
 @media (max-width: 640px) {
   .panel { width: 100vw; border-left: none; }
+}
+
+/* ── Light theme ── */
+
+:global(html.light) .panel {
+  background: #ffffff;
+  border-left-color: var(--light-gray);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.08);
+}
+
+:global(html.light) .header {
+  background: #fafafa;
+  border-bottom-color: var(--light-gray);
+}
+
+:global(html.light) .brand {
+  color: var(--text);
+}
+
+:global(html.light) .iconBtn {
+  color: var(--gray);
+}
+
+:global(html.light) .iconBtn:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+:global(html.light) .infoWrap::after {
+  background: #ffffff;
+  border-color: var(--light-gray);
+  color: var(--gray);
+}
+
+:global(html.light) .messages {
+  scrollbar-color: var(--light-gray) transparent;
+}
+
+:global(html.light) .welcomeTitle {
+  color: var(--text);
+}
+
+:global(html.light) .suggestion {
+  border-bottom-color: var(--light-gray);
+  color: var(--gray);
+}
+
+:global(html.light) .suggestion:hover {
+  color: var(--text);
+}
+
+:global(html.light) .suggestionArrow {
+  color: var(--light-gray);
+}
+
+:global(html.light) .userMsg {
+  border-color: var(--light-gray);
+  color: var(--text);
+  background: var(--surface);
+}
+
+:global(html.light) .botText {
+  color: var(--text-muted);
+}
+
+:global(html.light) .followUps {
+  border-top-color: var(--light-gray);
+}
+
+:global(html.light) .suggestionSkeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--light-gray) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+}
+
+:global(html.light) .dot {
+  background: var(--light-gray);
+}
+
+:global(html.light) .inputRow {
+  border-top-color: var(--light-gray);
+}
+
+:global(html.light) .input {
+  background: var(--surface);
+  border-color: var(--light-gray);
+  color: var(--text);
+}
+
+:global(html.light) .input::placeholder {
+  color: var(--gray);
+  opacity: 1;
+}
+
+:global(html.light) .input:focus {
+  border-color: var(--accent);
+}
+
+:global(html.light) .sendBtn {
+  background: var(--surface);
+  color: var(--gray);
+}
+
+:global(html.light) .sendBtn:not(:disabled):hover {
+  background: var(--light-gray);
+  color: var(--text);
 }
