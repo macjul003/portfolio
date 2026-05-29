@@ -120,6 +120,7 @@ export default function Home() {
             <a href="https://x.com/macjuliansamuel" target="_blank" rel="noopener">X</a>
             <a href="https://github.com/macjul003" target="_blank" rel="noopener">GitHub</a>
             <a href="/now">Now</a>
+            <a href="/design-engineering">Design Eng</a>
           </div>
           <span>© 2026</span>
         </footer>

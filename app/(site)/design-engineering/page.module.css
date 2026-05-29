@@ -1,0 +1,284 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 48px 120px;
+}
+
+/* ── Page header ── */
+
+.pageHeader {
+  margin-bottom: 56px;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.subheading {
+  font-size: 0.9375rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+/* ── Entry ── */
+
+.entry {
+  border-top: 1px solid var(--light-gray);
+  padding-top: 36px;
+}
+
+.entryHead {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.entryNum {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.8125rem;
+  color: var(--gray);
+  letter-spacing: 0.04em;
+}
+
+.entryTitle {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 24px;
+}
+
+.tags span {
+  font-size: 0.75rem;
+  color: var(--gray);
+  font-weight: 400;
+  padding: 3px 9px;
+  border: 1px solid var(--light-gray);
+  border-radius: 100px;
+}
+
+.lede {
+  font-size: 1.0625rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.body {
+  font-size: 0.95rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.75;
+  margin: 4px 0 8px;
+}
+
+/* ── Interactive demo ── */
+
+.demo {
+  margin: 8px 0 36px;
+}
+
+.demoToolbar {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--light-gray);
+  margin-bottom: 12px;
+}
+
+.segBtn {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--gray);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: 8px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.segBtn:hover {
+  color: var(--text);
+}
+
+.segActive,
+.segActive:hover {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.stage {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 200px;
+  padding: 48px 16px 30px;
+  border: 1px solid var(--light-gray);
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(79, 142, 247, 0.08), transparent 60%),
+    var(--light-gray);
+  overflow: hidden;
+}
+
+.dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.dockItem {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  will-change: transform;
+  transition: transform 0.12s ease-out;
+}
+
+.dockRefined .dockItem {
+  transform-origin: bottom center;
+}
+
+.demoHint {
+  font-size: 0.8125rem;
+  color: var(--gray);
+  font-weight: 300;
+  margin-top: 12px;
+}
+
+/* ── Notes (gotchas) ── */
+
+.notes {
+  list-style: none;
+  counter-reset: note;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 18px 0 8px;
+}
+
+.notes li {
+  counter-increment: note;
+  position: relative;
+  padding-left: 36px;
+  font-size: 0.95rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.notes li::before {
+  content: counter(note);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+}
+
+.notes strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.notes em {
+  font-style: italic;
+  color: var(--text);
+}
+
+.notes code,
+.body code,
+.lede code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.82em;
+  background: var(--light-gray);
+  color: var(--text);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ── Code blocks ── */
+
+.code {
+  margin: 22px 0;
+}
+
+.codeLabel {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.code pre {
+  background: #0e0e0e;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 18px 20px;
+  overflow-x: auto;
+}
+
+.code code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #d4d4d4;
+  white-space: pre;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 700px) {
+  .page {
+    padding: 48px 24px 80px;
+  }
+
+  .stage {
+    padding: 44px 8px 26px;
+  }
+
+  .dock {
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .dockItem {
+    width: 44px;
+    height: 44px;
+  }
+}
