@@ -1,14 +1,70 @@
 .page {
   min-height: 100vh;
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
-.inner {
-  --px: 48px;
-  max-width: 680px;
-  padding: 0 var(--px);
-  margin: 0 auto;
+/* ── Two-column layout (1 : 2 ratio) ── */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  align-items: start;
+}
+
+.leftCol {
+  min-width: 0;
+  padding: 0 48px;
+  position: sticky;
+  top: 52px;
+  align-self: start;
+}
+
+.rightCol {
+  min-width: 0;
+  padding: 40px 48px;
+}
+
+/* ── CTA buttons ── */
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid var(--light-gray);
+  color: var(--text);
+  background: transparent;
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+}
+
+.btn:hover {
+  border-color: var(--gray);
+  background: var(--surface-hover);
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.btnPrimary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  opacity: 0.9;
 }
 
 /* ── Header / Signature ── */
@@ -16,7 +72,11 @@
 .header {
   padding-top: 57px;
   margin-bottom: 32px;
-  text-align: center;
+  text-align: left;
+}
+
+.header .name {
+  margin-bottom: 0;
 }
 
 .name {
@@ -39,12 +99,12 @@
 /* ── Bio ── */
 
 .bio {
-  padding-bottom: 52px;
+  padding-bottom: 0;
 }
 
 .bio p {
-  font-size: 1.125rem;
-  line-height: 1.8;
+  font-size: 1.4rem;
+  line-height: 1.5;
   color: var(--text);
   font-weight: 400;
   margin-bottom: 14px;
@@ -210,17 +270,30 @@
 }
 
 
+.workList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .workCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
   text-decoration: none;
   color: inherit;
+  padding: 10px 0;
   transition: opacity 0.15s;
 }
 
 .workCard:hover {
-  opacity: 0.75;
+  opacity: 0.85;
+}
+
+.workMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
 }
 
 .workImageWrap {
@@ -232,6 +305,7 @@
 
 .workImage {
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 10;
   background: var(--light-gray);
   border-radius: 8px;
@@ -375,6 +449,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin: 0 48px;
   padding: 28px 0 80px;
   font-size: 0.8125rem;
   color: var(--gray);
@@ -399,29 +476,46 @@
 
 /* ── Responsive ── */
 
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .leftCol {
+    position: static;
+    padding-bottom: 8px;
+  }
+
+  .rightCol {
+    padding-top: 0;
+  }
+}
+
 @media (max-width: 768px) {
-  .inner {
-    --px: 28px;
+  .leftCol,
+  .rightCol {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .footer {
+    margin: 0 28px;
   }
 
   .header {
     padding-top: 52px;
   }
-
-  .workGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .postRow {
-    grid-template-columns: 88px 1fr;
-    padding: 14px 12px;
-    margin: 0 -12px;
-  }
 }
 
 @media (max-width: 480px) {
-  .inner {
-    --px: 20px;
+  .leftCol,
+  .rightCol {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .footer {
+    margin: 0 20px;
   }
 
   .name {
@@ -432,18 +526,7 @@
     font-size: 1rem;
   }
 
-  .workStackedCard {
-    gap: 12px;
-    padding: 10px;
-    margin: 0 -10px;
-  }
-
-  .workStackedImageWrap {
-    width: 84px;
-  }
-
   .workTitle {
     font-size: 0.9375rem;
   }
-
 }

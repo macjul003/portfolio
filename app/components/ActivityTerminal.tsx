@@ -17,6 +17,7 @@ function ago(dateStr: string): string {
 
 export default function ActivityTerminal() {
   const [cells, setCells] = useState<(Contribution | null)[]>([]);
+  const [cols, setCols] = useState(0);
   const [totalCommits, setTotalCommits] = useState<number | null>(null);
   const [lastCommit, setLastCommit] = useState<string | null>(null);
   const [repos, setRepos] = useState<Repo[]>([]);
@@ -33,14 +34,25 @@ export default function ActivityTerminal() {
         .reduce((a: number, b: number) => a + b, 0);
       setTotalCommits(total);
 
-      const recent = contribs.slice(-26 * 7);
-      const padded: (Contribution | null)[] = [];
+      const recent = contribs.slice(-52 * 7);
+      const colMajor: (Contribution | null)[] = [];
       if (recent.length) {
         const startDay = new Date(recent[0].date).getDay();
-        for (let i = 0; i < startDay; i++) padded.push(null);
-        padded.push(...recent);
+        for (let i = 0; i < startDay; i++) colMajor.push(null);
+        colMajor.push(...recent);
+        while (colMajor.length % 7 !== 0) colMajor.push(null);
       }
-      setCells(padded);
+      const numCols = colMajor.length / 7;
+      // Re-order column-major (week, day) data into row-major so the grid can
+      // flow left-to-right / top-to-bottom with square, responsive cells.
+      const rowMajor: (Contribution | null)[] = [];
+      for (let row = 0; row < 7; row++) {
+        for (let col = 0; col < numCols; col++) {
+          rowMajor.push(colMajor[col * 7 + row]);
+        }
+      }
+      setCells(rowMajor);
+      setCols(numCols);
 
       const lastPush = (events as GHEvent[]).find(e => e.type === 'PushEvent');
       if (lastPush) setLastCommit(ago(lastPush.created_at));
@@ -67,7 +79,11 @@ export default function ActivityTerminal() {
         </p>
       )}
 
-      <div className={styles.grid} aria-hidden="true">
+      <div
+        className={styles.grid}
+        style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+        aria-hidden="true"
+      >
         {cells.map((c, i) => (
           <div
             key={i}

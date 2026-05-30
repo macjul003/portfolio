@@ -60,6 +60,38 @@
   border-color: var(--text);
 }
 
+/* ── Sections ── */
+
+.section {
+  margin-bottom: 72px;
+}
+
+.section:last-of-type {
+  margin-bottom: 0;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  margin-bottom: 24px;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.slash {
+  margin-right: 6px;
+  color: var(--gray);
+}
+
+.headRule {
+  flex: 1;
+  height: 1px;
+  background: var(--light-gray);
+  margin-left: 14px;
+}
+
 /* ── Grid list ── */
 
 .list {
@@ -68,6 +100,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   padding: 0 40px;
+}
+
+.listThree {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .list > li {
@@ -169,7 +205,7 @@
 /* ── Empty ── */
 
 .empty {
-  padding: 32px 0;
+  padding: 32px 40px;
   font-size: 0.9375rem;
   color: var(--gray);
 }
@@ -184,6 +220,8 @@
   .page        { padding-top: 56px; padding-bottom: 100px; }
   .header      { padding: 0 24px; }
   .filters     { padding: 0 24px; margin-bottom: 40px; }
+  .sectionHead { padding: 0 24px; }
+  .section     { margin-bottom: 56px; }
   .list        { gap: 12px; padding: 0 24px; }
   .cardCaption { padding: 10px 0 16px; }
 }
@@ -191,6 +229,7 @@
 @media (max-width: 640px) {
   .name        { font-size: 1.75rem; }
   .list        { grid-template-columns: 1fr; }
+  .listThree   { grid-template-columns: 1fr; }
   .ratio34     { aspect-ratio: 4 / 3; }
   .cardCaption { padding: 10px 0 20px; }
 }
