@@ -181,16 +181,18 @@ function WorkCard({ item }: { item: CardItem; index: number }) {
 export default function WorkClient({ articles }: { articles: ArticleItem[] }) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
-  const articleCards = articles.map(articleToCard);
-  const allCards = [...featured, ...articleCards]
+  const articleCards = articles
+    .map(articleToCard)
     .sort((a, b) => (a.date > b.date ? -1 : 1));
 
-  const filtered =
-    activeTag === null
-      ? allCards
-      : allCards.filter((c) =>
-          c.tags.some((t) => t.toLowerCase() === activeTag.toLowerCase())
-        );
+  const matchesTag = (c: CardItem) =>
+    activeTag === null ||
+    c.tags.some((t) => t.toLowerCase() === activeTag.toLowerCase());
+
+  const caseStudies = [...featured]
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
+    .filter(matchesTag);
+  const moreWork = articleCards.filter(matchesTag);
 
   return (
     <div className={styles.page}>
@@ -216,16 +218,41 @@ export default function WorkClient({ articles }: { articles: ArticleItem[] }) {
         ))}
       </div>
 
-      <ul className={styles.list}>
-        {filtered.map((item, i) => (
-          <li key={item.href + item.title}>
-            <WorkCard item={item} index={i} />
-          </li>
-        ))}
-        {filtered.length === 0 && (
-          <li className={styles.empty}>No projects match this filter.</li>
-        )}
-      </ul>
+      {caseStudies.length > 0 && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionHead}>
+            <span className={styles.slash}>/</span> case studies
+            <span className={styles.headRule} />
+          </h2>
+          <ul className={`${styles.list} ${styles.listThree}`}>
+            {caseStudies.map((item, i) => (
+              <li key={item.href + item.title}>
+                <WorkCard item={item} index={i} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {moreWork.length > 0 && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionHead}>
+            <span className={styles.slash}>/</span> more work
+            <span className={styles.headRule} />
+          </h2>
+          <ul className={styles.list}>
+            {moreWork.map((item, i) => (
+              <li key={item.href + item.title}>
+                <WorkCard item={item} index={i} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {caseStudies.length === 0 && moreWork.length === 0 && (
+        <p className={styles.empty}>No projects match this filter.</p>
+      )}
     </div>
   );
 }

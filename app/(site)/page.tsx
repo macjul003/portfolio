@@ -12,6 +12,14 @@ import WeatherLine from "../components/WeatherLine";
 
 const work = [
   {
+    client: "Symmetry AI",
+    date: "Jan 2026",
+    title: "Improving AI responses by bringing user context into chat",
+    href: "/work/symmetry",
+    thumbnail: "/case-studies/symmetry/sym-overview.png",
+    external: false,
+  },
+  {
     client: "Ithaca Protocol",
     date: "Nov 2025",
     title: "Designing trust in AI-powered options trading system",
@@ -26,14 +34,6 @@ const work = [
     href: "https://www.figma.com/deck/cKUSqk9wPnBGwfHexv85ZB",
     thumbnail: "/case-studies/claystack/app.png",
     external: true,
-  },
-  {
-    client: "Symmetry AI",
-    date: "Jan 2026",
-    title: "Improving AI responses by bringing user context into chat",
-    href: "/work/symmetry",
-    thumbnail: "/case-studies/symmetry/sym-overview.png",
-    external: false,
   },
 ];
 
@@ -62,10 +62,6 @@ export default function Home() {
 
         <div className={styles.rightCol}>
           <section className={styles.section}>
-            <h2 className={styles.sectionHead}>
-              <span className={styles.slash}>/</span> case studies
-              <span className={styles.headRule} />
-            </h2>
             <WorkGrid items={work} />
           </section>
 
@@ -75,7 +71,7 @@ export default function Home() {
               <span className={styles.headRule} />
             </h2>
             <p className={styles.sectionSubtitle}>
-              Design-led apps, engineered by me to solve my own problems — soon to be released on the public App Store.
+              Designed and engineered by me to improve my own workflow and solve problems I run into. Everything&apos;s public on GitHub today — App Store releases coming soon.
             </p>
             <BuiltStrip />
           </section>

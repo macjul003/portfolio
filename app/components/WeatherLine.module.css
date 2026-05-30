@@ -7,34 +7,5 @@
 .value {
   font-size: 0.8125rem;
   color: var(--gray);
-  cursor: default;
   white-space: nowrap;
-  transition: color 0.15s;
-}
-
-.weather:hover .value {
-  color: var(--text);
-}
-
-.tooltip {
-  position: absolute;
-  bottom: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  background: var(--text);
-  color: var(--bg);
-  font-size: 0.875rem;
-  font-weight: 400;
-  white-space: nowrap;
-  padding: 9px 15px;
-  border-radius: 12px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-.weather:hover .tooltip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
