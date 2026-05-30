@@ -127,6 +127,7 @@ export default function Home() {
             <a href="https://github.com/macjul003" target="_blank" rel="noopener">GitHub</a>
             <a href="/now">Now</a>
             <a href="/design-engineering">Design Eng</a>
+            <a href="/glossary">Glossary</a>
           </div>
           <span>© 2026</span>
         </footer>
