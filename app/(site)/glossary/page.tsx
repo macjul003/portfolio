@@ -15,6 +15,7 @@ const pages = [
   { href: '/built',      label: 'Garage',     desc: 'Side projects and things I’ve shipped.' },
   { href: '/journal',    label: 'Journal',    desc: 'Writing on design, code, and process.' },
   { href: '/motion-lab', label: 'Motion Lab', desc: 'Animation and interaction experiments.' },
+  { href: '/design-engineering', label: 'Design Engineering', desc: 'Interface details and engineering demos.' },
   { href: '/now',        label: 'Now',        desc: 'What I’m building, day by day.' },
   { href: '/photos',     label: 'Photos',     desc: 'A map of places I’ve photographed.' },
   { href: '/writing',    label: 'Writing',    desc: 'Longer-form essays and notes.' },
