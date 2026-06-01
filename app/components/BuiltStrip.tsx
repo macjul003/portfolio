@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import ProjectModal, { type Project } from './ProjectModal';
+import { pageEditorBookmarklet } from '@/lib/pageEditorBookmarklet';
 import styles from './BuiltStrip.module.css';
 
 const projects: Project[] = [
@@ -55,6 +56,8 @@ const projects: Project[] = [
     iconSrc: '/app-icon/booklet.png',
     video: '/Page Editor.mov',
     tags: ['JavaScript', 'Bookmarklet', 'Browser'],
+    githubUrl: 'https://github.com/macjul003/page-editor-bookmarklet',
+    bookmarklet: pageEditorBookmarklet,
     features: [
       { title: 'Instant edit mode', desc: 'One click enables contentEditable on the entire page — click any text and start typing.' },
       { title: 'Word-level diffs', desc: 'Review panel highlights deleted words (strikethrough) and added words (green) before you copy.' },

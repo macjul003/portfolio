@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, DownloadSimple, GithubLogo, type Icon as PhosphorIcon } from '@phosphor-icons/react';
@@ -20,6 +20,7 @@ export type Project = {
   tags: string[];
   githubUrl?: string;
   downloadUrl?: string;
+  bookmarklet?: string;
   image?: string;
   video?: string;
   upcoming?: boolean;
@@ -35,6 +36,23 @@ interface Props {
 export default function ProjectModal({ project, onClose }: Props) {
   const [mounted, setMounted] = useState(false);
   const [installOpen, setInstallOpen] = useState(false);
+  const [showTip, setShowTip] = useState(false);
+  const dragRef = useRef<HTMLAnchorElement>(null);
+
+  // Set the bookmarklet's javascript: href directly on the node — React strips
+  // javascript: URLs from JSX, but the raw attribute is required for drag-to-install.
+  // Reveal the drag tooltip shortly after the modal's open animation settles.
+  useEffect(() => {
+    setShowTip(false);
+    if (!project?.bookmarklet) return;
+    if (dragRef.current) dragRef.current.setAttribute('href', project.bookmarklet);
+    const show = setTimeout(() => setShowTip(true), 450);
+    const hide = setTimeout(() => setShowTip(false), 4000);
+    return () => {
+      clearTimeout(show);
+      clearTimeout(hide);
+    };
+  }, [project]);
 
   useEffect(() => {
     if (!project) { setInstallOpen(false); return; }
@@ -87,6 +105,24 @@ export default function ProjectModal({ project, onClose }: Props) {
             <p className={styles.desc}>{project.desc}</p>
 
             <div className={styles.actions}>
+              {project.bookmarklet && (
+                <span className={styles.dragWrap}>
+                  <a
+                    ref={dragRef}
+                    className={styles.btnPrimary}
+                    draggable
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Edit Page ✏️
+                  </a>
+                  <span
+                    className={`${styles.dragTip} ${showTip ? styles.dragTipVisible : ''}`}
+                    role="tooltip"
+                  >
+                    Drag me to your bookmarks bar to install
+                  </span>
+                </span>
+              )}
               {project.downloadUrl && (
                 <a
                   href={project.downloadUrl}

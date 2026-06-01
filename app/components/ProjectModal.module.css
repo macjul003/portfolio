@@ -108,6 +108,46 @@
   margin-bottom: 20px;
 }
 
+.dragWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.dragTip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  white-space: nowrap;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(-50%) translateY(4px) scale(0.96);
+  transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dragTipVisible,
+.dragWrap:hover .dragTip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.dragTip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--text);
+}
+
 .btnPrimary {
   display: inline-flex;
   align-items: center;
