@@ -92,6 +92,16 @@ export default function ProjectModal({ project, onClose }: Props) {
               <X size={16} weight="bold" />
             </button>
 
+            <div className={styles.imageWrap}>
+              {project.video ? (
+                <video src={project.video} className={styles.image} autoPlay loop muted playsInline />
+              ) : project.image ? (
+                <img src={project.image} alt={`${project.name} screenshot`} className={styles.image} />
+              ) : (
+                <div className={styles.imagePlaceholder} />
+              )}
+            </div>
+
             {project.iconSrc ? (
               <img src={project.iconSrc} alt={project.name} className={styles.iconImg} />
             ) : project.Icon ? (
@@ -159,16 +169,6 @@ export default function ProjectModal({ project, onClose }: Props) {
               {project.tags.map((tag) => (
                 <span key={tag} className={styles.tag}>{tag}</span>
               ))}
-            </div>
-
-            <div className={styles.imageWrap}>
-              {project.video ? (
-                <video src={project.video} className={styles.image} autoPlay loop muted playsInline />
-              ) : project.image ? (
-                <img src={project.image} alt={`${project.name} screenshot`} className={styles.image} />
-              ) : (
-                <div className={styles.imagePlaceholder} />
-              )}
             </div>
 
             {(project.why || project.stats) && (

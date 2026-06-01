@@ -80,22 +80,33 @@ export default function BuiltStrip() {
             whileTap={p.upcoming ? undefined : { scale: 0.975 }}
             transition={{ type: 'spring', stiffness: 420, damping: 26 }}
           >
-            <div className={styles.cardHeader}>
-              {p.iconSrc ? (
-                <img src={p.iconSrc} alt={p.name} className={styles.cardIconImg} />
-              ) : p.Icon ? (
-                <div className={styles.cardIcon} style={{ background: p.bg }}>
-                  <p.Icon size={26} weight="duotone" color={p.iconColor} />
-                </div>
-              ) : null}
-              {p.upcoming && <span className={styles.upcomingBadge}>Upcoming</span>}
-            </div>
-            <p className={styles.cardName}>{p.name}</p>
-            <p className={styles.cardTagline}>{p.tagline}</p>
-            <div className={styles.cardTags}>
-              {p.tags.map((tag) => (
-                <span key={tag} className={styles.cardTag}>{tag}</span>
-              ))}
+            {(p.video || p.image) && (
+              <div className={styles.cardMedia}>
+                {p.video ? (
+                  <video src={p.video} autoPlay loop muted playsInline />
+                ) : (
+                  <img src={p.image} alt={p.name} />
+                )}
+              </div>
+            )}
+            <div className={styles.cardBody}>
+              <div className={styles.cardHeader}>
+                {p.iconSrc ? (
+                  <img src={p.iconSrc} alt={p.name} className={styles.cardIconImg} />
+                ) : p.Icon ? (
+                  <div className={styles.cardIcon} style={{ background: p.bg }}>
+                    <p.Icon size={26} weight="duotone" color={p.iconColor} />
+                  </div>
+                ) : null}
+                {p.upcoming && <span className={styles.upcomingBadge}>Upcoming</span>}
+              </div>
+              <p className={styles.cardName}>{p.name}</p>
+              <p className={styles.cardTagline}>{p.tagline}</p>
+              <div className={styles.cardTags}>
+                {p.tags.map((tag) => (
+                  <span key={tag} className={styles.cardTag}>{tag}</span>
+                ))}
+              </div>
             </div>
           </motion.button>
         ))}

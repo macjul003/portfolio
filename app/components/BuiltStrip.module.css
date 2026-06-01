@@ -1,14 +1,15 @@
 .strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .card {
   background: var(--surface);
   border: 1px solid var(--light-gray);
   border-radius: 14px;
-  padding: 16px;
+  padding: 0;
+  overflow: hidden;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -19,6 +20,28 @@
 
 .card:hover {
   border-color: var(--gray);
+}
+
+.cardMedia {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--light-gray);
+  overflow: hidden;
+}
+
+.cardMedia img,
+.cardMedia video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 14px 16px 16px;
 }
 
 .cardHeader {
