@@ -77,6 +77,35 @@
   color: var(--gray);
 }
 
+/* ── Mobile ── */
+
+@media (max-width: 640px) {
+  .terminal {
+    padding: 20px 18px;
+    font-size: 0.8125rem;
+    border-radius: 16px;
+  }
+
+  .stat {
+    letter-spacing: 0.02em;
+    line-height: 1.9;
+  }
+
+  .grid {
+    margin: 16px 0;
+    gap: 3px;
+  }
+
+  .repoLine {
+    line-height: 2;
+  }
+
+  /* Descriptions truncate ugly on narrow screens — show just name + language. */
+  .desc {
+    display: none;
+  }
+}
+
 /* ── Loading skeleton ── */
 
 .skeleton {
