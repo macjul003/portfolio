@@ -1,0 +1,116 @@
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 240px;
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.18s;
+}
+
+.card:hover {
+  border-color: var(--gray);
+}
+
+/* Edge fade wrapper */
+.fade {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.track {
+  display: inline-flex;
+  gap: 12px;
+  padding: 0 12px;
+  animation: scroll 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.thumb {
+  flex-shrink: 0;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--light-gray);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dim scrim so the centered label stays legible over moving thumbnails */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.88) 0%,
+    rgba(10, 10, 10, 0.45) 42%,
+    rgba(10, 10, 10, 0.3) 100%
+  );
+  transition: opacity 0.18s;
+  pointer-events: none;
+}
+
+.card:hover .scrim {
+  opacity: 0.7;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  padding: 20px 24px;
+  pointer-events: none;
+}
+
+.heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.heading i {
+  font-size: 15px;
+  transition: transform 0.18s;
+}
+
+.card:hover .heading i {
+  transform: translateX(4px);
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

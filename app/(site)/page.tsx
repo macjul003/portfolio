@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+import { getAllWorkItems } from "@/lib/work";
 
 export const metadata: Metadata = {
   description: "Julian is a product designer building AI-native products. View case studies, side projects, and writing on design and technology.",
@@ -9,6 +10,7 @@ import ActivityTerminal from "../components/ActivityTerminal";
 import WorkGrid from "../components/WorkGrid";
 import BuiltStrip from "../components/BuiltStrip";
 import WeatherLine from "../components/WeatherLine";
+import WorkCarousel from "../components/WorkCarousel";
 
 const work = [
   {
@@ -38,6 +40,15 @@ const work = [
 ];
 
 export default function Home() {
+  const carouselThumbs = Array.from(
+    new Set([
+      ...work.map((w) => w.thumbnail),
+      ...getAllWorkItems()
+        .filter((w) => !w.draft && w.image)
+        .map((w) => w.image),
+    ])
+  );
+
   return (
     <main className={styles.page}>
       <div className={styles.layout}>
@@ -74,6 +85,9 @@ export default function Home() {
               Designed and engineered by me to improve my own workflow and solve problems I run into. Everything&apos;s public on GitHub today — App Store releases coming soon.
             </p>
             <BuiltStrip />
+            <div className={styles.workCarouselWrap}>
+              <WorkCarousel images={carouselThumbs} />
+            </div>
           </section>
 
           <section className={styles.section}>
