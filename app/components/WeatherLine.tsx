@@ -8,7 +8,7 @@ export default function WeatherLine() {
 
   useEffect(() => {
     fetch(
-      'https://api.open-meteo.com/v1/forecast?latitude=13.0827&longitude=80.2707&current=temperature_2m'
+      'https://api.open-meteo.com/v1/forecast?latitude=45.5152&longitude=-122.6784&current=temperature_2m'
     )
       .then((r) => r.json())
       .then((j) => {
@@ -25,7 +25,7 @@ export default function WeatherLine() {
   return (
     <div className={styles.weather}>
       <span className={styles.value}>
-        {data.c}°C / {data.f}°F · Chennai
+        {data.c}°C / {data.f}°F · Portland
       </span>
     </div>
   );
