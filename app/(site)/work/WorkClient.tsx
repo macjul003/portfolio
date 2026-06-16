@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, useMotionValue } from "motion/react";
 import styles from "./page.module.css";
 
-const FILTER_TAGS = ["Web3", "AI", "Brand Design", "Product Design", "Fintech"];
+const FILTER_TAGS = ["Web3", "AI", "Brand Design"];
 
 type CardItem = {
   title: string;
@@ -37,7 +37,7 @@ const featured: CardItem[] = [
     meta: "Ithaca · 2025",
     description:
       "Redesigned the options trading flow for retail investors, simplifying complex financial decisions into a clear step-by-step interface with real-time risk visualization.",
-    tags: ["Product Design", "AI", "Fintech", "Interaction Design"],
+    tags: ["Product Design", "AI", "Fintech", "Web3", "Interaction Design"],
     thumbnail: "/case-studies/ithaca/Ithaca-Thumbnail.png",
     href: "https://drive.google.com/file/d/1jNQyLlAghlwQTu47MQ_Jramj0qPlK8dn/view?usp=sharing",
     label: "Read Case Study",

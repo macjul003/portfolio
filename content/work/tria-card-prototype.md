@@ -6,5 +6,5 @@ subtitle: "Interaction prototype for a next-gen card experience"
 link: "https://tria-card-prototype.vercel.app/"
 label: "View Prototype"
 draft: false
-tags: ["Fintech", "Interaction Design", "Prototype"]
+tags: ["Fintech", "Web3", "Interaction Design", "Prototype"]
 ---

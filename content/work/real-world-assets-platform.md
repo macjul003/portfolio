@@ -5,7 +5,7 @@ image: "https://framerusercontent.com/images/zLNUyIM8JRMMkXwh2ORsCSM94Vs.png"
 subtitle: "Exploring how psychology, scarcity, and trust shape the buying experience for real-world collectibles."
 link: "https://www.figma.com/proto/WFhqUeq1jgAwJYXe8rDaj5/Untitled?node-id=0-166&viewport=263%2C294%2C0.17&t=ITvjlJvzB3nQDIp3-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=0%3A166&show-proto-sidebar=1&page-id=0%3A1"
 draft: false
-tags: ["Brand Design", "Product Design"]
+tags: ["Brand Design", "Product Design", "Web3"]
 ---
 
 <p>I worked on a design challenge to create a platform where users could buy real-world assets like sneakers, toys, and collectibles. The task had two parts: a whiteboarding session to structure the problem, and a take-home design to showcase visual skills.</p>
