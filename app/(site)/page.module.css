@@ -80,11 +80,12 @@
 }
 
 .name {
-  font-family: 'Playwrite GB S', cursive;
+  font-family: 'Inter', sans-serif;
   font-size: 3.75rem;
   font-weight: 400;
   color: var(--text);
   line-height: 1.1;
+  letter-spacing: -1px;
   margin-bottom: 24px;
 }
 
@@ -103,9 +104,9 @@
 }
 
 .bio p {
-  font-size: 1.4rem;
+  font-size: 18px;
   line-height: 1.5;
-  color: var(--text);
+  color: var(--gray);
   font-weight: 400;
   margin-bottom: 14px;
 }
