@@ -10,7 +10,7 @@
 }
 
 .name {
-  font-family: 'Playwrite GB S', cursive;
+  font-family: 'Inter', sans-serif;
   font-size: 3.5rem;
   font-weight: 400;
   color: var(--text);

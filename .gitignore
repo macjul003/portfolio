@@ -5,3 +5,7 @@ public/photos/thumbs/
 public/photo-data.json
 .vercel
 .env*.local
+.DS_Store
+tsconfig.tsbuildinfo
+test-results/
+.playwright-cli/
