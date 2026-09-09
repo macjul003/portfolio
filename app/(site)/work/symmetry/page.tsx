@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import styles from "./page.module.css";
 import SymmetryNav from "./SymmetryNav";
 import OnboardingGrid from "./OnboardingGrid";
+import DashboardGrid from "./DashboardGrid";
 import LightboxImage from "@/app/components/LightboxImage";
 import LightboxVideo from "@/app/components/LightboxVideo";
 
@@ -250,8 +251,11 @@ export default function SymmetryCaseStudy() {
           <p>The dashboard also included multiple workspaces, a folder-based knowledge doc system, a timeline view, and a full Ask Symmetry chat interface — a deliberately thorough system that, in hindsight, I'd have kept much thinner for MVP.</p>
         </div>
 
-        <LightboxImage src="/case-studies/symmetry/dashboard.png" alt="MVP dashboard designs" className={styles.mediaImg} />
+        <LightboxImage src="/case-studies/symmetry/dashboard/homepage.png" alt="Dashboard homepage" className={styles.mediaImg} />
         <p className={styles.caption}>MVP dashboard designs to visualize how user data is captured and evolves over time.</p>
+
+        <DashboardGrid />
+        <p className={styles.caption}>The dashboard: homepage, search, Ask Symmetry, knowledge docs, and inviting teammates.</p>
       </section>
 
       <div className={styles.divider} />
