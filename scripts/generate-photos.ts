@@ -92,7 +92,15 @@ function parseGps(tags: ExifReader.Tags): { lat: number; lng: number } | null {
   const lngVal = lng.description;
   if (latVal === undefined || lngVal === undefined) return null;
 
-  return { lat: parseFloat(String(latVal)), lng: parseFloat(String(lngVal)) };
+  const latRef = tags["GPSLatitudeRef"]?.description;
+  const lngRef = tags["GPSLongitudeRef"]?.description;
+
+  let latNum = parseFloat(String(latVal));
+  let lngNum = parseFloat(String(lngVal));
+  if (latRef && /south/i.test(String(latRef))) latNum = -latNum;
+  if (lngRef && /west/i.test(String(lngRef))) lngNum = -lngNum;
+
+  return { lat: latNum, lng: lngNum };
 }
 
 function parseDate(tags: ExifReader.Tags): string {
