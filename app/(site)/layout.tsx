@@ -3,6 +3,7 @@
 import { Agentation } from "agentation";
 import Sidebar from "../components/Sidebar";
 import AskPanel from "../components/AskPanel";
+import Footer from "../components/Footer";
 import { AskPanelProvider } from "../components/AskPanelContext";
 import { FirstVisitProvider } from "../components/FirstVisitProvider";
 
@@ -19,6 +20,7 @@ export default function SiteLayout({
             <Sidebar />
             <div className="main-content">
               {children}
+              <Footer />
             </div>
           </div>
         </div>
