@@ -54,7 +54,7 @@ export default function PhotoMap({ photos }: PhotoMapProps) {
       style: "mapbox://styles/mapbox/dark-v11",
       center: [photos[0].lng, photos[0].lat],
       zoom: 2,
-      projection: "mercator",
+      projection: "globe",
     });
 
     mapRef.current = map;
